@@ -221,6 +221,12 @@ section h2 {
     transform: translateY(-10px);
 }
 
+.experience-details {
+    color: #000; /* Set the text color */
+    font-size: 1rem; /* Adjust the font size */
+    font-weight: normal; /* Adjust the font weight if needed */
+    /* Additional styles as needed */
+}
 .experience-title {
     font-size: 1.5rem;
     color: #1f1e1e;
@@ -238,7 +244,17 @@ section h2 {
     font-size: 1rem;
     color: #525151;
 }
+.experience-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 
+.experience-item img {
+    width: 50px; /* Adjust the size of the logos as needed */
+    height: auto;
+    margin-right: 1rem; /* Add spacing between the logo and details */
+}
 
 /* exp section end */
 
