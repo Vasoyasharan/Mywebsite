@@ -80,6 +80,7 @@ section h2 {
     margin: 10px 0;
 }
 
+/* skills section starts */
 .skills {
     background-color: #0d1b2a;
     padding: 60px 0;
@@ -104,6 +105,8 @@ section h2 {
     padding: 10px 20px;
     background-color: #1a2e4a;
     border-radius: 5px;
+    display: inline-flex; /* Use inline-flex to allow items to align horizontally */
+    align-items: center; /* Center align items vertically */
 }
 
 .skills li:hover {
@@ -112,6 +115,38 @@ section h2 {
     color: #fff;
 }
 
+.skills li i {
+    font-size: 2rem;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.skills li i:hover {
+    transform: scale(1.2);
+    color: #ff5722;
+}
+
+.lang-name {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.icon-item:hover .lang-name {
+    opacity: 3;
+}
+
+/* skills section ends */
+
+/* project section start */
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit,
