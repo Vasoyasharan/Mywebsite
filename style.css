@@ -107,6 +107,7 @@ section h2 {
     border-radius: 5px;
     display: inline-flex; /* Use inline-flex to allow items to align horizontally */
     align-items: center; /* Center align items vertically */
+    position: relative; /* Position relative for absolute positioning */
 }
 
 .skills li:hover {
@@ -141,7 +142,29 @@ section h2 {
 }
 
 .icon-item:hover .lang-name {
-    opacity: 3;
+    opacity: 1;
+}
+
+.icon-item {
+    position: relative;
+    animation: floatAnimation 2s infinite alternate ease-in-out;
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.skills li:nth-child(odd) {
+    animation-delay: calc(0.1s * var(--delay-factor));
+}
+
+.skills li:nth-child(even) {
+    animation-delay: calc(0.1s * var(--delay-factor) + 0.1s); /* Add a delay to start after odd items */
 }
 
 /* skills section ends */
