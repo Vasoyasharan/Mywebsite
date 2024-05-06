@@ -89,6 +89,32 @@ section h2 {
   margin: 10px 0;
 }
 
+/* back on top button styling start */
+#back-to-top-btn {
+      display: none; /* Initially hide the button */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 40%;
+      width: 35px;
+      height: 35px;
+      font-size: 25px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+#back-to-top-btn:hover {
+      opacity: 0.8;
+    }
+#back-to-top-btn.visible {
+  display: block;
+}
+
+/* back on top button styling end */  
+
 /* skills section starts */
 .skills {
   background-color: #0d1b2a;
@@ -135,7 +161,6 @@ section h2 {
   transform: scale(1.2);
   color: #ff5722;
 }
-
 .lang-name {
   position: absolute;
   top: -20px;

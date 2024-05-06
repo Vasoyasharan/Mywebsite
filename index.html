@@ -63,6 +63,8 @@
     </div>
 
     <!--  jumbotron ended -->
+    <!-- move on top button -->
+<button id="back-to-top-btn" title="Back to Top">&#8593;</button>
 
     <!-- Skills section -->
 
@@ -288,7 +290,7 @@
             <div class="contact-info">
                 <p><i class="fas fa-envelope"></i> sharanvasoya@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +91 88662 20515</p>
-                <p><i class="fas fa-map-marker-alt"></i>Surat, India</p>
+                <p><i class="fas fa-map-marker-alt"></i> Surat, India</p>
             </div>
             <div class="contact-form">
                 <form id="contact-form">
@@ -304,9 +306,28 @@
     <!-- contact section ends -->
 
     <footer>
-        <p>&copy; 2024 All Rights Reserved by Sharan Vasoya</p>
+        <p>&copy;All Rights Reserved by Sharan Vasoya</p>
     </footer>
      <script>
+
+        // MoveOn-Top button Functionality
+window.addEventListener('scroll', function() {
+  var backToTopButton = document.getElementById('back-to-top-btn');
+  if (window.pageYOffset > 300) { // Adjust this value to control when the button appears
+    backToTopButton.classList.add('visible');
+  } else {
+    backToTopButton.classList.remove('visible');
+  }
+});
+
+document.getElementById('back-to-top-btn').addEventListener('click', function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+    // contact Form Validation 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
             // You can perform form validation here
