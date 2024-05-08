@@ -15,11 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"></script>
     <style>
         body {
-            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+                Arial, sans-serif;
         }
     </style>
     <link rel="stylesheet" href="style.css" />
@@ -64,7 +67,7 @@
 
     <!--  jumbotron ended -->
     <!-- move on top button -->
-<button id="back-to-top-btn" title="Back to Top">&#8593;</button>
+    <button id="back-to-top-btn" title="Back to Top">&#8593;</button>
 
     <!-- Skills section -->
 
@@ -293,11 +296,13 @@
                 <p><i class="fas fa-map-marker-alt"></i> Surat, India</p>
             </div>
             <div class="contact-form">
-                <form id="contact-form">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <form id="contact-form" action="https://formspree.io/f/mbjnwvwr" method="post">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required />
+                    <input type="email" id="email" name="email" placeholder="Your Email" required />
                     <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
-                    <button type="submit">Send Message</button>
+                    <button type="submit" id="submitBtn">Send
+                        Message</button>
+                    <div id="statusMessage" style="display: none"></div>
                 </form>
             </div>
         </div>
@@ -308,44 +313,78 @@
     <footer>
         <p>&copy;All Rights Reserved by Sharan Vasoya</p>
     </footer>
-     <script>
+    <script>
+        document.getElementById("contact-form")
+            .addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission
 
-        // MoveOn-Top button Functionality
-window.addEventListener('scroll', function() {
-  var backToTopButton = document.getElementById('back-to-top-btn');
-  if (window.pageYOffset > 300) { // Adjust this value to control when the button appears
-    backToTopButton.classList.add('visible');
-  } else {
-    backToTopButton.classList.remove('visible');
-  }
-});
+                // Get form data
+                var formData = new FormData(this);
 
-document.getElementById('back-to-top-btn').addEventListener('click', function() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+                // Send form data to Formspree using Fetch API
+                fetch("https://formspree.io/f/mbjnwvwr", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        Accept: "application/json",
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Display status message
+                        var statusMessage = document.getElementById("statusMessage");
+                        statusMessage.textContent = data.message;
+                        statusMessage.style.display = "block";
 
-    // contact Form Validation 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-            // You can perform form validation here
-            
-            // Simulating successful form submission
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Message sent successfully",
-                showConfirmButton: false,
-                timer: 1500
+                        // Clear form fields
+                        document.getElementById("name").value = "";
+                        document.getElementById("email").value = "";
+                        document.getElementById("message").value = "";
+                    })
+                    .catch((error) => console.error("Error:", error));
             });
 
-            // Clear form fields after successful submission
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
+        // MoveOn-Top button Functionality
+        window.addEventListener("scroll", function () {
+            var backToTopButton = document.getElementById("back-to-top-btn");
+            if (window.pageYOffset > 300) {
+                // Adjust this value to control when the button appears
+                backToTopButton.classList.add("visible");
+            } else {
+                backToTopButton.classList.remove("visible");
+            }
         });
+
+        document
+            .getElementById("back-to-top-btn")
+            .addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            });
+
+        // contact Form Validation
+        document
+            .getElementById("contact-form")
+            .addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form submission
+                // You can perform form validation here
+
+                // Simulating successful form submission
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Message sent successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+
+                // Clear form fields after successful submission             
+                document.getElementById('name').value = '';
+                document.getElementById("email").value = "";
+                document.getElementById("message").value = "";
+            });
     </script>
 </body>
 
