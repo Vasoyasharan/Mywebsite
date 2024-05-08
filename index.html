@@ -300,6 +300,7 @@
                     <input type="text" id="name" name="name" placeholder="Your Name" required />
                     <input type="email" id="email" name="email" placeholder="Your Email" required />
                     <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                    <div class="g-recaptcha" data-sitekey="6LcUctUpAAAAAIN-W82vNZM_-eVARsQC6_37fey5"></div>
                     <button type="submit" id="submitBtn">Send
                         Message</button>
                     <div id="statusMessage" style="display: none"></div>
@@ -313,79 +314,70 @@
     <footer>
         <p>&copy;All Rights Reserved by Sharan Vasoya</p>
     </footer>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-        document.getElementById("contact-form")
-            .addEventListener("submit", function (event) {
-                event.preventDefault(); // Prevent default form submission
+    // Verify reCAPTCHA and submit form
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LcUctUpAAAAAIN-W82vNZM_-eVARsQC6_37fey5', { action: 'submit' }).then(function (token) {
+            var formData = new FormData(document.getElementById('contact-form'));
+            formData.append('g-recaptcha-response', token);
 
-                // Get form data
-                var formData = new FormData(this);
+            fetch('https://formspree.io/f/mbjnwvwr', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var statusMessage = document.getElementById('statusMessage');
+                    statusMessage.textContent = data.message;
+                    statusMessage.style.display = 'block';
 
-                // Send form data to Formspree using Fetch API
-                fetch("https://formspree.io/f/mbjnwvwr", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        Accept: "application/json",
-                    },
+                    document.getElementById('name').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('message').value = '';
                 })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        // Display status message
-                        var statusMessage = document.getElementById("statusMessage");
-                        statusMessage.textContent = data.message;
-                        statusMessage.style.display = "block";
+                .catch(error => console.error('Error:', error));
+        });
+    });
 
-                        // Clear form fields
-                        document.getElementById("name").value = "";
-                        document.getElementById("email").value = "";
-                        document.getElementById("message").value = "";
-                    })
-                    .catch((error) => console.error("Error:", error));
-            });
+    // MoveOn-Top button Functionality
+    window.addEventListener('scroll', function () {
+        var backToTopButton = document.getElementById('back-to-top-btn');
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
 
-        // MoveOn-Top button Functionality
-        window.addEventListener("scroll", function () {
-            var backToTopButton = document.getElementById("back-to-top-btn");
-            if (window.pageYOffset > 300) {
-                // Adjust this value to control when the button appears
-                backToTopButton.classList.add("visible");
-            } else {
-                backToTopButton.classList.remove("visible");
-            }
+    document.getElementById('back-to-top-btn').addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Contact Form Validation
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+        // Simulate successful form submission
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Message sent successfully',
+            showConfirmButton: false,
+            timer: 1500
         });
 
-        document
-            .getElementById("back-to-top-btn")
-            .addEventListener("click", function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                });
-            });
-
-        // contact Form Validation
-        document
-            .getElementById("contact-form")
-            .addEventListener("submit", function (event) {
-                event.preventDefault(); // Prevent form submission
-                // You can perform form validation here
-
-                // Simulating successful form submission
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Message sent successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-
-                // Clear form fields after successful submission             
-                document.getElementById('name').value = '';
-                document.getElementById("email").value = "";
-                document.getElementById("message").value = "";
-            });
-    </script>
+        // Clear form fields after successful submission             
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    });
+</script>
 </body>
 
 </html>
