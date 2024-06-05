@@ -6,5 +6,6 @@
         "GBSE",
         "Infotech",
         "Mico"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
