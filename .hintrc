@@ -9,6 +9,15 @@
         "link-name": "off"
       }
     ],
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "-webkit-mask-image",
+          "-webkit-tap-highlight-color"
+        ]
+      }
+    ]
   }
 }
