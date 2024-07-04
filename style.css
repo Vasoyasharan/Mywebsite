@@ -54,6 +54,7 @@ section h2 {
 .profile-pic:hover {
   transform: scale(1.05);
 }
+
 .social-icon {
   margin: 0 10px;
   font-size: 2rem;
@@ -91,29 +92,31 @@ section h2 {
 
 /* back on top button styling start */
 #back-to-top-btn {
-      display: none; /* Initially hide the button */
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 40%;
-      width: 35px;
-      height: 35px;
-      font-size: 25px;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-    }
+  display: none;
+  /* Initially hide the button */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 40%;
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
 
 #back-to-top-btn:hover {
-      opacity: 0.8;
-    }
+  opacity: 0.8;
+}
+
 #back-to-top-btn.visible {
   display: block;
 }
 
-/* back on top button styling end */  
+/* back on top button styling end */
 
 /* skills section starts */
 .skills {
@@ -140,9 +143,12 @@ section h2 {
   padding: 10px 20px;
   background-color: #1a2e4a;
   border-radius: 5px;
-  display: inline-flex; /* Use inline-flex to allow items to align horizontally */
-  align-items: center; /* Center align items vertically */
-  position: relative; /* Position relative for absolute positioning */
+  display: inline-flex;
+  /* Use inline-flex to allow items to align horizontally */
+  align-items: center;
+  /* Center align items vertically */
+  position: relative;
+  /* Position relative for absolute positioning */
 }
 
 .skills li:hover {
@@ -161,6 +167,7 @@ section h2 {
   transform: scale(1.2);
   color: #ff5722;
 }
+
 .lang-name {
   position: absolute;
   top: -20px;
@@ -188,6 +195,7 @@ section h2 {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-10px);
   }
@@ -198,9 +206,8 @@ section h2 {
 }
 
 .skills li:nth-child(even) {
-  animation-delay: calc(
-    0.1s * var(--delay-factor) + 0.1s
-  ); /* Add a delay to start after odd items */
+  animation-delay: calc(0.1s * var(--delay-factor) + 0.1s);
+  /* Add a delay to start after odd items */
 }
 
 /* skills section ends */
@@ -302,11 +309,15 @@ section h2 {
 }
 
 .experience-details {
-  color: #000; /* Set the text color */
-  font-size: 1rem; /* Adjust the font size */
-  font-weight: normal; /* Adjust the font weight if needed */
+  color: #000;
+  /* Set the text color */
+  font-size: 1rem;
+  /* Adjust the font size */
+  font-weight: normal;
+  /* Adjust the font weight if needed */
   /* Additional styles as needed */
 }
+
 .experience-title {
   font-size: 1.5rem;
   color: #1f1e1e;
@@ -324,6 +335,7 @@ section h2 {
   font-size: 1rem;
   color: #525151;
 }
+
 .experience-item {
   display: flex;
   align-items: center;
@@ -331,9 +343,11 @@ section h2 {
 }
 
 .experience-item img {
-  width: 50px; /* Adjust the size of the logos as needed */
+  width: 50px;
+  /* Adjust the size of the logos as needed */
   height: auto;
-  margin-right: 1rem; /* Add spacing between the logo and details */
+  margin-right: 1rem;
+  /* Add spacing between the logo and details */
 }
 
 /* exp section end */
@@ -400,23 +414,28 @@ section h2 {
 
 .contact-details {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+  flex-wrap: wrap;
+  /* Allow items to wrap to the next line on smaller screens */
 }
 
 .contact-info,
 .contact-form {
   flex: 1;
-  margin-right: 1rem; /* Add some spacing between the two sections */
+  margin-right: 1rem;
+  /* Add some spacing between the two sections */
 }
 
 .contact-info p {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
+
 .contact-form {
   flex: 1;
-  margin-right: 1rem; /* Add some spacing between the two sections */
-  width: 100%; /* Default width */
+  margin-right: 1rem;
+  /* Add some spacing between the two sections */
+  width: 100%;
+  /* Default width */
 }
 
 .contact-form input[type="text"],
@@ -432,7 +451,8 @@ section h2 {
 }
 
 .contact-form textarea {
-  height: 10rem; /* Set a fixed height for the textarea */
+  height: 10rem;
+  /* Set a fixed height for the textarea */
 }
 
 .contact-form button {
@@ -456,6 +476,7 @@ section h2 {
   border: 0 solid;
   box-sizing: border-box;
 }
+
 .btn-17 {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
@@ -474,70 +495,88 @@ section h2 {
   padding: 0;
   /* text-transform: uppercase; */
 }
+
 .btn-17:disabled {
   cursor: default;
 }
+
 .btn-17:-moz-focusring {
   outline: auto;
 }
+
 .btn-17 svg {
   display: block;
   vertical-align: middle;
 }
+
 .btn-17 [hidden] {
   display: none;
 }
+
 .btn-17 {
   border-radius: 99rem;
   border-width: 2px;
   padding: 0.8rem 3rem;
   z-index: 0;
 }
+
 .btn-17,
 .btn-17 .text-container {
   overflow: hidden;
   position: relative;
 }
+
 .btn-17 .text-container {
   display: block;
   mix-blend-mode: difference;
 }
+
 .btn-17 .text {
   display: block;
   position: relative;
 }
+
 .btn-17:hover .text {
   -webkit-animation: move-up-alternate 0.3s forwards;
   animation: move-up-alternate 0.3s forwards;
 }
+
 @-webkit-keyframes move-up-alternate {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(80%);
   }
+
   51% {
     transform: translateY(-80%);
   }
+
   to {
     transform: translateY(0);
   }
 }
+
 @keyframes move-up-alternate {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(80%);
   }
+
   51% {
     transform: translateY(-80%);
   }
+
   to {
     transform: translateY(0);
   }
 }
+
 .btn-17:after,
 .btn-17:before {
   --skew: 0.2;
@@ -553,15 +592,18 @@ section h2 {
   transition: transform 0.2s ease;
   width: 100%;
 }
+
 .btn-17:after {
   --progress: 0%;
   left: calc(50% + 50% * var(--skew));
   top: 102%;
   z-index: -1;
 }
+
 .btn-17:hover:before {
   --progress: 100%;
 }
+
 .btn-17:hover:after {
   --progress: -102%;
 }
@@ -571,6 +613,7 @@ section h2 {
   .btn-17 {
     padding: 0.7rem 2.5rem;
   }
+
   .btn-17 {
     font-size: 90%;
   }
@@ -580,6 +623,7 @@ section h2 {
   .btn-17 {
     padding: 0.6rem 2rem;
   }
+
   .btn-17 {
     font-size: 80%;
   }
@@ -589,6 +633,7 @@ section h2 {
   .btn-17 {
     padding: 0.5rem 1.5rem;
   }
+
   .btn-17 {
     font-size: 75%;
   }
@@ -598,24 +643,30 @@ section h2 {
   .btn-17 {
     padding: 0.4rem 1rem;
   }
+
   .btn-17 {
     font-size: 70%;
   }
 }
+
 /* submit button hover ends  */
 
 @media screen and (max-width: 770px) {
   .contact-form {
-    width: 60%; /* Set width to 60% on smaller screens */
+    width: 60%;
+    /* Set width to 60% on smaller screens */
   }
 }
+
 @media screen and (max-width: 768px) {
   .contact-info p {
-    font-size: 1rem; /* Decrease font size for smaller screens */
+    font-size: 1rem;
+    /* Decrease font size for smaller screens */
   }
 
   .contact-form textarea {
-    height: 8rem; /* Decrease height of textarea for smaller screens */
+    height: 8rem;
+    /* Decrease height of textarea for smaller screens */
   }
 }
 
