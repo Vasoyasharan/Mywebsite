@@ -93,7 +93,6 @@ section h2 {
 /* back on top button styling start */
 #back-to-top-btn {
   display: none;
-  /* Initially hide the button */
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -144,11 +143,8 @@ section h2 {
   background-color: #1a2e4a;
   border-radius: 5px;
   display: inline-flex;
-  /* Use inline-flex to allow items to align horizontally */
   align-items: center;
-  /* Center align items vertically */
   position: relative;
-  /* Position relative for absolute positioning */
 }
 
 .skills li:hover {
@@ -207,7 +203,6 @@ section h2 {
 
 .skills li:nth-child(even) {
   animation-delay: calc(0.1s * var(--delay-factor) + 0.1s);
-  /* Add a delay to start after odd items */
 }
 
 /* skills section ends */
@@ -230,9 +225,7 @@ section h2 {
 }
 
 .project-card:hover {
-  /* transform: translateY(-5px); */
   border: 3px solid #3453db;
-  /* Add border on hover */
 }
 
 .project-img {
@@ -244,9 +237,7 @@ section h2 {
 .project-info {
   padding: 20px;
   position: relative;
-  /* Ensure relative positioning for absolute button */
   margin-bottom: 60px;
-  /* Added margin to prevent overlap */
 }
 
 .view-project-btn {
@@ -310,12 +301,8 @@ section h2 {
 
 .experience-details {
   color: #000;
-  /* Set the text color */
   font-size: 1rem;
-  /* Adjust the font size */
   font-weight: normal;
-  /* Adjust the font weight if needed */
-  /* Additional styles as needed */
 }
 
 .experience-title {
@@ -344,10 +331,8 @@ section h2 {
 
 .experience-item img {
   width: 50px;
-  /* Adjust the size of the logos as needed */
   height: auto;
   margin-right: 1rem;
-  /* Add spacing between the logo and details */
 }
 
 /* exp section end */
@@ -412,23 +397,23 @@ section h2 {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align content */
+  align-items: center; 
 }
 
 .contact-details {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center align items on smaller screens */
-  max-width: 800px; /* Limit maximum width */
-  width: 100%; /* Ensure full width */
+  justify-content: center; 
+  max-width: 800px; 
+  width: 100%; 
 }
 
 .contact-form {
   flex: 1;
   margin-right: 1rem;
-  margin-bottom: 2rem; /* Add some spacing between sections */
+  margin-bottom: 2rem;
   width: 100%;
-  max-width: 400px; /* Adjust maximum width as needed */
+  max-width: 400px;
 }
 
 .contact-form input[type="text"],
@@ -445,7 +430,6 @@ section h2 {
 
 .contact-form textarea {
   height: 10rem;
-  /* Set a fixed height for the textarea */
 }
 
 .contact-form button {
@@ -462,13 +446,13 @@ section h2 {
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .contact-details {
-    padding: 0 1rem; /* Adjust padding on smaller screens */
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .contact-form {
-    max-width: 100%; /* Full width on smaller screens */
+    max-width: 100%; 
   }
 }
 
@@ -499,7 +483,6 @@ section h2 {
   margin: 0;
   -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0;
-  /* text-transform: uppercase; */
 }
 
 .btn-17:disabled {
@@ -660,19 +643,16 @@ section h2 {
 @media screen and (max-width: 770px) {
   .contact-form {
     width: 60%;
-    /* Set width to 60% on smaller screens */
   }
 }
 
 @media screen and (max-width: 768px) {
   .contact-info p {
     font-size: 1rem;
-    /* Decrease font size for smaller screens */
   }
 
   .contact-form textarea {
     height: 8rem;
-    /* Decrease height of textarea for smaller screens */
   }
 }
 
