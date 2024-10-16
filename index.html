@@ -55,6 +55,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
       body {
         font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -65,7 +71,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+ <body onload="AOS.init()"></body>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
     <header>
       <div class="container">
         <h1>Sharan Vasoya</h1>
@@ -105,7 +113,9 @@
     </header>
     <!-- Jumbotron about section -->
     <div class="cta">
-      <h3>About Me</h3>
+      <h2 class="text-3xl font-bold">
+        About Me: <span id="typed-text"></span>
+      </h2>
       <p>
         Detail-oriented web developer with expertise in front-end development
         and UI/UX design. Skilled in utilizing frameworks <br />
@@ -405,7 +415,7 @@
     <section class="contact">
       <h2 class="section-head">Get In Touch</h2>
       <div class="contact-details">
-      <div class="contact-form">
+        <div class="contact-form">
           <form
             id="contact-form"
             action="https://formspree.io/f/mbjnwvwr"
@@ -451,6 +461,23 @@
     </footer>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
+      AOS.init();
+
+      // about us typing
+      new Typed("#typed-text", {
+        strings: ["Web Developer", "UI/UX Designer", "Tech Enthusiast"],
+        typeSpeed: 50,
+        backSpeed: 25,
+        loop: true,
+      });
+
+      // Custom Cursor
+      const cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.pageX + "px";
+        cursor.style.top = e.pageY + "px";
+      });
+
       document
         .getElementById("contact-form")
         .addEventListener("submit", function (event) {
