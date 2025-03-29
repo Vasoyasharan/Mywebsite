@@ -54,6 +54,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <link
@@ -71,7 +75,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
- <body onload="AOS.init()">
+  <body onload="AOS.init()">
     <!-- Custom Cursor -->
     <div id="cursor"></div>
     <header>
@@ -134,76 +138,98 @@
     <!-- Skills section -->
 
     <section class="skills">
-      <div class="container">
-        <h2 class="text-3xl font-bold mb-4">My ToolBox</h2>
-        <ul class="grid grid-cols-4 gap-4">
-          <li class="icon-item">
-            <i class="fab fa-html5 icon" title="HTML"></i>
-            <span class="lang-name">HTML</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-css3-alt icon" title="CSS"></i>
-            <span class="lang-name">CSS</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-js icon" title="JavaScript"></i>
-            <span class="lang-name">JavaScript</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-bootstrap icon" title="Bootstrap"></i>
-            <span class="lang-name">Bootstrap</span>
-          </li>
-          <li class="icon-item">
-            <i class="fas fa-wrench icon" title="Tailwind CSS"></i>
-            <span class="lang-name">Tailwind CSS</span>
-          </li>
-          <li class="icon-item">
-            <i class="fas fa-database icon" title="MySQL"></i>
-            <span class="lang-name">MySQL</span>
-          </li>
-          <li class="icon-item">
-            <i class="fas fa-code icon" title="C/C++"></i>
-            <span class="lang-name">C/C++</span>
-          </li>
-          <li class="icon-item">
-            <i class="fas fa-database icon" title="MongoDB"></i>
-            <span class="lang-name">MongoDB</span>
-          </li>
-          <li class="icon-item">
-            <i class="fas fa-mobile-alt icon" title="Responsive Design"></i>
-            <span class="lang-name">Responsive Design</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-git-alt icon" title="Git"></i>
-            <span class="lang-name">Git</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-github icon" title="GitHub"></i>
-            <span class="lang-name">GitHub</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-markdown icon" title="Markdown"></i>
-            <span class="lang-name">Markdown</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-linux icon" title="Linux"></i>
-            <span class="lang-name">Linux</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-korvue icon" title="Kali Linux"></i>
-            <span class="lang-name">Kali Linux</span>
-          </li>
-          <li class="icon-item">
-            <i class="fas fa-paint-brush icon" title="UI/UX Design"></i>
-            <span class="lang-name">UI/UX Design</span>
-          </li>
-          <li class="icon-item">
-            <i class="fab fa-ubuntu icon" title="Ubuntu"></i>
-            <span class="lang-name">Ubuntu</span>
-          </li>
-        </ul>
-      </div>
-    </section>
+  <h2>Hacker's Toolbox</h2>
+  <div class="skills-grid">
+    <!-- Frontend Development -->
+    <div class="skill-card">
+      <i class="fab fa-html5 skill-icon"></i>
+      <h3 class="skill-name">HTML5</h3>
+      <p class="skill-category">FRONTEND</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-css3-alt skill-icon"></i>
+      <h3 class="skill-name">CSS3</h3>
+      <p class="skill-category">FRONTEND</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-js skill-icon"></i>
+      <h3 class="skill-name">JavaScript</h3>
+      <p class="skill-category">FRONTEND</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-react skill-icon"></i>
+      <h3 class="skill-name">React</h3>
+      <p class="skill-category">FRONTEND</p>
+    </div>
+
+    <!-- Backend Development -->
+    <div class="skill-card">
+      <i class="fas fa-server skill-icon"></i>
+      <h3 class="skill-name">Node.js</h3>
+      <p class="skill-category">BACKEND</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-database skill-icon"></i>
+      <h3 class="skill-name">MongoDB</h3>
+      <p class="skill-category">DATABASE</p>
+    </div>
+
+    <!-- Cybersecurity -->
+    <div class="skill-card">
+      <i class="fas fa-shield-alt skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Kali Linux</h3>
+      <p class="skill-category cyber-category">PENTESTING</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-user-secret skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Social Engineering</h3>
+      <p class="skill-category cyber-category">SET</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-network-wired skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Network Security</h3>
+      <p class="skill-category cyber-category">WIRESHARK</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-lock skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Cryptography</h3>
+      <p class="skill-category cyber-category">ENCRYPTION</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-bug skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Metasploit</h3>
+      <p class="skill-category cyber-category">EXPLOITATION</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-terminal skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Burp Suite</h3>
+      <p class="skill-category cyber-category">WEB SECURITY</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-fingerprint skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">OWASP ZAP</h3>
+      <p class="skill-category cyber-category">VULNERABILITY</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-code skill-icon cyber-icon"></i>
+      <h3 class="skill-name cyber-name">Reverse Engineering</h3>
+      <p class="skill-category cyber-category">GDB/RADARE2</p>
+    </div>
+
+    <!-- Developer Tools -->
+    <div class="skill-card">
+      <i class="fab fa-git-alt skill-icon"></i>
+      <h3 class="skill-name">Git</h3>
+      <p class="skill-category">VERSION CONTROL</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-terminal skill-icon"></i>
+      <h3 class="skill-name">Bash/Zsh</h3>
+      <p class="skill-category">SHELL</p>
+    </div>
+  </div>
+  <div class="skills-footer">Ready to penetrate systems and build secure applications</div>
+</section>
     <!-- Skills section ended -->
 
     <!-- Projects section -->
@@ -375,89 +401,98 @@
 
     <!-- project section ended  -->
 
-   <!-- exp section -->
-<h2 class="section-heading">Professional Journey</h2>
-<section class="experience-container">
-  <div class="experience-timeline">
-    <div class="experience-item">
-      <div class="experience-logo">
-        <img src="images/Bluesoft.png" alt="BlueSoft Logo" />
-      </div>
-      <div class="experience-content">
-        <div class="experience-header">
-          <h3 class="experience-company">BlueSoft Infotech</h3>
-          <span class="experience-duration">2 Months</span>
+    <!-- exp section -->
+    <h2 class="section-heading">Professional Journey</h2>
+    <section class="experience-container">
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="experience-logo">
+            <img src="images/Bluesoft.png" alt="BlueSoft Logo" />
+          </div>
+          <div class="experience-content">
+            <div class="experience-header">
+              <h3 class="experience-company">BlueSoft Infotech</h3>
+              <span class="experience-duration">2 Months</span>
+            </div>
+            <p class="experience-position">Frontend Developer</p>
+            <div class="experience-skills">
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">UI/UX</span>
+            </div>
+          </div>
         </div>
-        <p class="experience-position">Frontend Developer</p>
-        <div class="experience-skills">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">TypeScript</span>
-          <span class="skill-tag">UI/UX</span>
+
+        <div class="experience-item">
+          <div class="experience-logo">
+            <img src="images/Depthin.png" alt="Depthin Solution Logo" />
+          </div>
+          <div class="experience-content">
+            <div class="experience-header">
+              <h3 class="experience-company">Depthin Solution</h3>
+              <span class="experience-duration">15 Months</span>
+            </div>
+            <p class="experience-position">Frontend Developer</p>
+            <div class="experience-skills">
+              <span class="skill-tag">React Js</span>
+              <span class="skill-tag">SCSS</span>
+              <span class="skill-tag">Responsive Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- exp section end -->
+
+   <div class="education">
+  <h2 class="section-heading">Education</h2>
+  <div class="education-container">
+    <!-- VNSGU Card -->
+    <div class="education-card">
+      <div class="education-header">
+        <div class="education-icon">
+          <i class="fas fa-university"></i>
+        </div>
+        <h3 class="education-title">V.N.S.G University</h3>
+      </div>
+      <div class="education-details">
+        <div class="education-detail">
+          <i class="fas fa-calendar-alt"></i>
+          <span>2022 - 2025</span>
+        </div>
+        <div class="education-detail">
+          <i class="fas fa-laptop-code"></i>
+          <span>Information Technology</span>
+        </div>
+        <div class="education-detail">
+          <i class="fas fa-graduation-cap"></i>
+          <span>BCA (Bachelor of Computer Application)</span>
         </div>
       </div>
     </div>
-    
-    <div class="experience-item">
-      <div class="experience-logo">
-        <img src="images/Depthin.png" alt="Depthin Solution Logo" />
-      </div>
-      <div class="experience-content">
-        <div class="experience-header">
-          <h3 class="experience-company">Depthin Solution</h3>
-          <span class="experience-duration">15 Months</span>
+
+    <!-- Dream International School Card -->
+    <div class="education-card">
+      <div class="education-header">
+        <div class="education-icon">
+          <i class="fas fa-school"></i>
         </div>
-        <p class="experience-position">Frontend Developer</p>
-        <div class="experience-skills">
-          <span class="skill-tag">Vue.js</span>
-          <span class="skill-tag">SCSS</span>
-          <span class="skill-tag">Responsive Design</span>
+        <h3 class="education-title">Dream International School</h3>
+      </div>
+      <div class="education-details">
+        <div class="education-detail">
+          <i class="fas fa-calendar-alt"></i>
+          <span>2022</span>
+        </div>
+        <div class="education-detail">
+          <i class="fas fa-flask"></i>
+          <span>Class XII - Science</span>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-    <!-- exp section end -->
-
-    <!-- education section start -->
-    <h2 class="section-heading">Education</h2>
-    <section class="education">
-      <div class="education-item">
-        <div class="education-info text-black">
-          <h3 class="education-title">V.N.S.G University</h3>
-          <p class="education-duration">Year: 2022 - 2025</p>
-          <p class="education-field">Field: Information Technology</p>
-          <p class="education-degree">
-            Degree: BCA (Bachelor of Computer Application)
-          </p>
-        </div>
-        <div class="education-logo">
-          <img src="images/Vnsgu.jpeg" alt="University Logo" />
-        </div>
-      </div>
-      <div class="education-item">
-        <div class="education-info text-black">
-          <h3 class="education-title">Dream International School</h3>
-          <p class="education-degree">Class:XII</p>
-          <p class="education-field">Science</p>
-          <p class="education-duration">2022</p>
-        </div>
-        <div class="education-logo">
-          <img src="images/dream.png" alt="School Logo" />
-        </div>
-      </div>
-      <div class="education-item">
-        <div class="education-info text-black">
-          <h3 class="education-title">Aryam Educational Academy</h3>
-          <p class="education-degree">Class:XI</p>
-          <p class="education-field">GBSE</p>
-          <p class="education-duration">2020</p>
-        </div>
-        <div class="education-logo">
-          <img src="images/Aryam2.png" alt="School Logo" />
-        </div>
-      </div>
-    </section>
+</div>
 
     <!-- education section end -->
 
@@ -515,7 +550,12 @@
 
       // about us typing
       new Typed("#typed-text", {
-        strings: ["Web Developer", "UI/UX Designer", "Tech Enthusiast", "Creative Thinker"],
+        strings: [
+          "Web Developer",
+          "UI/UX Designer",
+          "Tech Enthusiast",
+          "Creative Thinker",
+        ],
         typeSpeed: 50,
         backSpeed: 25,
         loop: true,
