@@ -4,554 +4,1378 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sharan Vasoya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="favicon_io/apple-touch-icon.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicon_io/favicon-32x32.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicon_io/favicon-16x16.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="favicon_io/android-chrome-192x192.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="favicon_io/android-chrome-512x512.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-      body {
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
-          Arial, sans-serif;
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Background Elements */
+      .bg-pattern {
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            rgba(6, 182, 212, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(8, 145, 178, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(6, 182, 212, 0.05) 0%,
+            transparent 50%
+          );
+        background-size: 800px 800px, 600px 600px, 1000px 1000px;
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+        animation: backgroundShift 20s ease-in-out infinite;
+      }
+
+      @keyframes backgroundShift {
+        0%,
+        100% {
+          background-position: 0% 0%, 100% 100%, 50% 50%;
+        }
+        50% {
+          background-position: 100% 100%, 0% 0%, 25% 75%;
+        }
+      }
+
+      .floating-shapes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .shape {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 15s infinite linear;
+      }
+
+      .shape:nth-child(1) {
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+        animation-duration: 20s;
+      }
+
+      .shape:nth-child(2) {
+        top: 60%;
+        left: 80%;
+        animation-delay: 5s;
+        animation-duration: 25s;
+      }
+
+      .shape:nth-child(3) {
+        top: 80%;
+        left: 20%;
+        animation-delay: 10s;
+        animation-duration: 18s;
+      }
+
+      .shape:nth-child(4) {
+        top: 30%;
+        left: 70%;
+        animation-delay: 15s;
+        animation-duration: 22s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.1;
+        }
+        90% {
+          opacity: 0.1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .grid-pattern {
+        background-image: linear-gradient(
+            rgba(6, 182, 212, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: gridMove 30s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 50px 50px;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(6, 182, 212, 0.6),
+            0 0 60px rgba(6, 182, 212, 0.4);
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        53%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40%,
+        43% {
+          transform: translateY(-15px);
+        }
+        70% {
+          transform: translateY(-7px);
+        }
+        90% {
+          transform: translateY(-3px);
+        }
+      }
+
+      .animate-slide-left {
+        animation: slideInLeft 0.8s ease-out;
+      }
+      .animate-slide-right {
+        animation: slideInRight 0.8s ease-out;
+      }
+      .animate-fade-up {
+        animation: fadeInUp 1s ease-out;
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+      .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #06b6d4, #0891b2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        background: rgba(17, 24, 39, 0.8);
+        border: 1px solid rgba(6, 182, 212, 0.1);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+
+      .typing-animation {
+        border-right: 2px solid #06b6d4;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          border-color: #06b6d4;
+        }
+        51%,
+        100% {
+          border-color: transparent;
+        }
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+
+      /* Programming Language Icons */
+      .lang-icon {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .lang-icon:hover {
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 0 20px currentColor);
+      }
+
+      .java-icon {
+        color: #f89820;
+      }
+      .java-icon:hover {
+        color: #ff6b35;
+        animation: bounce 0.6s;
+      }
+
+      .python-icon {
+        color: #3776ab;
+      }
+      .python-icon:hover {
+        color: #ffd43b;
+        animation: bounce 0.6s;
+      }
+
+      .csharp-icon {
+        color: #239120;
+      }
+      .csharp-icon:hover {
+        color: #68217a;
+        animation: bounce 0.6s;
+      }
+
+      .cpp-icon {
+        color: #00599c;
+      }
+      .cpp-icon:hover {
+        color: #f34b7d;
+        animation: bounce 0.6s;
+      }
+
+      .bash-icon {
+        color: #4eaa25;
+      }
+      .bash-icon:hover {
+        color: #89e051;
+        animation: bounce 0.6s;
+      }
+
+      .thm-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .thm-container::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: 160px;
+        bottom: 30px;
+        background: linear-gradient(45deg, #06b6d4, #0891b2, #06b6d4);
+        border-radius: 15px;
+        z-index: -1;
+        animation: glow 2s ease-in-out infinite;
+        opacity: 0.7;
+      }
+
+      .thm-iframe {
+        border-radius: 10px;
+        overflow: hidden;
+        animation: float 4s ease-in-out infinite;
+      }
+
+      /* Content positioning */
+      .content-layer {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Subtle section backgrounds */
+      .section-bg {
+        background: rgba(17, 24, 39, 0.3);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(6, 182, 212, 0.1);
+        border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+      }
+
+      /* Terminal-Style Contact Form */
+      .terminal-form input,
+      .terminal-form textarea {
+        font-family: "Fira Mono", "Consolas", monospace;
+        font-size: 1rem;
+        background: transparent;
+        color: #67e8f9;
+      }
+      .terminal-form input:focus,
+      .terminal-form textarea:focus {
+        outline: none;
+        border-color: #22d3ee;
+      }
+      .terminal-form .terminal-cursor {
+        caret-color: #22d3ee;
+        position: relative;
+      }
+      .terminal-form .terminal-cursor::after {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 1.2em;
+        background: #22d3ee;
+        margin-left: 2px;
+        animation: blink-cursor 1s steps(1) infinite;
+        vertical-align: middle;
+      }
+      @keyframes blink-cursor {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
       }
     </style>
-    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-B1RFNL6FXL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-B1RFNL6FXL");
+    </script>
   </head>
 
-  <body onload="AOS.init()">
-    <!-- Custom Cursor -->
-    <div id="cursor"></div>
-    <header>
-      <div class="container">
-        <h1>Sharan Vasoya</h1>
-        <div class="profile-pic">
-          <img src="images/sharan1.jpg" alt="Profile Picture" />
-        </div>
-        <div class="flex justify-center">
-          <a
-            href="https://www.google.com/search?sca_esv=586873451&sxsrf=AM9HkKlR6n-sWKgd8BcN_pgeAoVxt8Zm3g:1701410400920&q=Sharan+Vasoya&stick=H4sIAAAAAAAAAOOwesSozi3w8sc9YSm5SWtOXmOU4BLzSsxLLEl0LkpNLEkNTk0sSs5wTixK4VnEyhuckViUmKcQllicX5kIAEwmvPM8AAAA&sa=X&ved=2ahUKEwjA6MDUx-2CAxV1a2wGHdQHAPgQnJoFegQINBAG&biw=1322&bih=637&dpr=1"
-            class="social-icon">
-            <i class="fab fa-google"></i>
-          </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=100084131319793"
-            class="social-icon">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/sharan-vasoya-b6a21824a"
-            class="social-icon">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/Vasoyasharan" class="social-icon">
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://instagram.com/sharan_vasoya_07?igshid=ZDdkNTZiNTM="
-            class="social-icon">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-    </header>
-    <!-- Jumbotron about section -->
-    <div class="cta">
-      <h4 class="text-2xl font-bold">
-        About Me: <span id="typed-text"></span>
-      </h4>
-      <p>
-        Detail-oriented web developer with expertise in front-end development
-        and UI/UX design. Skilled in utilizing frameworks <br />
-        like React and Angular to build scalable and interactive web
-        applications. Committed to delivering seamless user experiences<br />
-        through clean and efficient code.
-      </p>
+  <body
+    class="bg-black text-white min-h-screen scroll-smooth bg-pattern grid-pattern">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+      <div class="shape w-20 h-20 border border-cyan-500 rounded-full"></div>
+      <div
+        class="shape w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg transform rotate-45"></div>
+      <div
+        class="shape w-12 h-12 border-2 border-cyan-400 transform rotate-45"></div>
+      <div class="shape w-24 h-24 border border-blue-400 rounded-full"></div>
+      <div class="shape w-8 h-8 bg-cyan-400 rounded-full"></div>
+      <div
+        class="shape w-14 h-14 border border-cyan-300 transform rotate-45"></div>
     </div>
 
-    <!--  jumbotron ended -->
-    <!-- move on top button -->
-    <button id="back-to-top-btn" title="Back to Top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <!-- Skills section -->
-
-    <section class="skills">
-      <h2>Hacker's Toolbox</h2>
-      <div class="skills-grid">
-        <!-- Frontend Development -->
-        <div class="skill-card">
-          <i class="fab fa-html5 skill-icon"></i>
-          <h3 class="skill-name">HTML5</h3>
-          <p class="skill-category">FRONTEND</p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-css3-alt skill-icon"></i>
-          <h3 class="skill-name">CSS3</h3>
-          <p class="skill-category">FRONTEND</p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-js skill-icon"></i>
-          <h3 class="skill-name">JavaScript</h3>
-          <p class="skill-category">FRONTEND</p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-react skill-icon"></i>
-          <h3 class="skill-name">React</h3>
-          <p class="skill-category">FRONTEND</p>
-        </div>
-
-        <!-- Backend Development -->
-        <div class="skill-card">
-          <i class="fas fa-server skill-icon"></i>
-          <h3 class="skill-name">Node.js</h3>
-          <p class="skill-category">BACKEND</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-database skill-icon"></i>
-          <h3 class="skill-name">MongoDB</h3>
-          <p class="skill-category">DATABASE</p>
-        </div>
-
-        <!-- Cybersecurity -->
-        <div class="skill-card">
-          <i class="fas fa-shield-alt skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Kali Linux</h3>
-          <p class="skill-category cyber-category">PENTESTING</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-user-secret skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Social Engineering</h3>
-          <p class="skill-category cyber-category">SET</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-network-wired skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Network Security</h3>
-          <p class="skill-category cyber-category">WIRESHARK</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-lock skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Cryptography</h3>
-          <p class="skill-category cyber-category">ENCRYPTION</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-bug skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Metasploit</h3>
-          <p class="skill-category cyber-category">EXPLOITATION</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-terminal skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Burp Suite</h3>
-          <p class="skill-category cyber-category">WEB SECURITY</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-fingerprint skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">OWASP ZAP</h3>
-          <p class="skill-category cyber-category">VULNERABILITY</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-code skill-icon cyber-icon"></i>
-          <h3 class="skill-name cyber-name">Reverse Engineering</h3>
-          <p class="skill-category cyber-category">GDB/RADARE2</p>
-        </div>
-
-        <!-- Developer Tools -->
-        <div class="skill-card">
-          <i class="fab fa-git-alt skill-icon"></i>
-          <h3 class="skill-name">Git</h3>
-          <p class="skill-category">VERSION CONTROL</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-terminal skill-icon"></i>
-          <h3 class="skill-name">Bash/Zsh</h3>
-          <p class="skill-category">SHELL</p>
-        </div>
-      </div>
-      <div class="skills-footer">Ready to penetrate systems and build secure
-        applications</div>
-    </section>
-    <!-- Skills section ended -->
-
-    <!-- Projects section -->
-
-    <h1 class="section-heading">Projects</h1>
-    <section class="projects">
-      <div class="project-card">
-        <img class="project-img" src="images/Mico2.png" alt="Project 1" />
-        <div class="project-info">
-          <h3 class="project-title">Mico Hospital</h3>
-          <a
-            href="https://vasoyasharan.github.io/WD-PROJECT/"
-            class="view-project-btn">View Site</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <img class="project-img" src="images/cybsheet.png" alt="Project 2" />
-        <div class="project-info">
-          <h3 class="project-title">CyberCheat</h3>
-          <a
-          href="https://cyber-cheatsheet.onrender.com/"
-          class="view-project-btn">View Site</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <img class="project-img" src="images/passstrength.png"
-        alt="Project 2" />
-        <div class="project-info">
-          <h3 class="project-title">CyberLock</h3>
-          <a
-          href="https://vasoyasharan.github.io/PasswordStrengthMeter/"
-          class="view-project-btn">View Site</a>
-        </div>
-      </div>
-      <div class="project-card">
-          <img class="project-img" src="images/tools.png" alt="Project 12" />
-          <div class="project-info">
-            <h3 class="project-title">Hexpert</h3>
-            <a
-              href="https://vasoyasharan.github.io/Hexpert/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-      <div class="project-card">
-        <img class="project-img" src="images/ArcReactor.png" alt="Project 2" />
-        <div class="project-info">
-          <h3 class="project-title">Iron Man Arc-Reactor</h3>
-          <a
-            href="https://vasoyasharan.github.io/Iron-Man-ARC-Reactor/"
-            class="view-project-btn">View Site</a>
-        </div>
-      </div>
-        <div class="project-card">
-          <img class="project-img" src="images/strange.png" alt="Project 3" />
-          <div class="project-info">
-            <h3 class="project-title">Dr.-strange-eye-of-Agamotto</h3>
-            <a
-              href="https://vasoyasharan.github.io/Dr.-strange-eye-of-Agamotto/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/DateIt.png" alt="Project 4" />
-          <div class="project-info">
-            <h3 class="project-title">Heart Soul Match</h3>
-            <a
-              href="https://vasoyasharan.github.io/Dating-web/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/Trip.png" alt="Project 5" />
-          <div class="project-info">
-            <h3 class="project-title">MakeYourTrip</h3>
-            <a
-              href="https://vasoyasharan.github.io/MakeMyTrip/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/krishna.png" alt="Project 6" />
-          <div class="project-info">
-            <h3 class="project-title">Lord Krishna</h3>
-            <a
-              href="https://vasoyasharan.github.io/Lord-Krishna/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/Tube.png" alt="Project 7" />
-          <div class="project-info">
-            <h3 class="project-title">Tube Game</h3>
-            <a
-              href="https://vasoyasharan.github.io/Pipe-Game/"
-              class="view-project-btn">Play It !</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/Tictac.png" alt="Project 8" />
-          <div class="project-info">
-            <h3 class="project-title">Tic-Tac-Toe</h3>
-            <a
-              href="https://vasoyasharan.github.io/Tic-Tak-Toe/"
-              class="view-project-btn">Play It !</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/Multi.png" alt="Project 9" />
-          <div class="project-info">
-            <h3 class="project-title">Rock-Paper-Scissors</h3>
-            <a
-              href="https://Vasoyasharan.github.io/JS-Stone-Paper-Scissors"
-              class="view-project-btn">Play It !</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/qrcode.png" alt="Project 10" />
-          <div class="project-info">
-            <h3 class="project-title">QR Code Generator</h3>
-            <a
-              href="https://vasoyasharan.github.io/QR-Code-Generator/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/Omkar2.png" alt="Project 11" />
-          <div class="project-info">
-            <h3 class="project-title">Omkar Industries</h3>
-            <a
-              href="https://Vasoyasharan.github.io/OmkarIND"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/Recipe.png" alt="Project 12" />
-          <div class="project-info">
-            <h3 class="project-title">Recipe Collection</h3>
-            <a
-              href="https://vasoyasharan.github.io/RecipeCollection/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img class="project-img" src="images/terminal.png" alt="Project 12" />
-          <div class="project-info">
-            <h3 class="project-title">Terminal Style Portfolio</h3>
-            <a
-              href="https://vasoyasharan.github.io/Terminal-Portfolio/"
-              class="view-project-btn">View Site</a>
-          </div>
-        </div>
-        <!-- <div class="project-card">
-            <img class="project-img" src="images/Cars.png" alt="Project 10" />
-            <div class="project-info">
-                <h3 class="project-title">Super Cars</h3>
-                <a href="https://vasoyasharan.github.io/super-cars/" class="view-project-btn">View Project</a>
+    <div class="content-layer">
+      <!-- Navigation -->
+      <nav
+        class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+          <div class="flex justify-between items-center">
+            <div class="text-xl font-bold gradient-text">Sharan Vasoya</div>
+            <div class="hidden md:flex space-x-6">
+              <a href="#home" class="hover:text-cyan-400 transition">Home</a>
+              <a href="#about" class="hover:text-cyan-400 transition">About</a>
+              <a href="#experience"
+                class="hover:text-cyan-400 transition">Experience</a>
+              <a href="#projects"
+                class="hover:text-cyan-400 transition">Projects</a>
+              <a href="#contact"
+                class="hover:text-cyan-400 transition">Contact</a>
             </div>
-        </div> -->
-      </section>
+            <button id="mobile-menu-btn" class="md:hidden">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+          <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="#home"
+              class="block hover:text-cyan-400 transition">Home</a>
+            <a href="#about"
+              class="block hover:text-cyan-400 transition">About</a>
+            <a href="#experience"
+              class="block hover:text-cyan-400 transition">Experience</a>
+            <a href="#projects"
+              class="block hover:text-cyan-400 transition">Projects</a>
+            <a href="#certificates"
+              class="hover:text-cyan-400 transition">Certificates</a>
+            <a href="#contact"
+              class="block hover:text-cyan-400 transition">Contact</a>
+          </div>
+        </div>
+      </nav>
 
-      <!-- project section ended  -->
-
-      <!-- exp section -->
-      <h2 class="section-heading">Professional Journey</h2>
-      <section class="experience-container">
-        <div class="experience-timeline">
-          <div class="experience-item">
-            <div class="experience-logo">
-              <img src="images/Bluesoft.png" alt="BlueSoft Logo" />
-            </div>
-            <div class="experience-content">
-              <div class="experience-header">
-                <h3 class="experience-company">BlueSoft Infotech</h3>
-                <span class="experience-duration">2 Months</span>
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col lg:flex-row items-center justify-between">
+            <div
+              class="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 animate-slide-left">
+              <h1 class="text-4xl lg:text-6xl font-bold mb-4">
+                Hi, I'm <span class="gradient-text">Sharan Vasoya</span>
+              </h1>
+              <div class="text-xl lg:text-2xl text-gray-400 mb-6">
+                <span id="typing-text" class="typing-animation"></span>
               </div>
-              <p class="experience-position">Frontend Developer</p>
-              <div class="experience-skills">
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">UI/UX</span>
+              <p class="text-lg text-gray-300 mb-8 max-w-2xl">
+                I’m a passionate cybersecurity enthusiast currently pursuing my
+                MSc in Cybersecurity. My primary focus is on Red Teaming and
+                ethical hacking — exploring how systems can be broken to
+                understand how to defend them better. I enjoy learning offensive
+                security techniques, privilege escalation, and real-world
+                exploitation methods.
+              </p>
+              <div
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a
+                  href="#contact"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105">
+                  Get In Touch
+                </a>
+                <a
+                  href="#projects"
+                  class="border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition">
+                  View Projects
+                </a>
+              </div>
+              <div class="flex justify-center lg:justify-start space-x-6 mt-8">
+                <a
+                  href="https://github.com/sharanvasoya"
+                  target="_blank"
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/sharan-root/"
+                  target="_blank"
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a
+                  href="https://www.google.com/search?q=Sharan+Vasoya"
+                  target="_blank"
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
+                  <i class="fas fa-globe"></i>
+                </a>
+                <a
+                  href="mailto:sharanvasoya@proton.me"
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
+                  <i class="fas fa-envelope"></i>
+                </a>
               </div>
             </div>
-          </div>
-
-          <div class="experience-item">
-            <div class="experience-logo">
-              <img src="images/Depthin.png" alt="Depthin Solution Logo" />
-            </div>
-            <div class="experience-content">
-              <div class="experience-header">
-                <h3 class="experience-company">Depthin Solution</h3>
-                <span class="experience-duration">15 Months</span>
-              </div>
-              <p class="experience-position">Frontend Developer</p>
-              <div class="experience-skills">
-                <span class="skill-tag">React Js</span>
-                <span class="skill-tag">SCSS</span>
-                <span class="skill-tag">Responsive Design</span>
+            <div class="lg:w-1/2 flex justify-center animate-slide-right">
+              <div class="thm-container">
+                <iframe
+                  src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=4643449"
+                  style="border: none; width: 500px; height: 120px"
+                  class="thm-iframe">
+                </iframe>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- exp section end -->
+      <!-- Sleek Cyber Quote/Fun Fact Banner -->
+      <div
+        id="cyber-quote-banner"
+        class="w-full py-1 px-4 text-center flex items-center justify-center bg-gray-900/80 backdrop-blur-sm rounded-b-lg shadow-md mb-2"
+        style="font-family: 'Fira Mono', 'Consolas', monospace; font-size: 1rem">
+        <span class="mr-2 text-cyan-400"><i class="fas fa-terminal"></i></span>
+        <span id="cyber-quote-text" class="text-green-300"></span>
+      </div>
 
-      <div class="education">
-        <h2 class="section-heading">Education</h2>
-        <div class="education-container">
-          <!-- VNSGU Card -->
-          <div class="education-card">
-            <div class="education-header">
-              <div class="education-icon">
-                <i class="fas fa-university"></i>
+      <!-- About Section -->
+      <section id="about" class="py-20 section-bg">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up">
+            About Me
+          </h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-left">
+              <h3 class="text-2xl font-semibold mb-6 text-cyan-400">
+                Professional Summary
+              </h3>
+              <div class="text-gray-300 mb-6 leading-relaxed text-lg">
+                <span class="font-bold">👾 Self-taught cyber explorer on a quest
+                  to turn curiosity
+                  into exploits and code into shields.</span><br />
+                🕶️ From late-night web builds to cracking CTFs, I thrive on the
+                thrill of discovery and the art of digital mischief (the ethical
+                kind).<br />
+                ⚡ Currently leveling up on TryHackMe, chasing that “Aha!”
+                moment, and always ready to break, fix, and secure—sometimes all
+                before breakfast.<br />
+                🌐 Let’s hack, learn, and build a safer web—one clever trick at
+                a time.
               </div>
-              <h3 class="education-title">V.N.S.G University</h3>
             </div>
-            <div class="education-details">
-              <div class="education-detail">
-                <i class="fas fa-calendar-alt"></i>
-                <span>2022 - 2025</span>
-              </div>
-              <div class="education-detail">
-                <i class="fas fa-laptop-code"></i>
-                <span>Information Technology</span>
-              </div>
-              <div class="education-detail">
-                <i class="fas fa-graduation-cap"></i>
-                <span>BCA (Bachelor of Computer Application)</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Dream International School Card -->
-          <div class="education-card">
-            <div class="education-header">
-              <div class="education-icon">
-                <i class="fas fa-school"></i>
-              </div>
-              <h3 class="education-title">Dream International School</h3>
-            </div>
-            <div class="education-details">
-              <div class="education-detail">
-                <i class="fas fa-calendar-alt"></i>
-                <span>2022</span>
-              </div>
-              <div class="education-detail">
-                <i class="fas fa-flask"></i>
-                <span>Class XII - Science</span>
+            <div class="animate-slide-right">
+              <h3 class="text-2xl font-semibold mb-6 text-cyan-400">
+                Education & Certifications
+              </h3>
+              <div class="space-y-4">
+                <div class="p-4 card-hover rounded-lg">
+                  <h4 class="font-semibold text-cyan-300">
+                    Master of Science - Cybersecurity
+                  </h4>
+                  <p class="text-gray-400">
+                    BAOU | Pursuing (2025-2027) | Gujarat, India
+                  </p>
+                </div>
+                <div class="p-4 card-hover rounded-lg">
+                  <h4 class="font-semibold text-cyan-300">
+                    Bachelor of Computer Application (BCA)
+                  </h4>
+                  <p class="text-gray-400">
+                    VNSG University | April 2025 | Gujarat, India
+                  </p>
+                </div>
+                <!-- <div class="p-4 card-hover rounded-lg">
+                                    <h4
+                                        class="font-semibold text-cyan-300">CompTIA
+                                        Pentest+</h4>
+                                    <p class="text-gray-400">Certified
+                                        Penetration Testing Professional |
+                                        2024</p>
+                                </div> -->
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- education section end -->
+      <!-- Skills Section -->
+      <section class="py-20">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
+            Technical Skills
+          </h2>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Programming Languages -->
+            <div class="card-hover rounded-lg p-6 animate-fade-up">
+              <h3
+                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
+                <i class="fas fa-code mr-3"></i>Programming & Scripting
+              </h3>
+              <div class="grid grid-cols-3 gap-6 justify-items-center">
+                <div class="text-center group">
+                  <div class="lang-icon java-icon text-6xl mb-2">
+                    <i class="fab fa-js"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-400 group-hover:text-orange-400 transition">JavaScript</span>
+                </div>
+                <div class="text-center group">
+                  <div class="lang-icon python-icon text-6xl mb-2">
+                    <i class="fab fa-python"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-400 group-hover:text-yellow-400 transition">Python</span>
+                </div>
+                <div class="text-center group">
+                  <div class="lang-icon csharp-icon text-6xl mb-2">
+                    <i class="fab fa-react"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-400 group-hover:text-purple-400 transition">react.js</span>
+                </div>
+                <div class="text-center group">
+                  <div class="lang-icon cpp-icon text-6xl mb-2">
+                    <i class="fas fa-wind"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-400 group-hover:text-blue-400 transition">TailwindCss</span>
+                </div>
+                <div class="text-center group">
+                  <div class="lang-icon bash-icon text-6xl mb-2">
+                    <i class="fas fa-terminal"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-400 group-hover:text-green-400 transition">Bash</span>
+                </div>
+                <div class="text-center group">
+                  <div class="lang-icon bash-icon text-6xl mb-2">
+                    <i class="fab fa-windows"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-400 group-hover:text-blue-400 transition">PowerShell</span>
+                </div>
+              </div>
+            </div>
 
-      <!-- contact section starts -->
-      <section class="contact">
-        <h2 class="section-head">Get In Touch</h2>
-        <div class="contact-details">
-          <div class="contact-form">
+            <!-- Security Tools -->
+            <div
+              class="card-hover rounded-lg p-6 animate-fade-up"
+              style="animation-delay: 0.2s">
+              <h3
+                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
+                <i class="fas fa-shield-alt mr-3"></i>Security Tools
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Metasploit
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Burp Suite
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Nmap
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Enum4linux
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Sqlmap
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Hydra
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Cryptography
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Reverse Engineering
+                </div>
+              </div>
+            </div>
+
+            <!-- Development Tools -->
+            <div
+              class="card-hover rounded-lg p-6 animate-fade-up"
+              style="animation-delay: 0.4s">
+              <h3
+                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
+                <i class="fas fa-tools mr-3"></i>Development & Infrastructure
+                Tools
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Git / GitHub
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Docker
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Jenkins
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Vs code
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Burp Extensions
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  VirtualBox
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  Packet Tracer
+                </div>
+                <div
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
+                  AWS(basic)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" class="py-20 section-bg">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
+            Professional Experience
+          </h2>
+          <div class="max-w-4xl mx-auto">
+            <div class="relative">
+              <!-- Timeline line -->
+              <div
+                class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-0.5 h-full bg-cyan-500"></div>
+
+              <!-- Experience Items -->
+              <div class="space-y-12">
+                <!-- Accenture Senior Analyst -->
+                <div class="relative flex items-center">
+                  <div
+                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black"></div>
+                  <div
+                    class="ml-12 lg:ml-0 lg:w-1/2 lg:pr-8 animate-slide-left">
+                    <div class="card-hover p-6 rounded-lg">
+                      <div class="flex justify-between items-start mb-4">
+                        <div>
+                          <h3 class="text-xl font-semibold text-cyan-400">
+                            FrontEnd Developer
+                          </h3>
+                          <p class="text-gray-400">
+                            Depthin Solution | Surat, Gujarat
+                          </p>
+                        </div>
+                        <span class="text-sm text-gray-500">Aug 2023 – Nov
+                          2024</span>
+                      </div>
+                      <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>
+                          • Contributed to the development of Repurpose.io V3, a
+                          major version update of the product website.
+                        </li>
+                        <li>
+                          • Played a dual role as a developer and tester,
+                          ensuring robust functionality and high-quality UI/UX
+                          delivery.
+                        </li>
+                        <li>
+                          • Authored clear and comprehensive technical
+                          documentation covering features, usage instructions,
+                          and testing workflows.
+                        </li>
+                        <li>
+                          • Worked closely with the product team to identify
+                          bottlenecks and provide scalable front-end solutions
+                          in a dynamic Agile environment.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- LTI Quality Engineer -->
+                <div class="relative flex items-center lg:justify-end">
+                  <div
+                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black"></div>
+                  <div
+                    class="ml-12 lg:ml-0 lg:w-1/2 lg:pl-8 animate-slide-right">
+                    <div class="card-hover p-6 rounded-lg">
+                      <div class="flex justify-between items-start mb-4">
+                        <div>
+                          <h3 class="text-xl font-semibold text-cyan-400">
+                            FrontEnd Developer Intern
+                          </h3>
+                          <p class="text-gray-400">
+                            BlueSoft Infotech | Surat, Gujarat
+                          </p>
+                        </div>
+                        <span class="text-sm text-gray-500">Jun 2023 – Jul
+                          2023</span>
+                      </div>
+                      <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>
+                          • Assisted in developing and styling responsive web
+                          pages using HTML, CSS and JS for client-facing
+                          project.
+                        </li>
+                        <li>
+                          • Collaborated with senior developers to fix UI bugs
+                          and enhance user Experience across Mobile and Desktop
+                          Platforms.
+                        </li>
+                        <li>
+                          • Gained hands-on experience in Git workflow, project
+                          structuring and debugging practices in modern
+                          front-end environment.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="py-20">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
+            Projects
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- CyberCheat -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <h3
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
+                <i class="fas fa-user-secret mr-2"></i>CyberCheat
+              </h3>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Red Team Cheatsheet Platform
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Curated offensive security cheatsheets and tools for red
+                teamers.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a
+                  href="https://cyber-cheatsheet.onrender.com/"
+                  target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-shield-alt"></i></span>
+              </div>
+            </div>
+
+            <!-- RedHawk -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <h3
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
+                <i class="fas fa-search mr-2"></i>RedHawk
+              </h3>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Automated Recon & Vulnerability Scanner
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                All-in-one Python toolkit for automated recon and vulnerability
+                scanning.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a
+                  href="https://github.com/Vasoyasharan/RedHawk"
+                  target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">GitHub</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-bug"></i></span>
+              </div>
+            </div>
+
+            <!-- CyberLock -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <h3
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
+                <i class="fas fa-lock mr-2"></i>CyberLock
+              </h3>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Password Strength Analyzer
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Instantly checks password strength and gives security tips.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a
+                  href="https://vasoyasharan.github.io/PasswordStrengthMeter/"
+                  target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-key"></i></span>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Projects Row -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            <!-- Mico Hospital -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <h3
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
+                <i class="fas fa-hospital-symbol mr-2"></i>Mico Hospital
+              </h3>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Healthcare Web Portal
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Book appointments, view treatments, and contact doctors online.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a
+                  href="https://vasoyasharan.github.io/WD-PROJECT/"
+                  target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-user-md"></i></span>
+              </div>
+            </div>
+
+            <!-- Hexpert -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <h3
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
+                <i class="fas fa-palette mr-2"></i>Hexpert
+              </h3>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Color Tools & Quiz
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Explore, pick, and quiz yourself on 200+ colors and gradients.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a
+                  href="https://vasoyasharan.github.io/Hexpert/"
+                  target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-brush"></i></span>
+              </div>
+            </div>
+
+            <!-- Terminal Style Portfolio -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <h3
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
+                <i class="fas fa-terminal mr-2"></i>Terminal Style Portfolio
+              </h3>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Interactive Terminal Portfolio
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                A portfolio site with terminal-like commands and interface.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a
+                  href="https://vasoyasharan.github.io/Terminal-Portfolio/"
+                  target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-code"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates Section -->
+      <section id="certificates" class="py-20 section-bg">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up">
+            Certifications & Achievements
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- eJPT Certificate -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
+                  <i class="fas fa-crosshairs mr-2"></i>eJPT
+                </h3>
+                <span
+                  class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">In
+                  Progress</span>
+              </div>
+              <div class="text-sm italic text-gray-400 mb-2">
+                eLearnSecurity Junior Penetration Tester
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Practical penetration testing certification focusing on network
+                attacks, web app security, and real-world scenarios.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <span class="text-gray-500 text-sm">Expected 2026</span>
+                <span class="ml-auto text-green-400 text-2xl">
+                  <i class="fas fa-crosshairs"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- DarkWeb Operations Certificate -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
+                  <i class="fas fa-user-secret mr-2"></i>DarkWeb Operations
+                </h3>
+                <span
+                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">Completed</span>
+              </div>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Security Blue Team
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Specialized training in dark web monitoring, threat intelligence
+                gathering, and anonymous operations.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <span class="ml-auto text-cyan-400 text-2xl">
+                  <i class="fas fa-shield-alt"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Fortinet FCF Certificate -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
+                  <i class="fas fa-network-wired mr-2"></i>Fortinet FCF
+                </h3>
+                <span
+                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">Completed</span>
+              </div>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Fortinet Certified Fundamentals
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Fundamentals in Cybersecurity covering network security, threat
+                protection, and Fortinet security fabric.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <span class="ml-auto text-cyan-400 text-2xl">
+                  <i class="fas fa-network-wired"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- TryHackMe Certificate -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
+                  <i class="fas fa-graduation-cap mr-2"></i>TryHackMe
+                </h3>
+                <span
+                  class="text-xs bg-blue-900 text-blue-300 px-2 py-1 rounded">Learning</span>
+              </div>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Cybersecurity Learning Platform
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Actively learning cybersecurity fundamentals, completing rooms,
+                and building practical skills in ethical hacking and penetration
+                testing.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <a href="https://tryhackme.com/p/SpVasoya" target="_blank"
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">
+                  View Profile
+                </a>
+                <span class="ml-auto text-blue-400 text-2xl">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- CTF Achievements -->
+            <div
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
+                  <i class="fas fa-flag mr-2"></i>CTF Competitions
+                </h3>
+                <span
+                  class="text-xs bg-purple-900 text-purple-300 px-2 py-1 rounded">Active</span>
+              </div>
+              <div class="text-sm italic text-gray-400 mb-2">
+                Capture The Flag Participant
+              </div>
+              <div class="text-gray-300 text-sm mb-4">
+                Participating in cybersecurity CTF competitions to practice and
+                improve skills in web exploitation, forensics, and cryptography.
+              </div>
+              <div class="mt-auto flex gap-3 items-center">
+                <span class="text-gray-500 text-sm">Ongoing</span>
+                <span class="ml-auto text-purple-400 text-2xl">
+                  <i class="fas fa-flag"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- More Certificates Button -->
+          <div class="text-center mt-12 animate-fade-up">
+            <a href="https://vasoyasharan.github.io/My-Achievements/"
+              target="_blank"
+              class="inline-flex items-center gap-2 border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition duration-300">
+              <i class="fas fa-external-link-alt"></i>
+              View All Certificates & Achievements
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 section-bg">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
+            Get In Touch
+          </h2>
+          <div class="max-w-2xl mx-auto">
             <form
+              class="terminal-form p-6 rounded-lg shadow-lg bg-gray-900 border border-cyan-700"
               id="contact-form"
               action="https://formspree.io/f/mbjnwvwr"
-              method="post">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your Name"
-                required />
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Your Email"
-                required />
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Your Message"
-                rows="4"
-                required></textarea>
-              <!-- <button type="submit" id="submitBtn">Send Message</button> -->
-              <button class="btn-17" type="submit" id="submitBtn">
-                <span class="text-container">
-                  <span class="text">Send Message</span>
-                </span>
+              method="post"
+              style="font-family: 'Fira Mono', 'Consolas', monospace">
+              <div class="mb-4 flex items-center">
+                <span class="text-green-400 mr-2">$</span>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Your Name"
+                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2" />
+              </div>
+              <div class="mb-4 flex items-center">
+                <span class="text-green-400 mr-2">$</span>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="Your Email"
+                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2" />
+              </div>
+              <div class="mb-4 flex items-start">
+                <span class="text-green-400 mr-2 mt-2">$</span>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  placeholder="Your Message"
+                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2 terminal-cursor"></textarea>
+              </div>
+              <button
+                type="submit"
+                id="submitBtn"
+                class="w-full bg-cyan-700 hover:bg-cyan-500 text-black font-bold py-2 px-4 rounded transition mt-4">
+                Send <span class="ml-1">&#9654;</span>
               </button>
-              <div id="statusMessage" style="display: none"></div>
+              <div
+                id="statusMessage"
+                class="mt-4 text-center"
+                style="display: none"></div>
             </form>
           </div>
         </div>
       </section>
 
-      <!-- contact section ends -->
-
-      <footer>
-        <p>&copy;All Rights Reserved by Sharan Vasoya</p>
+      <!-- Footer -->
+      <footer
+        class="py-8 border-t border-cyan-800 bg-gray-900/80 backdrop-blur-sm mt-12">
+        <div
+          class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center space-x-3 mb-4 md:mb-0">
+            <span class="text-cyan-400 text-2xl"><i
+                class="fas fa-heartbeat"></i></span>
+            <span class="text-gray-300 text-base md:text-lg">Made with <span
+                class="text-pink-400">&#10084;&#65039;</span> and
+              <span class="text-cyan-400">curiosity</span> by Sharan
+              Vasoya</span>
+          </div>
+          <div class="flex space-x-6">
+            <a
+              href="https://github.com/sharanvasoya"
+              target="_blank"
+              class="text-gray-400 hover:text-cyan-400 transition text-xl"><i
+                class="fab fa-github"></i></a>
+            <a
+              href="https://www.linkedin.com/in/sharan-root/"
+              target="_blank"
+              class="text-gray-400 hover:text-cyan-400 transition text-xl"><i
+                class="fab fa-linkedin"></i></a>
+            <a
+              href="mailto:sharanvasoya@proton.me"
+              class="text-gray-400 hover:text-cyan-400 transition text-xl"><i
+                class="fas fa-envelope"></i></a>
+            <a
+              href="https://tryhackme.com/p/SpVasoya"
+              target="_blank"
+              class="text-gray-400 hover:text-green-400 transition text-xl"><i
+                class="fas fa-user-secret"></i></a>
+          </div>
+        </div>
+        <div class="text-center text-xs text-cyan-800 mt-4">
+          &copy; 2025 Sharan Vasoya. All rights reserved. | Stay curious. Stay
+          secure.
+        </div>
       </footer>
-      <script src="https://www.google.com/recaptcha/api.js" async
-        defer></script>
-      <script>
-      AOS.init();
 
-      // about us typing
-      new Typed("#typed-text", {
-        strings: [
-          "Web Developer",
-          "UI/UX Designer",
-          "Tech Enthusiast",
-          "Creative Thinker",
-        ],
-        typeSpeed: 50,
-        backSpeed: 25,
-        loop: true,
+      <!-- Back to Top Button -->
+      <button
+        id="back-to-top"
+        class="fixed bottom-8 right-8 bg-cyan-500 hover:bg-cyan-600 text-black p-3 rounded-full shadow-lg transition transform hover:scale-110 opacity-0 invisible z-50">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+
+    <script>
+      // Typing animation
+      const typingText = document.getElementById("typing-text");
+      const texts = [
+        "Red Team Operator",
+        "Offensive Security Enthusiast",
+        "Ethical Hacker",
+        "Cybersecurity Professional",
+        "Penetration Tester",
+        "CTF Player & Learner",
+        "Creative Security Researcher",
+      ];
+
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeWriter() {
+        const currentText = texts[textIndex];
+
+        if (isDeleting) {
+          typingText.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typingText.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+          setTimeout(() => (isDeleting = true), 2000);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+        }
+
+        setTimeout(typeWriter, isDeleting ? 50 : 100);
+      }
+
+      // Rotating Cyber Quotes/Fun Facts
+      const cyberQuotes = [
+        '"The quieter you become, the more you are able to hear." – Kali Linux',
+        "Did you know? The first computer virus was created in 1971 and called the Creeper.",
+        '"Amateurs hack systems, professionals hack people." – Bruce Schneier',
+        'Fun fact: The word "hacker" originally meant someone who makes furniture with an axe.',
+        '"Security is not a product, but a process." – Bruce Schneier',
+        "Did you know? The world’s first website is still online: info.cern.ch",
+        '"There is no patch for human stupidity." – Kevin Mitnick',
+        'Fun fact: The @ symbol in emails is called an "arroba" in Spanish and Portuguese.',
+        'Did you know? The term "bug" in computing came from a real moth found in a computer in 1947.',
+        '"To confound the enemy, you must first understand them." – Sun Tzu (applied to cyber)',
+        "Fun fact: The strongest passwords are long, random, and unique for every site.",
+        "Did you know? The first spam email was sent in 1978 to 393 people.",
+        '"The best way to predict the future is to invent it." – Alan Kay',
+        "Fun fact: Social engineering is one of the most common ways hackers gain access.",
+        "Did you know? The world’s largest DDoS attack exceeded 2.5 Tbps in 2021.",
+        '"Hacking is not about breaking and entering. It’s about curiosity, exploration, and learning."',
+        'Fun fact: The word "phishing" comes from "fishing" for information with fake bait.',
+      ];
+      let quoteIndex = 0;
+      function showNextQuote() {
+        const quoteText = document.getElementById("cyber-quote-text");
+        quoteText.textContent = cyberQuotes[quoteIndex];
+        quoteIndex = (quoteIndex + 1) % cyberQuotes.length;
+      }
+      showNextQuote();
+      setInterval(showNextQuote, 6000);
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
       });
 
-      // Custom Cursor
-      const cursor = document.getElementById("cursor");
-      document.addEventListener("mousemove", (e) => {
-        cursor.style.left = e.pageX + "px";
-        cursor.style.top = e.pageY + "px";
+      // Back to top button
+      const backToTopBtn = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.remove("opacity-0", "invisible");
+        } else {
+          backToTopBtn.classList.add("opacity-0", "invisible");
+        }
       });
 
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Contact form handling
       document
         .getElementById("contact-form")
         .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent default form submission
+          event.preventDefault();
 
           // Get form data
           var formData = new FormData(this);
 
-          // Send form data to Formspree using Fetch API
-          fetch("https://formspree.io/f/mbjnwvwr", {
+          // Send form data to Formspree
+          fetch(this.action, {
             method: "POST",
             body: formData,
             headers: {
@@ -560,57 +1384,46 @@
           })
             .then((response) => response.json())
             .then((data) => {
-              // Display status message
-              var statusMessage = document.getElementById("statusMessage");
-              statusMessage.textContent = data.message;
-              statusMessage.style.display = "block";
+              // Show success message using SweetAlert2
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Message sent successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
 
               // Clear form fields
               document.getElementById("name").value = "";
               document.getElementById("email").value = "";
               document.getElementById("message").value = "";
             })
-            .catch((error) => console.error("Error:", error));
+            .catch((error) => {
+              console.error("Error:", error);
+              // Show error message using SweetAlert2
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong! Please try again later.",
+              });
+            });
         });
 
-      // MoveOn-Top button Functionality
-      window.addEventListener("scroll", function () {
-        var backToTopButton = document.getElementById("back-to-top-btn");
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.add("visible");
-        } else {
-          backToTopButton.classList.remove("visible");
-        }
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Close mobile menu if open
+            mobileMenu.classList.add("hidden");
+          }
+        });
       });
 
-      document
-        .getElementById("back-to-top-btn")
-        .addEventListener("click", function () {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        });
-
-      // Contact Form Validation
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent form submission
-          // Simulate successful form submission
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Message sent successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-
-          // Clear form fields after successful submission
-          document.getElementById("name").value = "";
-          document.getElementById("email").value = "";
-          document.getElementById("message").value = "";
-        });
+      // Initialize typing animation
+      typeWriter();
     </script>
-    </body>
-  </html>
+  </body>
+</html>
