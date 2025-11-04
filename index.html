@@ -394,12 +394,110 @@
           opacity: 0;
         }
       }
+
+      /* Base - ensure top layer and pointer-events off so it never blocks clicks */
+      #custom-cursor {
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        z-index: 99999;
+        mix-blend-mode: screen;
+      }
+
+      /* Core dot */
+      .cursor-core {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(6, 182, 212, 1); /* cyan */
+        box-shadow: 0 0 6px rgba(6, 182, 212, 0.9),
+          0 0 18px rgba(6, 182, 212, 0.25),
+          inset 0 0 6px rgba(255, 255, 255, 0.03);
+        transition: transform 120ms ease, width 120ms ease, height 120ms ease,
+          opacity 120ms ease;
+        will-change: transform, width, height, opacity;
+      }
+
+      /* Trailing dots container (positions relative to cursor core) */
+      .cursor-trail {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, -50%);
+      }
+
+      .trail-dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(6, 182, 212, 0.55);
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        will-change: transform, opacity;
+      }
+
+      /* Click ripple */
+      .cursor-click-ripple {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        border: 2px solid rgba(6, 182, 212, 0.6);
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform, opacity;
+      }
+
+      /* Hover states for interactive elements (optional): enlarge and glow */
+      .cursor-core.hovered {
+        transform: translate(-50%, -50%) scale(1.9);
+        width: 18px;
+        height: 18px;
+        box-shadow: 0 0 10px rgba(6, 182, 212, 1),
+          0 0 28px rgba(6, 182, 212, 0.25);
+      }
+
+      /* Hide the real cursor on non-touch devices */
+      @media (pointer: fine) {
+        body {
+          cursor: none;
+        }
+      }
+
+      /* Disable custom cursor on small screens (mobile) */
+      @media (max-width: 900px), (pointer: coarse) {
+        #custom-cursor {
+          display: none !important;
+        }
+        body {
+          cursor: auto;
+        }
+      }
     </style>
   </head>
 
   <body
     class="bg-black text-white min-h-screen scroll-smooth bg-pattern grid-pattern"
   >
+    <!-- cursor animation  -->
+    <div id="custom-cursor" aria-hidden="true">
+      <div class="cursor-core"></div>
+      <div class="cursor-trail">
+        <div class="trail-dot"></div>
+        <div class="trail-dot"></div>
+        <div class="trail-dot"></div>
+      </div>
+      <div class="cursor-click-ripple"></div>
+    </div>
+
     <!-- Floating Background Shapes -->
     <div class="floating-shapes">
       <div class="shape w-20 h-20 border border-cyan-500 rounded-full"></div>
@@ -1688,6 +1786,151 @@
       typeWriter();
     </script>
 
+    <!-- Cursor animation JS -->
+    <script>
+      (function () {
+        // Config
+        const TRAIL_COUNT = 3; // number of trail dots
+        const LERP = 0.18; // smoothing (0.01 - 0.4)
+        const COLOR_HOVER_SELECTOR =
+          "a, button, .btn, input, textarea, .interactive"; // elements that trigger hover state
+
+        // Elements
+        const cursorWrap = document.getElementById("custom-cursor");
+        if (!cursorWrap) return;
+
+        const core = cursorWrap.querySelector(".cursor-core");
+        const trailDots = Array.from(cursorWrap.querySelectorAll(".trail-dot"));
+        const ripple = cursorWrap.querySelector(".cursor-click-ripple");
+
+        // State
+        let mouseX = window.innerWidth / 2,
+          mouseY = window.innerHeight / 2;
+        let posX = mouseX,
+          posY = mouseY;
+        let trail = trailDots.map(() => ({ x: mouseX, y: mouseY, alpha: 0 }));
+
+        // Touch check - do not initialize on touch devices
+        const supportsTouch =
+          "ontouchstart" in window || navigator.maxTouchPoints > 0;
+        if (supportsTouch) {
+          cursorWrap.style.display = "none";
+          return;
+        }
+
+        // Mouse move -> update target
+        window.addEventListener(
+          "mousemove",
+          (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+          },
+          { passive: true }
+        );
+
+        // Hide on leaving window
+        window.addEventListener("mouseout", (e) => {
+          if (!e.relatedTarget || e.relatedTarget.nodeName === "HTML") {
+            core.style.opacity = "0";
+            trailDots.forEach((d) => (d.style.opacity = "0"));
+          }
+        });
+        window.addEventListener("mouseover", () => {
+          core.style.opacity = "1";
+        });
+
+        // Click ripple
+        window.addEventListener("mousedown", (e) => {
+          playClickRipple(e.clientX, e.clientY);
+          // small squash effect
+          core.style.transform = "translate(-50%, -50%) scale(0.85)";
+          setTimeout(() => {
+            core.style.transform = "translate(-50%, -50%) scale(1)";
+          }, 120);
+        });
+
+        // Hover state detection (delegated): add/remove 'hovered' class
+        function updateHoverState() {
+          const el = document.elementFromPoint(mouseX, mouseY);
+          if (el && el.matches && el.matches(COLOR_HOVER_SELECTOR)) {
+            core.classList.add("hovered");
+          } else {
+            core.classList.remove("hovered");
+          }
+        }
+
+        // Click ripple function
+        function playClickRipple(x, y) {
+          ripple.style.left = x + "px";
+          ripple.style.top = y + "px";
+          ripple.style.opacity = "1";
+          ripple.style.transform = "translate(-50%, -50%) scale(0.6)";
+          ripple.style.transition =
+            "transform 420ms cubic-bezier(.16,.84,.44,1), opacity 420ms linear";
+          // force reflow then expand
+          void ripple.offsetWidth;
+          ripple.style.transform = "translate(-50%, -50%) scale(3)";
+          ripple.style.opacity = "0";
+          setTimeout(() => {
+            ripple.style.transition = "";
+            ripple.style.transform = "translate(-50%, -50%) scale(1)";
+            ripple.style.opacity = "0";
+          }, 450);
+        }
+
+        // Main loop: lerp position and update elements
+        function rafLoop() {
+          posX += (mouseX - posX) * LERP;
+          posY += (mouseY - posY) * LERP;
+
+          // Move core
+          core.style.left = posX + "px";
+          core.style.top = posY + "px";
+
+          // Update trail positions (simple follower chain)
+          for (let i = 0; i < trail.length; i++) {
+            // lerp each trail toward previous target (or mouse)
+            const targetX = i === 0 ? mouseX : trail[i - 1].x;
+            const targetY = i === 0 ? mouseY : trail[i - 1].y;
+            trail[i].x += (targetX - trail[i].x) * (LERP * (0.8 + i * 0.2));
+            trail[i].y += (targetY - trail[i].y) * (LERP * (0.8 + i * 0.2));
+            trail[i].alpha = Math.max(0.12, 1 - i * 0.28);
+
+            // Apply to DOM
+            const dot = trailDots[i];
+            dot.style.left = trail[i].x + "px";
+            dot.style.top = trail[i].y + "px";
+            dot.style.opacity = String(trail[i].alpha);
+            dot.style.transform =
+              "translate(-50%,-50%) scale(" + (1 - i * 0.18) + ")";
+          }
+
+          updateHoverState();
+          requestAnimationFrame(rafLoop);
+        }
+
+        // Initialize trail starting positions
+        for (let i = 0; i < trail.length; i++) {
+          trail[i].x = mouseX;
+          trail[i].y = mouseY;
+          trail[i].alpha = 0;
+        }
+
+        requestAnimationFrame(rafLoop);
+
+        // Optional: keyboard toggle (press 'c' to toggle cursor)
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "c" || e.key === "C") {
+            const hidden = cursorWrap.style.display === "none";
+            cursorWrap.style.display = hidden ? "" : "none";
+            if (hidden) document.body.style.cursor = "none";
+            else document.body.style.cursor = "auto";
+          }
+        });
+      })();
+    </script>
+
+    <!-- pop-up animation js -->
     <script>
       function playCyberSound() {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
