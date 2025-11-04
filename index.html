@@ -9,7 +9,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
@@ -1628,6 +1627,7 @@
         });
 
       function showPopup(isError = false) {
+        playCyberSound();
         const popup = document.getElementById("cyber-popup");
         const popupContent = popup.querySelector(".relative");
         const popupTitle = document.getElementById("popup-title");
@@ -1656,7 +1656,7 @@
           popupContent.classList.add("scale-100", "opacity-100");
         }, 10);
 
-        setTimeout(closePopup, 5000);
+        setTimeout(closePopup, 4000);
       }
 
       function closePopup() {
@@ -1686,6 +1686,68 @@
 
       // Initialize typing animation
       typeWriter();
+    </script>
+
+    <script>
+      function playCyberSound() {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Oscillators (layered cyber vibe)
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const osc3 = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc1.type = "square";
+        osc2.type = "sawtooth";
+        osc3.type = "sine";
+
+        const now = ctx.currentTime;
+        const duration = 1.4; // longer duration for lingering feel
+
+        // Rising cyber sweep
+        osc1.frequency.setValueAtTime(200, now);
+        osc1.frequency.exponentialRampToValueAtTime(1100, now + 1.0);
+        osc2.frequency.setValueAtTime(300, now);
+        osc2.frequency.exponentialRampToValueAtTime(1500, now + 1.0);
+        osc3.frequency.setValueAtTime(400, now);
+        osc3.frequency.exponentialRampToValueAtTime(1800, now + 1.0);
+
+        // Volume curve
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+        // Connect to output
+        osc1.connect(gain);
+        osc2.connect(gain);
+        osc3.connect(gain);
+        gain.connect(ctx.destination);
+
+        // Start and stop
+        osc1.start();
+        osc2.start();
+        osc3.start();
+        osc1.stop(now + duration);
+        osc2.stop(now + duration);
+        osc3.stop(now + duration);
+
+        // Small echo blip
+        setTimeout(() => {
+          const echo = ctx.createOscillator();
+          const echoGain = ctx.createGain();
+          echo.type = "triangle";
+          echo.frequency.setValueAtTime(880, ctx.currentTime);
+          echoGain.gain.setValueAtTime(0.1, ctx.currentTime);
+          echoGain.gain.exponentialRampToValueAtTime(
+            0.001,
+            ctx.currentTime + 0.6
+          );
+          echo.connect(echoGain);
+          echoGain.connect(ctx.destination);
+          echo.start();
+          echo.stop(ctx.currentTime + 0.6);
+        }, 700);
+      }
     </script>
   </body>
 </html>
