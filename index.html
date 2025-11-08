@@ -7,486 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- tsparticles library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
-      * {
-        font-family: "Inter", sans-serif;
-      }
-
-      /* Background Elements */
-      .bg-pattern {
-        background-image: radial-gradient(
-            circle at 25% 25%,
-            rgba(6, 182, 212, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 75% 75%,
-            rgba(8, 145, 178, 0.08) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 50% 50%,
-            rgba(6, 182, 212, 0.05) 0%,
-            transparent 50%
-          );
-        background-size: 800px 800px, 600px 600px, 1000px 1000px;
-        background-position: 0% 0%, 100% 100%, 50% 50%;
-        animation: backgroundShift 20s ease-in-out infinite;
-      }
-
-      @keyframes backgroundShift {
-        0%,
-        100% {
-          background-position: 0% 0%, 100% 100%, 50% 50%;
-        }
-        50% {
-          background-position: 100% 100%, 0% 0%, 25% 75%;
-        }
-      }
-
-      .floating-shapes {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .shape {
-        position: absolute;
-        opacity: 0.1;
-        animation: float 15s infinite linear;
-      }
-
-      .shape:nth-child(1) {
-        top: 20%;
-        left: 10%;
-        animation-delay: 0s;
-        animation-duration: 20s;
-      }
-
-      .shape:nth-child(2) {
-        top: 60%;
-        left: 80%;
-        animation-delay: 5s;
-        animation-duration: 25s;
-      }
-
-      .shape:nth-child(3) {
-        top: 80%;
-        left: 20%;
-        animation-delay: 10s;
-        animation-duration: 18s;
-      }
-
-      .shape:nth-child(4) {
-        top: 30%;
-        left: 70%;
-        animation-delay: 15s;
-        animation-duration: 22s;
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(0px) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.1;
-        }
-        90% {
-          opacity: 0.1;
-        }
-        100% {
-          transform: translateY(-100vh) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      .grid-pattern {
-        background-image: linear-gradient(
-            rgba(6, 182, 212, 0.03) 1px,
-            transparent 1px
-          ),
-          linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
-        background-size: 50px 50px;
-        animation: gridMove 30s linear infinite;
-      }
-
-      @keyframes gridMove {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 50px 50px;
-        }
-      }
-
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 40px rgba(6, 182, 212, 0.6),
-            0 0 60px rgba(6, 182, 212, 0.4);
-        }
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes bounce {
-        0%,
-        20%,
-        53%,
-        80%,
-        100% {
-          transform: translateY(0);
-        }
-        40%,
-        43% {
-          transform: translateY(-15px);
-        }
-        70% {
-          transform: translateY(-7px);
-        }
-        90% {
-          transform: translateY(-3px);
-        }
-      }
-
-      .animate-slide-left {
-        animation: slideInLeft 0.8s ease-out;
-      }
-      .animate-slide-right {
-        animation: slideInRight 0.8s ease-out;
-      }
-      .animate-fade-up {
-        animation: fadeInUp 1s ease-out;
-      }
-      .animate-float {
-        animation: float 3s ease-in-out infinite;
-      }
-      .animate-glow {
-        animation: glow 2s ease-in-out infinite;
-      }
-
-      .gradient-text {
-        background: linear-gradient(135deg, #06b6d4, #0891b2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .card-hover {
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        background: rgba(17, 24, 39, 0.8);
-        border: 1px solid rgba(6, 182, 212, 0.1);
-      }
-
-      .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
-        border-color: rgba(6, 182, 212, 0.3);
-      }
-
-      .typing-animation {
-        border-right: 2px solid #06b6d4;
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        50% {
-          border-color: #06b6d4;
-        }
-        51%,
-        100% {
-          border-color: transparent;
-        }
-      }
-
-      .scroll-smooth {
-        scroll-behavior: smooth;
-      }
-
-      /* Programming Language Icons */
-      .lang-icon {
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .lang-icon:hover {
-        transform: scale(1.2) rotate(5deg);
-        filter: drop-shadow(0 0 20px currentColor);
-      }
-
-      .java-icon {
-        color: #f89820;
-      }
-      .java-icon:hover {
-        color: #ff6b35;
-        animation: bounce 0.6s;
-      }
-
-      .python-icon {
-        color: #3776ab;
-      }
-      .python-icon:hover {
-        color: #ffd43b;
-        animation: bounce 0.6s;
-      }
-
-      .csharp-icon {
-        color: #239120;
-      }
-      .csharp-icon:hover {
-        color: #68217a;
-        animation: bounce 0.6s;
-      }
-
-      .cpp-icon {
-        color: #00599c;
-      }
-      .cpp-icon:hover {
-        color: #f34b7d;
-        animation: bounce 0.6s;
-      }
-
-      .bash-icon {
-        color: #4eaa25;
-      }
-      .bash-icon:hover {
-        color: #89e051;
-        animation: bounce 0.6s;
-      }
-
-      .thm-container {
-        position: relative;
-        display: inline-block;
-      }
-
-      .thm-container::before {
-        content: "";
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        right: 160px;
-        bottom: 30px;
-        background: linear-gradient(45deg, #06b6d4, #0891b2, #06b6d4);
-        border-radius: 15px;
-        z-index: -1;
-        animation: glow 2s ease-in-out infinite;
-        opacity: 0.7;
-      }
-
-      .thm-iframe {
-        border-radius: 10px;
-        overflow: hidden;
-        animation: float 4s ease-in-out infinite;
-      }
-
-      /* Content positioning */
-      .content-layer {
-        position: relative;
-        z-index: 10;
-      }
-
-      /* Subtle section backgrounds */
-      .section-bg {
-        background: rgba(17, 24, 39, 0.3);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(6, 182, 212, 0.1);
-        border-bottom: 1px solid rgba(6, 182, 212, 0.1);
-      }
-
-      /* Terminal-Style Contact Form */
-      .terminal-form input,
-      .terminal-form textarea {
-        font-family: "Fira Mono", "Consolas", monospace;
-        font-size: 1rem;
-        background: transparent;
-        color: #67e8f9;
-      }
-      .terminal-form input:focus,
-      .terminal-form textarea:focus {
-        outline: none;
-        border-color: #22d3ee;
-      }
-      .terminal-form .terminal-cursor {
-        caret-color: #22d3ee;
-        position: relative;
-      }
-      .terminal-form .terminal-cursor::after {
-        content: "";
-        display: inline-block;
-        width: 8px;
-        height: 1.2em;
-        background: #22d3ee;
-        margin-left: 2px;
-        animation: blink-cursor 1s steps(1) infinite;
-        vertical-align: middle;
-      }
-      @keyframes blink-cursor {
-        0%,
-        50% {
-          opacity: 1;
-        }
-        51%,
-        100% {
-          opacity: 0;
-        }
-      }
-
-      /* Base - ensure top layer and pointer-events off so it never blocks clicks */
-      #custom-cursor {
-        position: fixed;
-        left: 0;
-        top: 0;
-        pointer-events: none;
-        z-index: 99999;
-        mix-blend-mode: screen;
-      }
-
-      /* Core dot */
-      .cursor-core {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(6, 182, 212, 1); /* cyan */
-        box-shadow: 0 0 6px rgba(6, 182, 212, 0.9),
-          0 0 18px rgba(6, 182, 212, 0.25),
-          inset 0 0 6px rgba(255, 255, 255, 0.03);
-        transition: transform 120ms ease, width 120ms ease, height 120ms ease,
-          opacity 120ms ease;
-        will-change: transform, width, height, opacity;
-      }
-
-      /* Trailing dots container (positions relative to cursor core) */
-      .cursor-trail {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translate(-50%, -50%);
-      }
-
-      .trail-dot {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(6, 182, 212, 0.55);
-        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        will-change: transform, opacity;
-      }
-
-      /* Click ripple */
-      .cursor-click-ripple {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translate(-50%, -50%);
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        border: 2px solid rgba(6, 182, 212, 0.6);
-        opacity: 0;
-        pointer-events: none;
-        will-change: transform, opacity;
-      }
-
-      /* Hover states for interactive elements (optional): enlarge and glow */
-      .cursor-core.hovered {
-        transform: translate(-50%, -50%) scale(1.9);
-        width: 18px;
-        height: 18px;
-        box-shadow: 0 0 10px rgba(6, 182, 212, 1),
-          0 0 28px rgba(6, 182, 212, 0.25);
-      }
-
-      /* Hide the real cursor on non-touch devices */
-      @media (pointer: fine) {
-        body {
-          cursor: none;
-        }
-      }
-
-      /* Disable custom cursor on small screens (mobile) */
-      @media (max-width: 900px), (pointer: coarse) {
-        #custom-cursor {
-          display: none !important;
-        }
-        body {
-          cursor: auto;
-        }
-      }
-    </style>
   </head>
 
   <body
-    class="bg-black text-white min-h-screen scroll-smooth bg-pattern grid-pattern"
-  >
+    class="bg-black text-white min-h-screen scroll-smooth bg-pattern grid-pattern">
+    <!-- Particle.js Background -->
+    <div id="particles-js"></div>
+
     <!-- cursor animation  -->
     <div id="custom-cursor" aria-hidden="true">
       <div class="cursor-core"></div>
@@ -502,62 +35,49 @@
     <div class="floating-shapes">
       <div class="shape w-20 h-20 border border-cyan-500 rounded-full"></div>
       <div
-        class="shape w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg transform rotate-45"
-      ></div>
+        class="shape w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg transform rotate-45"></div>
       <div
-        class="shape w-12 h-12 border-2 border-cyan-400 transform rotate-45"
-      ></div>
+        class="shape w-12 h-12 border-2 border-cyan-400 transform rotate-45"></div>
       <div class="shape w-24 h-24 border border-blue-400 rounded-full"></div>
       <div class="shape w-8 h-8 bg-cyan-400 rounded-full"></div>
       <div
-        class="shape w-14 h-14 border border-cyan-300 transform rotate-45"
-      ></div>
+        class="shape w-14 h-14 border border-cyan-300 transform rotate-45"></div>
     </div>
 
     <div class="content-layer">
       <!-- Navigation -->
       <nav
-        class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800"
-      >
+        class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
         <div class="container mx-auto px-4 py-4">
           <div class="flex justify-between items-center">
             <div class="text-xl font-bold gradient-text">Sharan Vasoya</div>
             <div class="hidden md:flex space-x-6">
               <a href="#home" class="hover:text-cyan-400 transition">Home</a>
               <a href="#about" class="hover:text-cyan-400 transition">About</a>
-              <a href="#experience" class="hover:text-cyan-400 transition"
-                >Experience</a
-              >
-              <a href="#projects" class="hover:text-cyan-400 transition"
-                >Projects</a
-              >
-              <a href="#contact" class="hover:text-cyan-400 transition"
-                >Contact</a
-              >
+              <a href="#experience"
+                class="hover:text-cyan-400 transition">Experience</a>
+              <a href="#projects"
+                class="hover:text-cyan-400 transition">Projects</a>
+              <a href="#contact"
+                class="hover:text-cyan-400 transition">Contact</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden">
               <i class="fas fa-bars text-xl"></i>
             </button>
           </div>
           <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-            <a href="#home" class="block hover:text-cyan-400 transition"
-              >Home</a
-            >
-            <a href="#about" class="block hover:text-cyan-400 transition"
-              >About</a
-            >
-            <a href="#experience" class="block hover:text-cyan-400 transition"
-              >Experience</a
-            >
-            <a href="#projects" class="block hover:text-cyan-400 transition"
-              >Projects</a
-            >
-            <a href="#certificates" class="hover:text-cyan-400 transition"
-              >Certificates</a
-            >
-            <a href="#contact" class="block hover:text-cyan-400 transition"
-              >Contact</a
-            >
+            <a href="#home"
+              class="block hover:text-cyan-400 transition">Home</a>
+            <a href="#about"
+              class="block hover:text-cyan-400 transition">About</a>
+            <a href="#experience"
+              class="block hover:text-cyan-400 transition">Experience</a>
+            <a href="#projects"
+              class="block hover:text-cyan-400 transition">Projects</a>
+            <a href="#certificates"
+              class="hover:text-cyan-400 transition">Certificates</a>
+            <a href="#contact"
+              class="block hover:text-cyan-400 transition">Contact</a>
           </div>
         </div>
       </nav>
@@ -565,13 +85,11 @@
       <!-- Hero Section -->
       <section
         id="home"
-        class="min-h-screen flex items-center justify-center pt-20"
-      >
+        class="min-h-screen flex items-center justify-center pt-20">
         <div class="container mx-auto px-4">
           <div class="flex flex-col lg:flex-row items-center justify-between">
             <div
-              class="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 animate-slide-left"
-            >
+              class="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 animate-slide-left">
               <h1 class="text-4xl lg:text-6xl font-bold mb-4">
                 Hi, I'm <span class="gradient-text">Sharan Vasoya</span>
               </h1>
@@ -587,18 +105,15 @@
                 exploitation methods.
               </p>
               <div
-                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a
                   href="#contact"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105"
-                >
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105">
                   Get In Touch
                 </a>
                 <a
                   href="#projects"
-                  class="border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition"
-                >
+                  class="border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition">
                   View Projects
                 </a>
               </div>
@@ -606,41 +121,35 @@
                 <a
                   href="https://github.com/sharanvasoya"
                   target="_blank"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110"
-                >
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
                   <i class="fab fa-github"></i>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/sharan-root/"
                   target="_blank"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110"
-                >
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
                   <i class="fab fa-linkedin"></i>
                 </a>
                 <a
                   href="https://www.google.com/search?q=Sharan+Vasoya"
                   target="_blank"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110"
-                >
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
                   <i class="fas fa-globe"></i>
                 </a>
                 <a
                   href="mailto:sharanvasoya@proton.me"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110"
-                >
+                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
                   <i class="fas fa-envelope"></i>
                 </a>
               </div>
             </div>
             <div
-              class="hidden lg:flex lg:w-1/2 justify-center animate-slide-right"
-            >
+              class="hidden lg:flex lg:w-1/2 justify-center animate-slide-right">
               <div class="thm-container">
                 <iframe
                   src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=4643449"
                   style="border: none; width: 500px; height: 120px"
-                  class="thm-iframe"
-                >
+                  class="thm-iframe">
                 </iframe>
               </div>
             </div>
@@ -652,8 +161,7 @@
       <div
         id="cyber-quote-banner"
         class="w-full py-1 px-4 text-center flex items-center justify-center bg-gray-900/80 backdrop-blur-sm rounded-b-lg shadow-md mb-2"
-        style="font-family: 'Fira Mono', 'Consolas', monospace; font-size: 1rem"
-      >
+        style="font-family: 'Fira Mono', 'Consolas', monospace; font-size: 1rem">
         <span class="mr-2 text-cyan-400"><i class="fas fa-terminal"></i></span>
         <span id="cyber-quote-text" class="text-green-300"></span>
       </div>
@@ -662,8 +170,7 @@
       <section id="about" class="py-20 section-bg">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up"
-          >
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up">
             About Me
           </h2>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -671,20 +178,71 @@
               <h3 class="text-2xl font-semibold mb-6 text-cyan-400">
                 Professional Summary
               </h3>
-              <div class="text-gray-300 mb-6 leading-relaxed text-lg">
-                <span class="font-bold"
-                  >👾 Self-taught cyber explorer on a quest to turn curiosity
-                  into exploits and code into shields.</span
-                ><br />
-                🕶️ From late-night web builds to cracking CTFs, I thrive on the
-                thrill of discovery and the art of digital mischief (the ethical
-                kind).<br />
-                ⚡ Currently leveling up on TryHackMe, chasing that “Aha!”
-                moment, and always ready to break, fix, and secure—sometimes all
-                before breakfast.<br />
-                🌐 Let’s hack, learn, and build a safer web—one clever trick at
-                a time.
+              <div class="space-y-6">
+                <!--  Professional Summary Paragraph -->
+                <div
+                  class="card-hover p-6 rounded-lg backdrop-blur-sm border border-cyan-500/10">
+                  <p class="text-gray-300 leading-relaxed">
+                    Cybersecurity enthusiast driven by curiosity — exploring how
+                    systems break and how to secure them. Focused on Red Teaming
+                    and building smarter, safer systems.
+                  </p>
+                </div>
+
+                <!--  Interest + Philosophy Boxes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Areas of Interest -->
+                  <div
+                    class="card-hover p-6 rounded-lg backdrop-blur-sm border border-cyan-500/10">
+                    <h4 class="text-lg font-semibold text-cyan-400 mb-3">Areas
+                      of Interest</h4>
+                    <ul class="space-y-2 text-gray-300">
+                      <li class="flex items-center">
+                        <i class="fas fa-user-secret text-cyan-400 mr-2"></i>
+                        Red Teaming & Exploitation
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-bug text-cyan-400 mr-2"></i>
+                        Web & Network Penetration Testing
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-server text-cyan-400 mr-2"></i>
+                        Active Directory Attacks
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-terminal text-cyan-400 mr-2"></i>
+                        Post-Exploitation & Persistence
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Cyber Philosophy -->
+                  <div
+                    class="card-hover p-6 rounded-lg backdrop-blur-sm border border-cyan-500/10">
+                    <h4 class="text-lg font-semibold text-cyan-400 mb-3">Cyber
+                      Philosophy</h4>
+                    <ul class="space-y-2 text-gray-300">
+                      <li class="flex items-center">
+                        <i class="fas fa-lightbulb text-cyan-400 mr-2"></i>
+                        “Hack to learn, not to harm.”
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-code text-cyan-400 mr-2"></i>
+                        Every exploit teaches a new defense.
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-brain text-cyan-400 mr-2"></i>
+                        Curiosity is my weapon, logic my shield.
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-globe text-cyan-400 mr-2"></i>
+                        Build, break, and secure — repeat.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+
             </div>
             <div class="animate-slide-right">
               <h3 class="text-2xl font-semibold mb-6 text-cyan-400">
@@ -707,14 +265,15 @@
                     VNSG University | April 2025 | Gujarat, India
                   </p>
                 </div>
-                <!-- <div class="p-4 card-hover rounded-lg">
-                                    <h4
-                                        class="font-semibold text-cyan-300">CompTIA
-                                        Pentest+</h4>
-                                    <p class="text-gray-400">Certified
-                                        Penetration Testing Professional |
-                                        2024</p>
-                                </div> -->
+                <div class="p-4 card-hover rounded-lg">
+                  <h4 class="font-semibold text-cyan-300">
+                    Higher Secondary - Science
+                  </h4>
+                  <p class="text-gray-400">
+                    Dream International School | March 2023 | Gujarat,
+                    India
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -725,16 +284,14 @@
       <section class="py-20">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text"
-          >
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
             Technical Skills
           </h2>
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Programming Languages -->
             <div class="card-hover rounded-lg p-6 animate-fade-up">
               <h3
-                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
                 <i class="fas fa-code mr-3"></i>Programming & Scripting
               </h3>
               <div class="grid grid-cols-3 gap-6 justify-items-center">
@@ -743,54 +300,42 @@
                     <i class="fab fa-js"></i>
                   </div>
                   <span
-                    class="text-sm text-gray-400 group-hover:text-orange-400 transition"
-                    >JavaScript</span
-                  >
+                    class="text-sm text-gray-400 group-hover:text-orange-400 transition">JavaScript</span>
                 </div>
                 <div class="text-center group">
                   <div class="lang-icon python-icon text-6xl mb-2">
                     <i class="fab fa-python"></i>
                   </div>
                   <span
-                    class="text-sm text-gray-400 group-hover:text-yellow-400 transition"
-                    >Python</span
-                  >
+                    class="text-sm text-gray-400 group-hover:text-yellow-400 transition">Python</span>
                 </div>
                 <div class="text-center group">
                   <div class="lang-icon csharp-icon text-6xl mb-2">
                     <i class="fab fa-react"></i>
                   </div>
                   <span
-                    class="text-sm text-gray-400 group-hover:text-purple-400 transition"
-                    >react.js</span
-                  >
+                    class="text-sm text-gray-400 group-hover:text-purple-400 transition">react.js</span>
                 </div>
                 <div class="text-center group">
                   <div class="lang-icon cpp-icon text-6xl mb-2">
                     <i class="fas fa-wind"></i>
                   </div>
                   <span
-                    class="text-sm text-gray-400 group-hover:text-blue-400 transition"
-                    >TailwindCss</span
-                  >
+                    class="text-sm text-gray-400 group-hover:text-blue-400 transition">TailwindCss</span>
                 </div>
                 <div class="text-center group">
                   <div class="lang-icon bash-icon text-6xl mb-2">
                     <i class="fas fa-terminal"></i>
                   </div>
                   <span
-                    class="text-sm text-gray-400 group-hover:text-green-400 transition"
-                    >Bash</span
-                  >
+                    class="text-sm text-gray-400 group-hover:text-green-400 transition">Bash</span>
                 </div>
                 <div class="text-center group">
                   <div class="lang-icon bash-icon text-6xl mb-2">
                     <i class="fab fa-windows"></i>
                   </div>
                   <span
-                    class="text-sm text-gray-400 group-hover:text-blue-400 transition"
-                    >PowerShell</span
-                  >
+                    class="text-sm text-gray-400 group-hover:text-blue-400 transition">PowerShell</span>
                 </div>
               </div>
             </div>
@@ -798,52 +343,42 @@
             <!-- Security Tools -->
             <div
               class="card-hover rounded-lg p-6 animate-fade-up"
-              style="animation-delay: 0.2s"
-            >
+              style="animation-delay: 0.2s">
               <h3
-                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
                 <i class="fas fa-shield-alt mr-3"></i>Security Tools
               </h3>
               <div class="grid grid-cols-2 gap-3">
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Metasploit
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Burp Suite
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Nmap
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Enum4linux
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Sqlmap
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Hydra
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Cryptography
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Reverse Engineering
                 </div>
               </div>
@@ -852,53 +387,43 @@
             <!-- Development Tools -->
             <div
               class="card-hover rounded-lg p-6 animate-fade-up"
-              style="animation-delay: 0.4s"
-            >
+              style="animation-delay: 0.4s">
               <h3
-                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
                 <i class="fas fa-tools mr-3"></i>Development & Infrastructure
                 Tools
               </h3>
               <div class="grid grid-cols-2 gap-3">
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Git / GitHub
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Docker
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Jenkins
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Vs code
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Burp Extensions
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   VirtualBox
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   Packet Tracer
                 </div>
                 <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50"
-                >
+                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
                   AWS(basic)
                 </div>
               </div>
@@ -908,30 +433,26 @@
       </section>
 
       <!-- Experience Section -->
-      <section id="experience" class="py-20 section-bg">
+      <section id="experience" class="py-20">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text"
-          >
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
             Professional Experience
           </h2>
           <div class="max-w-4xl mx-auto">
             <div class="relative">
               <!-- Timeline line -->
               <div
-                class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-0.5 h-full bg-cyan-500"
-              ></div>
+                class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-0.5 h-full bg-cyan-500"></div>
 
               <!-- Experience Items -->
               <div class="space-y-12">
                 <!-- Accenture Senior Analyst -->
                 <div class="relative flex items-center">
                   <div
-                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black"
-                  ></div>
+                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black"></div>
                   <div
-                    class="ml-12 lg:ml-0 lg:w-1/2 lg:pr-8 animate-slide-left"
-                  >
+                    class="ml-12 lg:ml-0 lg:w-1/2 lg:pr-8 animate-slide-left">
                     <div class="card-hover p-6 rounded-lg">
                       <div class="flex justify-between items-start mb-4">
                         <div>
@@ -942,9 +463,8 @@
                             Depthin Solution | Surat, Gujarat
                           </p>
                         </div>
-                        <span class="text-sm text-gray-500"
-                          >Aug 2023 – Nov 2024</span
-                        >
+                        <span class="text-sm text-gray-500">Aug 2023 – Nov
+                          2024</span>
                       </div>
                       <ul class="text-gray-300 space-y-2 text-sm">
                         <li>
@@ -974,11 +494,9 @@
                 <!-- LTI Quality Engineer -->
                 <div class="relative flex items-center lg:justify-end">
                   <div
-                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black"
-                  ></div>
+                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black"></div>
                   <div
-                    class="ml-12 lg:ml-0 lg:w-1/2 lg:pl-8 animate-slide-right"
-                  >
+                    class="ml-12 lg:ml-0 lg:w-1/2 lg:pl-8 animate-slide-right">
                     <div class="card-hover p-6 rounded-lg">
                       <div class="flex justify-between items-start mb-4">
                         <div>
@@ -989,9 +507,8 @@
                             BlueSoft Infotech | Surat, Gujarat
                           </p>
                         </div>
-                        <span class="text-sm text-gray-500"
-                          >Jun 2023 – Jul 2023</span
-                        >
+                        <span class="text-sm text-gray-500">Jun 2023 – Jul
+                          2023</span>
                       </div>
                       <ul class="text-gray-300 space-y-2 text-sm">
                         <li>
@@ -1023,18 +540,15 @@
       <section id="projects" class="py-20">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text"
-          >
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
             Projects
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- CyberCheat -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
                 <i class="fas fa-user-secret mr-2"></i>CyberCheat
               </h3>
               <div class="text-sm italic text-gray-400 mb-2">
@@ -1048,22 +562,17 @@
                 <a
                   href="https://cyber-cheatsheet.onrender.com/"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                  >Live</a
-                >
-                <span class="ml-auto text-cyan-400 text-2xl"
-                  ><i class="fas fa-shield-alt"></i
-                ></span>
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-shield-alt"></i></span>
               </div>
             </div>
 
             <!-- RedHawk -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
                 <i class="fas fa-search mr-2"></i>RedHawk
               </h3>
               <div class="text-sm italic text-gray-400 mb-2">
@@ -1077,22 +586,17 @@
                 <a
                   href="https://github.com/Vasoyasharan/RedHawk"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                  >GitHub</a
-                >
-                <span class="ml-auto text-cyan-400 text-2xl"
-                  ><i class="fas fa-bug"></i
-                ></span>
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">GitHub</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-bug"></i></span>
               </div>
             </div>
 
             <!-- CyberLock -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
                 <i class="fas fa-lock mr-2"></i>CyberLock
               </h3>
               <div class="text-sm italic text-gray-400 mb-2">
@@ -1105,26 +609,20 @@
                 <a
                   href="https://vasoyasharan.github.io/PasswordStrengthMeter/"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                  >Live</a
-                >
-                <span class="ml-auto text-cyan-400 text-2xl"
-                  ><i class="fas fa-key"></i
-                ></span>
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-key"></i></span>
               </div>
             </div>
           </div>
           <!-- Additional Projects Row -->
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
-          >
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             <!-- Mico Hospital -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
                 <i class="fas fa-hospital-symbol mr-2"></i>Mico Hospital
               </h3>
               <div class="text-sm italic text-gray-400 mb-2">
@@ -1137,22 +635,17 @@
                 <a
                   href="https://vasoyasharan.github.io/WD-PROJECT/"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                  >Live</a
-                >
-                <span class="ml-auto text-cyan-400 text-2xl"
-                  ><i class="fas fa-user-md"></i
-                ></span>
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-user-md"></i></span>
               </div>
             </div>
 
             <!-- Hexpert -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
                 <i class="fas fa-palette mr-2"></i>Hexpert
               </h3>
               <div class="text-sm italic text-gray-400 mb-2">
@@ -1165,22 +658,17 @@
                 <a
                   href="https://vasoyasharan.github.io/Hexpert/"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                  >Live</a
-                >
-                <span class="ml-auto text-cyan-400 text-2xl"
-                  ><i class="fas fa-brush"></i
-                ></span>
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-brush"></i></span>
               </div>
             </div>
 
             <!-- Terminal Style Portfolio -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center"
-              >
+                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
                 <i class="fas fa-terminal mr-2"></i>Terminal Style Portfolio
               </h3>
               <div class="text-sm italic text-gray-400 mb-2">
@@ -1193,12 +681,9 @@
                 <a
                   href="https://vasoyasharan.github.io/Terminal-Portfolio/"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                  >Live</a
-                >
-                <span class="ml-auto text-cyan-400 text-2xl"
-                  ><i class="fas fa-code"></i
-                ></span>
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
+                <span class="ml-auto text-cyan-400 text-2xl"><i
+                    class="fas fa-code"></i></span>
               </div>
             </div>
           </div>
@@ -1209,24 +694,21 @@
       <section id="certificates" class="py-20 section-bg">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up"
-          >
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up">
             Certifications & Achievements
           </h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- eJPT Certificate -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-cyan-400 flex items-center">
                   <i class="fas fa-crosshairs mr-2"></i>eJPT
                 </h3>
                 <span
-                  class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded"
-                  >In Progress</span
-                >
+                  class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">In
+                  Progress</span>
               </div>
               <div class="text-sm italic text-gray-400 mb-2">
                 eLearnSecurity Junior Penetration Tester
@@ -1245,16 +727,13 @@
 
             <!-- DarkWeb Operations Certificate -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-cyan-400 flex items-center">
                   <i class="fas fa-user-secret mr-2"></i>DarkWeb Operations
                 </h3>
                 <span
-                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded"
-                  >Completed</span
-                >
+                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">Completed</span>
               </div>
               <div class="text-sm italic text-gray-400 mb-2">
                 Security Blue Team
@@ -1272,16 +751,13 @@
 
             <!-- Fortinet FCF Certificate -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-cyan-400 flex items-center">
                   <i class="fas fa-network-wired mr-2"></i>Fortinet FCF
                 </h3>
                 <span
-                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded"
-                  >Completed</span
-                >
+                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">Completed</span>
               </div>
               <div class="text-sm italic text-gray-400 mb-2">
                 Fortinet Certified Fundamentals
@@ -1299,16 +775,13 @@
 
             <!-- TryHackMe Certificate -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-cyan-400 flex items-center">
                   <i class="fas fa-graduation-cap mr-2"></i>TryHackMe
                 </h3>
                 <span
-                  class="text-xs bg-blue-900 text-blue-300 px-2 py-1 rounded"
-                  >Learning</span
-                >
+                  class="text-xs bg-blue-900 text-blue-300 px-2 py-1 rounded">Learning</span>
               </div>
               <div class="text-sm italic text-gray-400 mb-2">
                 Cybersecurity Learning Platform
@@ -1322,8 +795,7 @@
                 <a
                   href="https://tryhackme.com/p/SpVasoya"
                   target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition"
-                >
+                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">
                   View Profile
                 </a>
                 <span class="ml-auto text-blue-400 text-2xl">
@@ -1334,16 +806,13 @@
 
             <!-- CTF Achievements -->
             <div
-              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6"
-            >
+              class="card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-cyan-400 flex items-center">
                   <i class="fas fa-flag mr-2"></i>CTF Competitions
                 </h3>
                 <span
-                  class="text-xs bg-purple-900 text-purple-300 px-2 py-1 rounded"
-                  >Active</span
-                >
+                  class="text-xs bg-purple-900 text-purple-300 px-2 py-1 rounded">Active</span>
               </div>
               <div class="text-sm italic text-gray-400 mb-2">
                 Capture The Flag Participant
@@ -1366,8 +835,7 @@
             <a
               href="https://vasoyasharan.github.io/My-Achievements/"
               target="_blank"
-              class="inline-flex items-center gap-2 border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition duration-300"
-            >
+              class="inline-flex items-center gap-2 border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition duration-300">
               <i class="fas fa-external-link-alt"></i>
               View All Certificates & Achievements
             </a>
@@ -1376,11 +844,10 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 section-bg">
+      <section id="contact" class="py-20">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text"
-          >
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
             Get In Touch
           </h2>
           <div class="max-w-2xl mx-auto">
@@ -1389,8 +856,7 @@
               id="contact-form"
               action="https://formspree.io/f/mbjnwvwr"
               method="post"
-              style="font-family: 'Fira Mono', 'Consolas', monospace"
-            >
+              style="font-family: 'Fira Mono', 'Consolas', monospace">
               <div class="mb-4 flex items-center">
                 <span class="text-green-400 mr-2">$</span>
                 <input
@@ -1399,8 +865,7 @@
                   name="name"
                   required
                   placeholder="Your Name"
-                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2"
-                />
+                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2" />
               </div>
               <div class="mb-4 flex items-center">
                 <span class="text-green-400 mr-2">$</span>
@@ -1410,8 +875,7 @@
                   name="email"
                   required
                   placeholder="Your Email"
-                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2"
-                />
+                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2" />
               </div>
               <div class="mb-4 flex items-start">
                 <span class="text-green-400 mr-2 mt-2">$</span>
@@ -1421,21 +885,18 @@
                   rows="4"
                   required
                   placeholder="Your Message"
-                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2 terminal-cursor"
-                ></textarea>
+                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2 terminal-cursor"></textarea>
               </div>
               <button
                 type="submit"
                 id="submitBtn"
-                class="w-full bg-cyan-700 hover:bg-cyan-500 text-black font-bold py-2 px-4 rounded transition mt-4"
-              >
+                class="w-full bg-cyan-700 hover:bg-cyan-500 text-black font-bold py-2 px-4 rounded transition mt-4">
                 Send <span class="ml-1">&#9654;</span>
               </button>
               <div
                 id="statusMessage"
                 class="mt-4 text-center"
-                style="display: none"
-              ></div>
+                style="display: none"></div>
             </form>
           </div>
         </div>
@@ -1444,30 +905,24 @@
       <!-- Cyber Popup -->
       <div
         id="cyber-popup"
-        class="fixed inset-0 flex items-center justify-center z-50 hidden"
-      >
+        class="fixed inset-0 flex items-center justify-center z-50 hidden">
         <div
-          class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"
-        ></div>
+          class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"></div>
         <div
-          class="relative bg-black/90 p-8 rounded-sm shadow-[0_0_20px_rgba(6,182,212,0.3)] border border-cyan-500/30 transform transition-all duration-300 scale-95 opacity-0 max-w-md w-full mx-4 overflow-hidden"
-        >
+          class="relative bg-black/90 p-8 rounded-sm shadow-[0_0_20px_rgba(6,182,212,0.3)] border border-cyan-500/30 transform transition-all duration-300 scale-95 opacity-0 max-w-md w-full mx-4 overflow-hidden">
           <div class="text-center relative">
             <div class="absolute inset-0 glitch-overlay"></div>
             <div
-              class="absolute left-0 w-full h-px bg-cyan-400/50 scanner-line"
-            ></div>
+              class="absolute left-0 w-full h-px bg-cyan-400/50 scanner-line"></div>
 
             <div class="mb-4 text-cyan-400 relative">
               <i class="fas fa-terminal text-4xl"></i>
             </div>
             <div
-              class="flex flex-col items-center space-y-2 relative terminal-text"
-            >
+              class="flex flex-col items-center space-y-2 relative terminal-text">
               <h3
                 class="text-xl font-mono mb-2 text-cyan-400 typewriter"
-                id="popup-title"
-              >
+                id="popup-title">
                 > TRANSMISSION_RECEIVED
               </h3>
               <p class="text-cyan-300/80 font-mono" id="popup-message">
@@ -1483,45 +938,37 @@
 
       <!-- Footer -->
       <footer
-        class="py-8 border-t border-cyan-800 bg-gray-900/80 backdrop-blur-sm mt-12"
-      >
+        class="py-8 border-t border-cyan-800 bg-gray-900/80 backdrop-blur-sm mt-12">
         <div
-          class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center"
-        >
+          class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div class="flex items-center space-x-3 mb-4 md:mb-0">
-            <span class="text-cyan-400 text-2xl"
-              ><i class="fas fa-heartbeat"></i
-            ></span>
-            <span class="text-gray-300 text-base md:text-lg"
-              >Made with <span class="text-pink-400">&#10084;&#65039;</span> and
+            <span class="text-cyan-400 text-2xl"><i
+                class="fas fa-heartbeat"></i></span>
+            <span class="text-gray-300 text-base md:text-lg">Made with <span
+                class="text-pink-400">&#10084;&#65039;</span> and
               <span class="text-cyan-400">curiosity</span> by Sharan
-              Vasoya</span
-            >
+              Vasoya</span>
           </div>
           <div class="flex space-x-6">
             <a
               href="https://github.com/sharanvasoya"
               target="_blank"
-              class="text-gray-400 hover:text-cyan-400 transition text-xl"
-              ><i class="fab fa-github"></i
-            ></a>
+              class="text-gray-400 hover:text-cyan-400 transition text-xl"><i
+                class="fab fa-github"></i></a>
             <a
               href="https://www.linkedin.com/in/sharan-root/"
               target="_blank"
-              class="text-gray-400 hover:text-cyan-400 transition text-xl"
-              ><i class="fab fa-linkedin"></i
-            ></a>
+              class="text-gray-400 hover:text-cyan-400 transition text-xl"><i
+                class="fab fa-linkedin"></i></a>
             <a
               href="mailto:sharanvasoya@proton.me"
-              class="text-gray-400 hover:text-cyan-400 transition text-xl"
-              ><i class="fas fa-envelope"></i
-            ></a>
+              class="text-gray-400 hover:text-cyan-400 transition text-xl"><i
+                class="fas fa-envelope"></i></a>
             <a
               href="https://tryhackme.com/p/SpVasoya"
               target="_blank"
-              class="text-gray-400 hover:text-green-400 transition text-xl"
-              ><i class="fas fa-user-secret"></i
-            ></a>
+              class="text-gray-400 hover:text-green-400 transition text-xl"><i
+                class="fas fa-user-secret"></i></a>
           </div>
         </div>
         <div class="text-center text-xs text-cyan-800 mt-4">
@@ -1533,464 +980,14 @@
       <!-- Back to Top Button -->
       <button
         id="back-to-top"
-        class="fixed bottom-8 right-8 bg-cyan-500 hover:bg-cyan-600 text-black p-3 rounded-full shadow-lg transition transform hover:scale-110 opacity-0 invisible z-50"
-      >
+        class="fixed bottom-8 right-8 bg-cyan-500 hover:bg-cyan-600 text-black p-3 rounded-full shadow-lg transition transform hover:scale-110 opacity-0 invisible z-50">
         <i class="fas fa-arrow-up"></i>
       </button>
     </div>
-
-    <style>
-      @keyframes glitch {
-        0% {
-          transform: translate(0);
-        }
-        20% {
-          transform: translate(-2px, 2px);
-        }
-        40% {
-          transform: translate(-2px, -2px);
-        }
-        60% {
-          transform: translate(2px, 2px);
-        }
-        80% {
-          transform: translate(2px, -2px);
-        }
-        100% {
-          transform: translate(0);
-        }
-      }
-      @keyframes scan {
-        0% {
-          top: 0;
-        }
-        100% {
-          top: 100%;
-        }
-      }
-      .glitch-overlay {
-        background: linear-gradient(45deg, rgba(6, 182, 212, 0.1), transparent);
-        mix-blend-mode: overlay;
-        animation: glitch 0.3s infinite;
-      }
-      .scanner-line {
-        animation: scan 3s linear infinite;
-      }
-      .terminal-text {
-        text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-      }
-      @keyframes typewriter {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
-      }
-      @keyframes blink {
-        50% {
-          border-color: transparent;
-        }
-      }
-      .typewriter {
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 2px solid rgba(6, 182, 212, 0.5);
-        animation: typewriter 1s steps(40) forwards, blink 1s infinite;
-      }
-    </style>
-
-    <script>
-      // Typing animation
-      const typingText = document.getElementById("typing-text");
-      const texts = [
-        "Red Team Operator",
-        "Offensive Security Enthusiast",
-        "Ethical Hacker",
-        "Cybersecurity Professional",
-        "Penetration Tester",
-        "CTF Player & Learner",
-        "Creative Security Researcher",
-      ];
-
-      let textIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-
-      function typeWriter() {
-        const currentText = texts[textIndex];
-
-        if (isDeleting) {
-          typingText.textContent = currentText.substring(0, charIndex - 1);
-          charIndex--;
-        } else {
-          typingText.textContent = currentText.substring(0, charIndex + 1);
-          charIndex++;
-        }
-
-        if (!isDeleting && charIndex === currentText.length) {
-          setTimeout(() => (isDeleting = true), 2000);
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          textIndex = (textIndex + 1) % texts.length;
-        }
-
-        setTimeout(typeWriter, isDeleting ? 50 : 100);
-      }
-
-      // Rotating Cyber Quotes/Fun Facts
-      const cyberQuotes = [
-        '"The quieter you become, the more you are able to hear." – Kali Linux',
-        "Did you know? The first computer virus was created in 1971 and called the Creeper.",
-        '"Amateurs hack systems, professionals hack people." – Bruce Schneier',
-        'Fun fact: The word "hacker" originally meant someone who makes furniture with an axe.',
-        '"Security is not a product, but a process." – Bruce Schneier',
-        "Did you know? The world’s first website is still online: info.cern.ch",
-        '"There is no patch for human stupidity." – Kevin Mitnick',
-        'Fun fact: The @ symbol in emails is called an "arroba" in Spanish and Portuguese.',
-        'Did you know? The term "bug" in computing came from a real moth found in a computer in 1947.',
-        '"To confound the enemy, you must first understand them." – Sun Tzu (applied to cyber)',
-        "Fun fact: The strongest passwords are long, random, and unique for every site.",
-        "Did you know? The first spam email was sent in 1978 to 393 people.",
-        '"The best way to predict the future is to invent it." – Alan Kay',
-        "Fun fact: Social engineering is one of the most common ways hackers gain access.",
-        "Did you know? The world’s largest DDoS attack exceeded 2.5 Tbps in 2021.",
-        '"Hacking is not about breaking and entering. It’s about curiosity, exploration, and learning."',
-        'Fun fact: The word "phishing" comes from "fishing" for information with fake bait.',
-      ];
-      let quoteIndex = 0;
-      function showNextQuote() {
-        const quoteText = document.getElementById("cyber-quote-text");
-        quoteText.textContent = cyberQuotes[quoteIndex];
-        quoteIndex = (quoteIndex + 1) % cyberQuotes.length;
-      }
-      showNextQuote();
-      setInterval(showNextQuote, 6000);
-
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // Back to top button
-      const backToTopBtn = document.getElementById("back-to-top");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          backToTopBtn.classList.remove("opacity-0", "invisible");
-        } else {
-          backToTopBtn.classList.add("opacity-0", "invisible");
-        }
-      });
-
-      backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-
-      // Contact form handling
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          // Get form data
-          var formData = new FormData(this);
-
-          // Send form data to Formspree
-          fetch(this.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-              Accept: "application/json",
-            },
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              showPopup(); // cyber popup
-              document.getElementById("contact-form").reset();
-            })
-
-            .catch((error) => {
-              console.error("Error:", error);
-              // Show error message using SweetAlert2
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong! Please try again later.",
-              });
-            });
-        });
-
-      function showPopup(isError = false) {
-        playCyberSound();
-        const popup = document.getElementById("cyber-popup");
-        const popupContent = popup.querySelector(".relative");
-        const popupTitle = document.getElementById("popup-title");
-        const popupMessage = document.getElementById("popup-message");
-        const icon = popup.querySelector(".fas");
-
-        if (isError) {
-          popupTitle.textContent = "> ERROR_DETECTED";
-          popupMessage.textContent = "> MESSAGE_STATUS: FAILED";
-          popupTitle.classList.add("text-red-400");
-          popupContent.classList.add("border-red-500/30");
-          icon.classList.remove("fa-terminal");
-          icon.classList.add("fa-exclamation-triangle");
-        } else {
-          popupTitle.textContent = "> TRANSMISSION_RECEIVED";
-          popupMessage.textContent = "> MESSAGE_STATUS: DELIVERED";
-          popupTitle.classList.remove("text-red-400");
-          popupContent.classList.remove("border-red-500/30");
-          icon.classList.remove("fa-exclamation-triangle");
-          icon.classList.add("fa-terminal");
-        }
-
-        popup.classList.remove("hidden");
-        setTimeout(() => {
-          popupContent.classList.remove("scale-95", "opacity-0");
-          popupContent.classList.add("scale-100", "opacity-100");
-        }, 10);
-
-        setTimeout(closePopup, 4000);
-      }
-
-      function closePopup() {
-        const popup = document.getElementById("cyber-popup");
-        const popupContent = popup.querySelector(".relative");
-
-        popupContent.classList.remove("scale-100", "opacity-100");
-        popupContent.classList.add("scale-95", "opacity-0");
-
-        setTimeout(() => {
-          popup.classList.add("hidden");
-        }, 300);
-      }
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            // Close mobile menu if open
-            mobileMenu.classList.add("hidden");
-          }
-        });
-      });
-
-      // Initialize typing animation
-      typeWriter();
-    </script>
-
-    <!-- Cursor animation JS -->
-    <script>
-      (function () {
-        // Config
-        const TRAIL_COUNT = 3; // number of trail dots
-        const LERP = 0.18; // smoothing (0.01 - 0.4)
-        const COLOR_HOVER_SELECTOR =
-          "a, button, .btn, input, textarea, .interactive"; // elements that trigger hover state
-
-        // Elements
-        const cursorWrap = document.getElementById("custom-cursor");
-        if (!cursorWrap) return;
-
-        const core = cursorWrap.querySelector(".cursor-core");
-        const trailDots = Array.from(cursorWrap.querySelectorAll(".trail-dot"));
-        const ripple = cursorWrap.querySelector(".cursor-click-ripple");
-
-        // State
-        let mouseX = window.innerWidth / 2,
-          mouseY = window.innerHeight / 2;
-        let posX = mouseX,
-          posY = mouseY;
-        let trail = trailDots.map(() => ({ x: mouseX, y: mouseY, alpha: 0 }));
-
-        // Touch check - do not initialize on touch devices
-        const supportsTouch =
-          "ontouchstart" in window || navigator.maxTouchPoints > 0;
-        if (supportsTouch) {
-          cursorWrap.style.display = "none";
-          return;
-        }
-
-        // Mouse move -> update target
-        window.addEventListener(
-          "mousemove",
-          (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-          },
-          { passive: true }
-        );
-
-        // Hide on leaving window
-        window.addEventListener("mouseout", (e) => {
-          if (!e.relatedTarget || e.relatedTarget.nodeName === "HTML") {
-            core.style.opacity = "0";
-            trailDots.forEach((d) => (d.style.opacity = "0"));
-          }
-        });
-        window.addEventListener("mouseover", () => {
-          core.style.opacity = "1";
-        });
-
-        // Click ripple
-        window.addEventListener("mousedown", (e) => {
-          playClickRipple(e.clientX, e.clientY);
-          // small squash effect
-          core.style.transform = "translate(-50%, -50%) scale(0.85)";
-          setTimeout(() => {
-            core.style.transform = "translate(-50%, -50%) scale(1)";
-          }, 120);
-        });
-
-        // Hover state detection (delegated): add/remove 'hovered' class
-        function updateHoverState() {
-          const el = document.elementFromPoint(mouseX, mouseY);
-          if (el && el.matches && el.matches(COLOR_HOVER_SELECTOR)) {
-            core.classList.add("hovered");
-          } else {
-            core.classList.remove("hovered");
-          }
-        }
-
-        // Click ripple function
-        function playClickRipple(x, y) {
-          ripple.style.left = x + "px";
-          ripple.style.top = y + "px";
-          ripple.style.opacity = "1";
-          ripple.style.transform = "translate(-50%, -50%) scale(0.6)";
-          ripple.style.transition =
-            "transform 420ms cubic-bezier(.16,.84,.44,1), opacity 420ms linear";
-          // force reflow then expand
-          void ripple.offsetWidth;
-          ripple.style.transform = "translate(-50%, -50%) scale(3)";
-          ripple.style.opacity = "0";
-          setTimeout(() => {
-            ripple.style.transition = "";
-            ripple.style.transform = "translate(-50%, -50%) scale(1)";
-            ripple.style.opacity = "0";
-          }, 450);
-        }
-
-        // Main loop: lerp position and update elements
-        function rafLoop() {
-          posX += (mouseX - posX) * LERP;
-          posY += (mouseY - posY) * LERP;
-
-          // Move core
-          core.style.left = posX + "px";
-          core.style.top = posY + "px";
-
-          // Update trail positions (simple follower chain)
-          for (let i = 0; i < trail.length; i++) {
-            // lerp each trail toward previous target (or mouse)
-            const targetX = i === 0 ? mouseX : trail[i - 1].x;
-            const targetY = i === 0 ? mouseY : trail[i - 1].y;
-            trail[i].x += (targetX - trail[i].x) * (LERP * (0.8 + i * 0.2));
-            trail[i].y += (targetY - trail[i].y) * (LERP * (0.8 + i * 0.2));
-            trail[i].alpha = Math.max(0.12, 1 - i * 0.28);
-
-            // Apply to DOM
-            const dot = trailDots[i];
-            dot.style.left = trail[i].x + "px";
-            dot.style.top = trail[i].y + "px";
-            dot.style.opacity = String(trail[i].alpha);
-            dot.style.transform =
-              "translate(-50%,-50%) scale(" + (1 - i * 0.18) + ")";
-          }
-
-          updateHoverState();
-          requestAnimationFrame(rafLoop);
-        }
-
-        // Initialize trail starting positions
-        for (let i = 0; i < trail.length; i++) {
-          trail[i].x = mouseX;
-          trail[i].y = mouseY;
-          trail[i].alpha = 0;
-        }
-
-        requestAnimationFrame(rafLoop);
-
-        // Optional: keyboard toggle (press 'c' to toggle cursor)
-        window.addEventListener("keydown", (e) => {
-          if (e.key === "c" || e.key === "C") {
-            const hidden = cursorWrap.style.display === "none";
-            cursorWrap.style.display = hidden ? "" : "none";
-            if (hidden) document.body.style.cursor = "none";
-            else document.body.style.cursor = "auto";
-          }
-        });
-      })();
-    </script>
-
-    <!-- pop-up animation js -->
-    <script>
-      function playCyberSound() {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-
-        // Oscillators (layered cyber vibe)
-        const osc1 = ctx.createOscillator();
-        const osc2 = ctx.createOscillator();
-        const osc3 = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc1.type = "square";
-        osc2.type = "sawtooth";
-        osc3.type = "sine";
-
-        const now = ctx.currentTime;
-        const duration = 1.4; // longer duration for lingering feel
-
-        // Rising cyber sweep
-        osc1.frequency.setValueAtTime(200, now);
-        osc1.frequency.exponentialRampToValueAtTime(1100, now + 1.0);
-        osc2.frequency.setValueAtTime(300, now);
-        osc2.frequency.exponentialRampToValueAtTime(1500, now + 1.0);
-        osc3.frequency.setValueAtTime(400, now);
-        osc3.frequency.exponentialRampToValueAtTime(1800, now + 1.0);
-
-        // Volume curve
-        gain.gain.setValueAtTime(0.2, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
-
-        // Connect to output
-        osc1.connect(gain);
-        osc2.connect(gain);
-        osc3.connect(gain);
-        gain.connect(ctx.destination);
-
-        // Start and stop
-        osc1.start();
-        osc2.start();
-        osc3.start();
-        osc1.stop(now + duration);
-        osc2.stop(now + duration);
-        osc3.stop(now + duration);
-
-        // Small echo blip
-        setTimeout(() => {
-          const echo = ctx.createOscillator();
-          const echoGain = ctx.createGain();
-          echo.type = "triangle";
-          echo.frequency.setValueAtTime(880, ctx.currentTime);
-          echoGain.gain.setValueAtTime(0.1, ctx.currentTime);
-          echoGain.gain.exponentialRampToValueAtTime(
-            0.001,
-            ctx.currentTime + 0.6
-          );
-          echo.connect(echoGain);
-          echoGain.connect(ctx.destination);
-          echo.start();
-          echo.stop(ctx.currentTime + 0.6);
-        }, 700);
-      }
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
