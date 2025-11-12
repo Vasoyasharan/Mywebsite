@@ -175,82 +175,103 @@ backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Contact form handling
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (event) {
+// Contact form handling (robust + defensive)
+// Contact form submission
+(function () {
+  const contactForm = document.getElementById("contact-form");
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    const form = this;
+    const formData = new FormData(this);
 
-    // Get form data
-    var formData = new FormData(this);
-
-    // Send form data to Formspree
     fetch(this.action, {
       method: "POST",
       body: formData,
-      headers: {
-        Accept: "application/json",
-      },
+      headers: { Accept: "application/json" },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        showPopup(); // cyber popup
-        document.getElementById("contact-form").reset();
+      .then((response) => {
+        if (response.ok) {
+          showPopup(false);
+          form.reset();
+        } else {
+          showPopup(true);
+        }
       })
-
-      .catch((error) => {
-        console.error("Error:", error);
-        // Show error message using SweetAlert2
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong! Please try again later.",
-        });
+      .catch(() => {
+        showPopup(true);
       });
   });
+})();
 
 function showPopup(isError = false) {
-  playCyberSound();
+  // play sound if available
+  // try to play sound (silently ignore failures)
+  try { playCyberSound(); } catch (_) {}
+
   const popup = document.getElementById("cyber-popup");
+  if (!popup) return;
+
   const popupContent = popup.querySelector(".relative");
   const popupTitle = document.getElementById("popup-title");
   const popupMessage = document.getElementById("popup-message");
   const icon = popup.querySelector(".fas");
 
+  // Safely update popup contents only if elements exist
   if (isError) {
-    popupTitle.textContent = "> ERROR_DETECTED";
-    popupMessage.textContent = "> MESSAGE_STATUS: FAILED";
-    popupTitle.classList.add("text-red-400");
-    popupContent.classList.add("border-red-500/30");
-    icon.classList.remove("fa-terminal");
-    icon.classList.add("fa-exclamation-triangle");
+    if (popupTitle) popupTitle.textContent = "> ERROR_DETECTED";
+    if (popupMessage) popupMessage.textContent = "> MESSAGE_STATUS: FAILED";
+    if (popupTitle && popupTitle.classList) popupTitle.classList.add("text-red-400");
+    if (popupContent && popupContent.classList) popupContent.classList.add("border-red-500/30");
+    if (icon && icon.classList) {
+      icon.classList.remove("fa-terminal");
+      icon.classList.add("fa-exclamation-triangle");
+    }
   } else {
-    popupTitle.textContent = "> TRANSMISSION_RECEIVED";
-    popupMessage.textContent = "> MESSAGE_STATUS: DELIVERED";
-    popupTitle.classList.remove("text-red-400");
-    popupContent.classList.remove("border-red-500/30");
-    icon.classList.remove("fa-exclamation-triangle");
-    icon.classList.add("fa-terminal");
+    if (popupTitle) popupTitle.textContent = "> TRANSMISSION_RECEIVED";
+    if (popupMessage) popupMessage.textContent = "> MESSAGE_STATUS: DELIVERED";
+    if (popupTitle && popupTitle.classList) popupTitle.classList.remove("text-red-400");
+    if (popupContent && popupContent.classList) popupContent.classList.remove("border-red-500/30");
+    if (icon && icon.classList) {
+      icon.classList.remove("fa-exclamation-triangle");
+      icon.classList.add("fa-terminal");
+    }
   }
 
+  // Show popup container
   popup.classList.remove("hidden");
-  setTimeout(() => {
-    popupContent.classList.remove("scale-95", "opacity-0");
-    popupContent.classList.add("scale-100", "opacity-100");
-  }, 10);
+  popup.style.display = "flex";
+
+  // Trigger reflow to apply CSS transitions
+  void popup.offsetHeight;
+
+  // Add animation to content if available
+  if (popupContent && popupContent.style) {
+    popupContent.style.animation = "none";
+    setTimeout(() => {
+      popupContent.style.animation = "popupIn 0.3s ease-out forwards";
+    }, 10);
+  }
 
   setTimeout(closePopup, 4000);
 }
 
 function closePopup() {
   const popup = document.getElementById("cyber-popup");
+  if (!popup) return;
   const popupContent = popup.querySelector(".relative");
 
-  popupContent.classList.remove("scale-100", "opacity-100");
-  popupContent.classList.add("scale-95", "opacity-0");
+  if (popupContent && popupContent.style) {
+    popupContent.style.animation = "popupOut 0.3s ease-in forwards";
+  }
 
   setTimeout(() => {
-    popup.classList.add("hidden");
+    if (popup) {
+      popup.classList.add("hidden");
+      popup.style.display = "none";
+    }
+    if (popupContent && popupContent.style) popupContent.style.animation = "none";
   }, 300);
 }
 

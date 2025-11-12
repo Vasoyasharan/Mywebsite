@@ -554,3 +554,26 @@ footer {
   border-right: 2px solid rgba(6, 182, 212, 0.5);
   animation: typewriter 1s steps(40) forwards, blink 1s infinite;
 }
+
+/* Popup Animations */
+@keyframes popupIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popupOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
