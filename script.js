@@ -160,22 +160,140 @@ mobileMenuBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
 
-// Back to top button
-const backToTopBtn = document.getElementById("back-to-top");
+// ===== ADVANCED FEATURES =====
+
+// 1. Advanced Scroll Progress Bar with Smooth Animation
+let lastScrollTop = 0;
+const progressBar = document.getElementById("progress-bar");
 
 window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 300) {
-    backToTopBtn.classList.remove("opacity-0", "invisible");
-  } else {
-    backToTopBtn.classList.add("opacity-0", "invisible");
+  const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = window.scrollY;
+  const progress = (scrolled / windowHeight) * 100;
+  
+  if (progressBar) {
+    progressBar.style.width = progress + "%";
+    
+    // Add subtle glow pulse based on scroll speed
+    const scrollSpeed = Math.abs(window.scrollY - lastScrollTop);
+    if (scrollSpeed > 5) {
+      progressBar.style.filter = `blur(0.5px) brightness(${1 + scrollSpeed * 0.01})`;
+    } else {
+      progressBar.style.filter = "blur(0.5px) brightness(1)";
+    }
+    
+    lastScrollTop = window.scrollY;
   }
 });
 
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+// 2. Advanced Parallax Effect on Hero Section
+let parallaxX = 0, parallaxY = 0;
+const parallaxHero = document.getElementById("parallax-hero");
+
+window.addEventListener("mousemove", (e) => {
+  if (!parallaxHero) return;
+  
+  // Smooth interpolation
+  const targetX = (e.clientX / window.innerWidth - 0.5) * 30;
+  const targetY = (e.clientY / window.innerHeight - 0.5) * 30;
+  
+  parallaxX += (targetX - parallaxX) * 0.1;
+  parallaxY += (targetY - parallaxY) * 0.1;
+  
+  parallaxHero.style.transform = `perspective(1000px) rotateY(${parallaxX * 0.5}deg) rotateX(${-parallaxY * 0.5}deg) translateZ(0)`;
 });
 
-// Contact form handling (robust + defensive)
+// Reset parallax on mouse leave
+document.addEventListener("mouseleave", () => {
+  if (parallaxHero) {
+    parallaxHero.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0)";
+  }
+});
+
+// 3. Advanced Button Ripple Effect with Multiple Ripples
+document.querySelectorAll("a, button").forEach((element) => {
+  element.addEventListener("click", function (e) {
+    // Create primary ripple
+    const ripple = document.createElement("span");
+    const rect = this.getBoundingClientRect();GitHub
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.position = "absolute";
+    ripple.style.width = size + "px";
+    ripple.style.height = size + "px";
+    ripple.style.left = x + "px";
+    ripple.style.top = y + "px";
+    ripple.style.borderRadius = "50%";
+    ripple.style.background = "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(6,182,212,0.4) 100%)";
+    ripple.style.pointerEvents = "none";
+    ripple.style.animation = "ripple-animation 0.6s ease-out";
+    
+    this.style.position = "relative";
+    this.style.overflow = "hidden";
+    this.appendChild(ripple);
+    
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// 4. Advanced Timeline Items Animation on Scroll
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: "0px 0px -100px 0px"
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateX(0) rotateY(0deg)";
+      
+      // Animate timeline dot
+      const dot = entry.target.querySelector(".timeline-dot");
+      if (dot) {
+        dot.style.animation = "dot-pulse-in 0.6s ease-out";
+      }
+      
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll(".timeline-item").forEach((item, index) => {
+  item.style.opacity = "0";
+  item.style.transition = "none";
+  
+  if (item.classList.contains("lg:justify-end")) {
+    item.style.transform = "translateX(50px) rotateY(-5deg)";
+  } else {
+    item.style.transform = "translateX(-50px) rotateY(5deg)";
+  }
+  
+  observer.observe(item);
+});
+
+// Add dot pulse animation
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes dot-pulse-in {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.4);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+`;
+document.head.appendChild(style);
+
 // Contact form submission
 (function () {
   const contactForm = document.getElementById("contact-form");
@@ -490,3 +608,88 @@ function playCyberSound() {
     echo.stop(ctx.currentTime + 0.6);
   }, 700);
 }
+
+// Project Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.project-filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const filterValue = this.getAttribute('data-filter');
+      
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filter projects
+      projectItems.forEach(item => {
+        const tags = item.getAttribute('data-tags').split(',');
+        
+        if (filterValue === 'all' || tags.includes(filterValue)) {
+          item.style.display = 'flex';
+          item.style.animation = 'fadeInScale 0.5s ease-out forwards';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+
+// Animate on Scroll (AOS) - Fade in elements as they come into view
+function initScrollAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with data-aos attribute
+  document.querySelectorAll('[data-aos]').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+// Initialize scroll animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', initScrollAnimations);
+
+// Section Transition Animations
+function initSectionAnimations() {
+  const sections = document.querySelectorAll('section');
+  
+  const sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  });
+
+  sections.forEach(section => {
+    section.style.opacity = '0.95';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    sectionObserver.observe(section);
+  });
+}
+
+// Initialize all animations
+document.addEventListener('DOMContentLoaded', function() {
+  initScrollAnimations();
+  initSectionAnimations();
+});
+
+
