@@ -690,6 +690,180 @@ function initSectionAnimations() {
 document.addEventListener('DOMContentLoaded', function() {
   initScrollAnimations();
   initSectionAnimations();
+  initHackerDashboard();
+  initThreatIntel();
 });
+
+// ===== RESUME DOWNLOAD FUNCTIONALITY =====
+function downloadResume() {
+  // Direct link to your PDF resume
+  const link = document.createElement('a');
+  link.href = 'Sharan_Vasoya_Resume.pdf';
+  link.download = 'Sharan_Vasoya_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Show success popup
+  showPopup(false);
+}
+
+// ===== HACKER DASHBOARD FUNCTIONALITY =====
+function initHackerDashboard() {
+  const hackerCommands = [
+    '$ nmap -sV -A target_host',
+    '$ enum4linux -a domain.local',
+    '$ sqlmap -u "http://target" --dbs',
+    '$ responder -I eth0 -v',
+    '$ msfconsole -x "use exploit/windows/smb/psexec"',
+    '$ hashcat -m 1000 hashes.txt wordlist.txt',
+    '$ ffuf -u http://target/FUZZ -w wordlist.txt',
+    '$ zeek -r capture.pcap',
+    '$ hydra -l admin -P passwords.txt ssh://target',
+    '$ mimikatz.exe "lsadump::dcsync /domain:company.com"'
+  ];
+
+  let commandIndex = 0;
+  const terminalOutput = document.getElementById('terminal-output');
+
+  function addCommand() {
+    if (commandIndex < hackerCommands.length) {
+      const cmd = hackerCommands[commandIndex];
+      const line = document.createElement('div');
+      line.className = 'typing-effect text-cyan-400';
+      line.textContent = '$ ' + cmd.substring(2);
+      terminalOutput.appendChild(line);
+      
+      // Add output lines
+      const outputs = [
+        document.createElement('div'),
+        document.createElement('div')
+      ];
+      
+      outputs[0].className = 'text-green-400 text-xs';
+      outputs[0].textContent = '[*] Scanning targets...';
+      outputs[1].className = 'text-green-400 text-xs';
+      outputs[1].textContent = '[+] Data received successfully';
+      
+      terminalOutput.appendChild(outputs[0]);
+      terminalOutput.appendChild(outputs[1]);
+      
+      // Auto scroll
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      commandIndex++;
+      
+      setTimeout(addCommand, 1500);
+    } else {
+      commandIndex = 0;
+      setTimeout(addCommand, 3000);
+    }
+  }
+
+  // Start the animation
+  setTimeout(addCommand, 500);
+
+  // Animate stat counters
+  animateCounter('machines-count', 45);
+  animateCounter('exploits-count', 60);
+  animateCounter('days-count', 500);
+  animateCounter('tools-count', 15);
+}
+
+function animateCounter(elementId, targetValue) {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+
+  const text = element.textContent;
+  const hasPlus = text.includes('+');
+  
+  let currentValue = 0;
+  const increment = Math.ceil(targetValue / 50);
+  
+  const counter = setInterval(() => {
+    currentValue += increment;
+    if (currentValue >= targetValue) {
+      currentValue = targetValue;
+      clearInterval(counter);
+    }
+    element.textContent = currentValue + (hasPlus ? '+' : '');
+  }, 30);
+}
+
+// ===== THREAT INTELLIGENCE FUNCTIONALITY =====
+function initThreatIntel() {
+  refreshThreatIntel();
+  // Refresh every 5 minutes
+  setInterval(refreshThreatIntel, 300000);
+}
+
+function refreshThreatIntel() {
+  const threatFeed = document.getElementById('threat-feed');
+  
+  // Sample threat data - in production, this would fetch from real APIs
+  const threats = [
+    {
+      icon: 'fa-virus',
+      title: 'Critical: CVE-2024-12345',
+      description: 'Remote Code Execution in popular framework discovered. CVSS: 9.8',
+      severity: 'Critical',
+      time: '2 hours ago',
+      color: 'red'
+    },
+    {
+      icon: 'fa-bug',
+      title: 'High: Authentication Bypass',
+      description: 'Zero-day vulnerability found in authentication module. Immediate patch required.',
+      severity: 'High',
+      time: '4 hours ago',
+      color: 'orange'
+    },
+    {
+      icon: 'fa-shield-alt',
+      title: 'Medium: SQL Injection Vulnerability',
+      description: 'Database layer vulnerable to SQL injection in user input fields.',
+      severity: 'Medium',
+      time: '6 hours ago',
+      color: 'yellow'
+    },
+    {
+      icon: 'fa-exclamation-circle',
+      title: 'Critical: Data Breach Alert',
+      description: '50,000 records exposed on exposed S3 bucket. Immediate action required.',
+      severity: 'Critical',
+      time: '8 hours ago',
+      color: 'red'
+    },
+    {
+      icon: 'fa-key',
+      title: 'High: Leaked API Keys',
+      description: 'AWS access keys discovered in public GitHub repository.',
+      severity: 'High',
+      time: '10 hours ago',
+      color: 'orange'
+    }
+  ];
+
+  const severityColors = {
+    'Critical': 'red-500',
+    'High': 'orange-500',
+    'Medium': 'yellow-500'
+  };
+
+  threatFeed.innerHTML = threats.map((threat, index) => `
+    <div class="threat-item flex gap-4 p-4 bg-black/30 rounded border border-${threat.color}-500/20 hover:border-${threat.color}-500/50 transition" style="border-color: rgba(${threat.color === 'red' ? '239, 68, 68' : threat.color === 'orange' ? '249, 115, 22' : '234, 179, 8'}, 0.2);">
+      <div class="flex-shrink-0">
+        <i class="fas ${threat.icon} text-${severityColors[threat.severity]} text-xl mt-1" style="color: ${threat.color === 'red' ? '#ef4444' : threat.color === 'orange' ? '#f97316' : '#eab308'};"></i>
+      </div>
+      <div class="flex-grow">
+        <div class="flex items-center gap-2">
+          <h4 class="font-semibold" style="color: ${threat.color === 'red' ? '#f87171' : threat.color === 'orange' ? '#fb923c' : '#facc15'}">${threat.title}</h4>
+          <span class="text-xs px-2 py-1 rounded" style="background-color: ${threat.color === 'red' ? 'rgba(239, 68, 68, 0.2)' : threat.color === 'orange' ? 'rgba(249, 115, 22, 0.2)' : 'rgba(234, 179, 8, 0.2)'}; color: ${threat.color === 'red' ? '#f87171' : threat.color === 'orange' ? '#fb923c' : '#facc15'};">${threat.severity}</span>
+        </div>
+        <p class="text-gray-400 text-sm mt-1">${threat.description}</p>
+        <p class="text-gray-500 text-xs mt-2">${threat.time}</p>
+      </div>
+    </div>
+  `).join('');
+}
 
 
