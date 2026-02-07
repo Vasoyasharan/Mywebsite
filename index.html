@@ -18,6 +18,116 @@
   <body
     class="bg-black text-white min-h-screen scroll-smooth bg-pattern grid-pattern">
     <!-- Scroll Progress Bar -->
+    <div id="scroll-progress-bar"></div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" title="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Warning Screen -->
+    <div id="mobile-warning" class="fixed inset-0 bg-black z-[9999] hidden flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <!-- Animated Background Elements -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-cyan-500/10 rounded-full"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-purple-500/10 rounded-full" style="animation: spin 20s linear infinite;"></div>
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+        <!-- Animated Icon -->
+        <div class="mb-8 inline-block animate-bounce">
+          <div class="relative">
+            <i class="fas fa-lock-open text-6xl text-cyan-400 drop-shadow-lg" style="text-shadow: 0 0 30px rgba(6, 182, 212, 0.8);"></i>
+            <div class="absolute inset-0 bg-cyan-400/30 rounded-full blur-2xl animate-pulse"></div>
+          </div>
+        </div>
+
+        <!-- Main Message -->
+        <h1 class="text-5xl lg:text-6xl font-black mb-6 relative">
+          <span class="gradient-text">DESKTOP MODE</span>
+          <br />
+          <span class="text-gray-300 text-4xl lg:text-5xl mt-3 block">REQUIRED</span>
+          
+          <!-- Glitch Effect -->
+          <div class="absolute inset-0 text-cyan-500 opacity-50 text-5xl lg:text-6xl font-black" style="transform: translate(2px, 2px); animation: glitch 0.2s infinite;">
+            DESKTOP MODE
+          </div>
+        </h1>
+
+        <!-- Decorative Line -->
+        <div class="h-1 w-32 mx-auto my-8 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full"></div>
+
+        <!-- Description -->
+        <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+          This portfolio is <span class="text-cyan-400 font-bold">optimized for desktop & tablet</span> experiences only.
+        </p>
+
+        <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-lg p-8 mb-8 backdrop-blur-sm">
+          <p class="text-gray-400 text-base mb-4">
+            <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
+            <strong>Why?</strong> Advanced animations, interactive elements, and creative layouts require a wider screen for optimal viewing.
+          </p>
+          <p class="text-gray-500 text-sm">
+            💻 Open this site on your laptop or desktop for the full immersive cybersecurity experience!
+          </p>
+        </div>
+
+        <!-- Device Suggestions -->
+        <div class="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto">
+          <div class="flex flex-col items-center p-4 rounded-lg border border-green-500/30 bg-green-500/5">
+            <i class="fas fa-desktop text-2xl text-green-400 mb-2"></i>
+            <span class="text-xs font-bold text-green-400">Desktop</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg border border-blue-500/30 bg-blue-500/5">
+            <i class="fas fa-tablet text-2xl text-blue-400 mb-2"></i>
+            <span class="text-xs font-bold text-blue-400">Tablet</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg border border-purple-500/30 bg-purple-500/5 opacity-50 cursor-not-allowed">
+            <i class="fas fa-ban text-2xl text-gray-500 mb-2"></i>
+            <span class="text-xs font-bold text-gray-500">Mobile ✗</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <p class="text-sm text-gray-400 mb-6">
+          <span class="text-cyan-400 font-mono font-bold">$</span> 
+          <span class="ml-2">Pro tip: Use desktop browser or enable desktop mode on your device</span>
+        </p>
+
+        <!-- Terminal Style Message -->
+        <div class="bg-black/60 border border-cyan-500/30 rounded-lg p-6 font-mono text-left max-w-md mx-auto">
+          <div class="text-cyan-400 mb-2">
+            <span class="text-green-400">&gt;</span> system_check
+          </div>
+          <div class="text-cyan-400 mb-1">
+            <span class="text-green-400">&gt;</span> device: <span class="text-purple-400">mobile</span>
+          </div>
+          <div class="text-cyan-400 mb-1">
+            <span class="text-green-400">&gt;</span> recommended: <span class="text-green-400">desktop/tablet</span>
+          </div>
+          <div class="text-cyan-400 mb-4">
+            <span class="text-green-400">&gt;</span> status: <span class="text-red-400 animate-pulse">⚠️ INCOMPATIBLE</span>
+          </div>
+          <div class="text-gray-500 text-xs">
+            Please switch to a larger screen for optimal experience.
+          </div>
+        </div>
+
+        <!-- Animated Border -->
+        <div class="mt-12 relative inline-block">
+          <div class="absolute -inset-2 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 rounded-lg opacity-0 group-hover:opacity-100 transition duration-1000 blur" style="animation: shimmer 3s infinite;"></div>
+          <div class="relative bg-black px-8 py-4 rounded-lg border border-cyan-500/50">
+            <p class="text-cyan-400 font-bold">
+              <i class="fas fa-arrow-right mr-2"></i>Please open on desktop or tablet
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
     <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 z-[999]" style="width: 0%; transition: width 0.3s ease;"></div>
 
     <!-- Particle.js Background -->
@@ -49,38 +159,64 @@
 
     <div class="content-layer">
       <!-- Navigation -->
-      <nav
-        class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
-        <div class="container mx-auto px-4 py-4">
-          <div class="flex justify-between items-center">
-            <div class="text-xl font-bold gradient-text">Sharan Vasoya</div>
-            <div class="hidden md:flex space-x-6">
-              <a href="#home" class="hover:text-cyan-400 transition">Home</a>
-              <a href="#about" class="hover:text-cyan-400 transition">About</a>
-              <a href="#experience"
-                class="hover:text-cyan-400 transition">Experience</a>
-              <a href="#projects"
-                class="hover:text-cyan-400 transition">Projects</a>
-              <a href="#contact"
-                class="hover:text-cyan-400 transition">Contact</a>
+      <nav class="fixed top-0 w-full z-50">
+        <!-- Glowing Top Border -->
+        <div class="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent absolute top-0 w-full"></div>
+        
+        <!-- Navbar Container -->
+        <div class="bg-black/80 backdrop-blur-md border-b border-cyan-700/20 hover:border-cyan-700/40 transition-colors duration-300">
+          <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+              <!-- Logo -->
+              <div class="flex items-center gap-2 group cursor-pointer">
+                <div class="relative w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span class="relative text-white font-bold text-sm">SV</span>
+                  <div class="absolute inset-0 rounded-lg box-shadow-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.3);"></div>
+                </div>
+                <div>
+                  <h1 class="text-xl font-bold gradient-text">Sharan Vasoya</h1>
+                  <p class="text-xs text-gray-500">Security Expert</p>
+                </div>
+              </div>
+
+              <!-- Desktop Navigation -->
+              <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link">
+                  <span>Home</span>
+                </a>
+                <a href="#about" class="nav-link">
+                  <span>About</span>
+                </a>
+                <a href="#experience" class="nav-link">
+                  <span>Experience</span>
+                </a>
+                <a href="#projects" class="nav-link">
+                  <span>Projects</span>
+                </a>
+                <a href="#contact" class="nav-link">
+                  <span>Contact</span>
+                </a>
+              </div>
+
+              <!-- Mobile Menu Button -->
+              <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 group relative w-8">
+                <div class="navbar-hamburger"></div>
+                <div class="navbar-hamburger"></div>
+                <div class="navbar-hamburger"></div>
+              </button>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden">
-              <i class="fas fa-bars text-xl"></i>
-            </button>
-          </div>
-          <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-            <a href="#home"
-              class="block hover:text-cyan-400 transition">Home</a>
-            <a href="#about"
-              class="block hover:text-cyan-400 transition">About</a>
-            <a href="#experience"
-              class="block hover:text-cyan-400 transition">Experience</a>
-            <a href="#projects"
-              class="block hover:text-cyan-400 transition">Projects</a>
-            <a href="#certificates"
-              class="hover:text-cyan-400 transition">Certificates</a>
-            <a href="#contact"
-              class="block hover:text-cyan-400 transition">Contact</a>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden max-h-0 overflow-hidden transition-all duration-300">
+              <div class="py-4 space-y-2 border-t border-cyan-700/20">
+                <a href="#home" class="nav-mobile-link">Home</a>
+                <a href="#about" class="nav-mobile-link">About</a>
+                <a href="#experience" class="nav-mobile-link">Experience</a>
+                <a href="#projects" class="nav-mobile-link">Projects</a>
+                <a href="#contact" class="nav-mobile-link">Contact</a>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -93,68 +229,69 @@
           <div class="flex flex-col lg:flex-row items-center justify-between">
             <div
               class="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 animate-slide-left">
-              <h1 class="text-4xl lg:text-6xl font-bold mb-4">
-                Hi, I'm <span class="gradient-text">Sharan Vasoya</span>
-              </h1>
-              <div class="text-xl lg:text-2xl text-gray-400 mb-6">
-                <span id="typing-text" class="typing-animation"></span>
+              <!-- Main Heading -->
+              <div class="space-y-4">
+                <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                  Hi, I'm <span class="gradient-text block">Sharan Vasoya</span>
+                </h1>
+                
+                <!-- Animated Typing Text -->
+                <div class="text-xl lg:text-2xl text-gray-400 font-mono h-8 flex items-center">
+                  <span class="flex items-center gap-2">
+                    <span class="text-cyan-400">$</span>
+                    <span id="typing-text" class="typing-animation"></span>
+                  </span>
+                </div>
               </div>
               <p class="text-lg text-gray-300 mb-8 max-w-2xl">
                 I’m a passionate cybersecurity enthusiast currently pursuing my
                 MSc in Cybersecurity. My primary focus is on Red Teaming and
-                ethical hacking — exploring how systems can be broken to
+                ethical hacking exploring how systems can be broken to
                 understand how to defend them better. I enjoy learning offensive
                 security techniques, privilege escalation, and real-world
                 exploitation methods.
               </p>
-              <div
-                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a
-                  href="#contact"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105">
-                  Get In Touch
+              <!-- CTA Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#contact" class="hero-btn hero-btn-primary group">
+                  <span class="flex items-center justify-center gap-2">
+                    Get In Touch
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                  </span>
                 </a>
-                <a
-                  href="#projects"
-                  class="border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition">
-                  View Projects
+                <a href="#projects" class="hero-btn hero-btn-secondary group">
+                  <span class="flex items-center justify-center gap-2">
+                    View Projects
+                    <i class="fas fa-code group-hover:rotate-12 transition-transform duration-300"></i>
+                  </span>
                 </a>
-                <a
-                  href="javascript:downloadResume()"
-                  class="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105 flex items-center gap-2">
-                  <i class="fas fa-download"></i>
-                  Download Resume
+                <a href="javascript:downloadResume()" class="hero-btn hero-btn-tertiary group">
+                  <span class="flex items-center justify-center gap-2">
+                    <i class="fas fa-download"></i>
+                    Resume
+                  </span>
                 </a>
               </div>
-              <div class="flex justify-center lg:justify-start space-x-6 mt-8">
-                <a
-                  href="https://github.com/Vasoyasharan"
-                  target="_blank"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
-                  <i class="fab fa-github"></i>
+              <!-- Social Links -->
+              <div class="flex gap-5 pt-4 social-links-container">
+                <a href="https://github.com/Vasoyasharan" target="_blank" class="hero-social-link group icon-animated icon-float" title="GitHub" data-tooltip="GitHub">
+                  <i class="fab fa-github text-xl"></i>
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/sharan-root/"
-                  target="_blank"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
-                  <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/sharan-root/" target="_blank" class="hero-social-link group icon-animated icon-float" title="LinkedIn" data-tooltip="LinkedIn">
+                  <i class="fab fa-linkedin text-xl"></i>
                 </a>
-                <a
-                  href="https://www.google.com/search?q=Sharan+Vasoya"
-                  target="_blank"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
-                  <i class="fas fa-globe"></i>
+                <a href="https://www.google.com/search?q=Sharan+Vasoya" target="_blank" class="hero-social-link group icon-animated icon-float" title="Website" data-tooltip="Visit Site">
+                  <i class="fas fa-globe text-xl"></i>
                 </a>
-                <a
-                  href="mailto:sharanvasoya@proton.me"
-                  class="text-2xl hover:text-cyan-400 transition transform hover:scale-110">
-                  <i class="fas fa-envelope"></i>
+                <a href="mailto:sharanvasoya@proton.me" class="hero-social-link group icon-animated icon-float" title="Email" data-tooltip="Email Me">
+                  <i class="fas fa-envelope text-xl"></i>
                 </a>
               </div>
             </div>
-            <div
-              class="hidden lg:flex lg:w-1/2 justify-center animate-slide-right" id="parallax-hero">
-              <div class="thm-container">
+            <!-- Right Content - TryHackMe Badge -->
+            <div class="hidden lg:flex lg:w-1/2 justify-center items-center relative" id="parallax-hero">
+              <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              <div class="thm-container relative">
                 <iframe
                   src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=4643449"
                   style="border: none; width: 500px; height: 120px"
@@ -183,14 +320,14 @@
             About Me
           </h2>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="animate-slide-left">
+            <div class="animate-slide-left content-block">
               <h3 class="text-2xl font-semibold mb-6 text-cyan-400">
                 Professional Summary
               </h3>
               <div class="space-y-6">
                 <!--  Professional Summary Paragraph -->
                 <div
-                  class="card-hover p-6 rounded-lg backdrop-blur-sm border border-cyan-500/10" data-aos="fade-up">
+                  class="card-hover glass-effect p-6 rounded-lg border-0" data-aos="fade-up">
                   <p class="text-gray-300 leading-relaxed">
                     Cybersecurity enthusiast driven by curiosity — exploring how
                     systems break and how to secure them. Focused on Red Teaming
@@ -202,7 +339,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Areas of Interest -->
                   <div
-                    class="card-hover p-6 rounded-lg backdrop-blur-sm border border-cyan-500/10" data-aos="fade-left">
+                    class="card-hover glass-effect p-6 rounded-lg border-0 border-accent-teal" data-aos="fade-left">
                     <h4 class="text-lg font-semibold text-cyan-400 mb-3">Areas
                       of Interest</h4>
                     <ul class="space-y-2 text-gray-300">
@@ -227,7 +364,7 @@
 
                   <!-- Cyber Philosophy -->
                   <div
-                    class="card-hover p-6 rounded-lg backdrop-blur-sm border border-cyan-500/10" data-aos="fade-right">
+                    class="card-hover glass-effect p-6 rounded-lg border-0 border-accent-teal" data-aos="fade-right">
                     <h4 class="text-lg font-semibold text-cyan-400 mb-3">Cyber
                       Philosophy</h4>
                     <ul class="space-y-2 text-gray-300">
@@ -253,35 +390,46 @@
               </div>
 
             </div>
-            <div class="animate-slide-right">
+            <div class="animate-slide-right content-block">
               <h3 class="text-2xl font-semibold mb-6 text-cyan-400">
                 Education & Certifications
               </h3>
               <div class="space-y-4">
-                <div class="p-4 card-hover rounded-lg">
-                  <h4 class="font-semibold text-cyan-300">
-                    Master of Science - Cybersecurity
-                  </h4>
-                  <p class="text-gray-400">
-                    BAOU | Pursuing (2025-2027) | Gujarat, India
-                  </p>
+                <div class="p-6 card-hover rounded-lg border-l-4 border-l-purple-500 relative overflow-hidden" data-aos="fade-up">
+                  <div class="absolute top-0 right-0 w-20 h-20 bg-purple-500/10 rounded-full -mr-10 -mt-10"></div>
+                  <div class="relative">
+                    <span class="inline-block px-3 py-1 mb-2 text-xs font-semibold text-purple-300 bg-purple-900/30 rounded-full border border-purple-500/50">Master's Degree</span>
+                    <h4 class="font-semibold text-cyan-300 text-lg mt-2">
+                      Master of Science - Cybersecurity
+                    </h4>
+                    <p class="text-gray-400 text-sm mt-2">
+                      <i class="fas fa-university text-cyan-400 mr-2"></i>BAOU | Pursuing (2025-2027) | Gujarat, India
+                    </p>
+                  </div>
                 </div>
-                <div class="p-4 card-hover rounded-lg">
-                  <h4 class="font-semibold text-cyan-300">
-                    Bachelor of Computer Application (BCA)
-                  </h4>
-                  <p class="text-gray-400">
-                    VNSG University | April 2025 | Gujarat, India
-                  </p>
+                <div class="p-6 card-hover rounded-lg border-l-4 border-l-cyan-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                  <div class="absolute top-0 right-0 w-20 h-20 bg-cyan-500/10 rounded-full -mr-10 -mt-10"></div>
+                  <div class="relative">
+                    <span class="inline-block px-3 py-1 mb-2 text-xs font-semibold text-cyan-300 bg-cyan-900/30 rounded-full border border-cyan-500/50">Bachelor's Degree</span>
+                    <h4 class="font-semibold text-cyan-300 text-lg mt-2">
+                      Bachelor of Computer Application (BCA)
+                    </h4>
+                    <p class="text-gray-400 text-sm mt-2">
+                      <i class="fas fa-graduation-cap text-cyan-400 mr-2"></i>VNSG University | April 2025 | Gujarat, India
+                    </p>
+                  </div>
                 </div>
-                <div class="p-4 card-hover rounded-lg">
-                  <h4 class="font-semibold text-cyan-300">
-                    Higher Secondary - Science
-                  </h4>
-                  <p class="text-gray-400">
-                    Dream International School | March 2023 | Gujarat,
-                    India
-                  </p>
+                <div class="p-6 card-hover rounded-lg border-l-4 border-l-blue-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                  <div class="absolute top-0 right-0 w-20 h-20 bg-blue-500/10 rounded-full -mr-10 -mt-10"></div>
+                  <div class="relative">
+                    <span class="inline-block px-3 py-1 mb-2 text-xs font-semibold text-blue-300 bg-blue-900/30 rounded-full border border-blue-500/50">High School</span>
+                    <h4 class="font-semibold text-cyan-300 text-lg mt-2">
+                      Higher Secondary - Science
+                    </h4>
+                    <p class="text-gray-400 text-sm mt-2">
+                      <i class="fas fa-school text-cyan-400 mr-2"></i>Dream International School | March 2023 | Gujarat, India
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -290,151 +438,124 @@
       </section>
 
       <!-- Skills Section -->
-      <section class="py-20">
+      <section class="py-20 skills-section">
         <div class="container mx-auto px-4">
-          <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
-            Technical Skills
-          </h2>
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="section-header text-center mb-16">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-4 gradient-text glitch-text animate-on-scroll">
+              Technical Skills
+            </h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+              Mastering the tools of the trade, one skill at a time
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Programming Languages -->
-            <div class="card-hover rounded-lg p-6 animate-fade-up" data-aos="fade-up">
-              <h3
-                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
-                <i class="fas fa-code mr-3"></i>Programming & Scripting
-              </h3>
-              <div class="grid grid-cols-3 gap-6 justify-items-center">
-                <div class="text-center group">
-                  <div class="lang-icon java-icon text-6xl mb-2">
-                    <i class="fab fa-js"></i>
-                  </div>
-                  <span
-                    class="text-sm text-gray-400 group-hover:text-orange-400 transition">JavaScript</span>
+            <div class="skill-card card-hover rounded-xl p-8 animate-fade-up content-block" data-aos="fade-up">
+              <div class="skill-header">
+                <div class="skill-icon-container">
+            <i class="fas fa-code skill-title-icon icon-animated icon-bounce text-cyan-400"></i>
                 </div>
-                <div class="text-center group">
-                  <div class="lang-icon python-icon text-6xl mb-2">
-                    <i class="fab fa-python"></i>
-                  </div>
-                  <span
-                    class="text-sm text-gray-400 group-hover:text-yellow-400 transition">Python</span>
-                </div>
-                <div class="text-center group">
-                  <div class="lang-icon csharp-icon text-6xl mb-2">
-                    <i class="fab fa-react"></i>
-                  </div>
-                  <span
-                    class="text-sm text-gray-400 group-hover:text-purple-400 transition">react.js</span>
-                </div>
-                <div class="text-center group">
-                  <div class="lang-icon cpp-icon text-6xl mb-2">
-                    <i class="fas fa-wind"></i>
-                  </div>
-                  <span
-                    class="text-sm text-gray-400 group-hover:text-blue-400 transition">TailwindCss</span>
-                </div>
-                <div class="text-center group">
-                  <div class="lang-icon bash-icon text-6xl mb-2">
-                    <i class="fas fa-terminal"></i>
-                  </div>
-                  <span
-                    class="text-sm text-gray-400 group-hover:text-green-400 transition">Bash</span>
-                </div>
-                <div class="text-center group">
-                  <div class="lang-icon bash-icon text-6xl mb-2">
-                    <i class="fab fa-windows"></i>
-                  </div>
-                  <span
-                    class="text-sm text-gray-400 group-hover:text-blue-400 transition">PowerShell</span>
-                </div>
+                <h3 class="text-2xl font-bold text-cyan-400 mt-4">
+                  Programming & Scripting
+                </h3>
+              </div>
+              <div class="skill-pills">
+                <div class="skill-pill skill-pill-lang">JavaScript</div>
+                <div class="skill-pill skill-pill-lang">Python</div>
+                <div class="skill-pill skill-pill-lang">React.js</div>
+                <div class="skill-pill skill-pill-lang">TailwindCSS</div>
+                <div class="skill-pill skill-pill-lang">Bash</div>
+                <div class="skill-pill skill-pill-lang">PowerShell</div>
+                <div class="skill-pill skill-pill-lang">Git/GitHub</div>
               </div>
             </div>
 
             <!-- Security Tools -->
-            <div
-              class="card-hover rounded-lg p-6 animate-fade-up"
-              style="animation-delay: 0.2s" data-aos="fade-up" data-aos-delay="200">
-              <h3
-                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
-                <i class="fas fa-shield-alt mr-3"></i>Security Tools
-              </h3>
-              <div class="grid grid-cols-2 gap-3">
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Metasploit
+            <div class="skill-card card-hover rounded-xl p-8 animate-fade-up" style="animation-delay: 0.2s" data-aos="fade-up" data-aos-delay="200">
+              <div class="skill-header">
+                <div class="skill-icon-container shield-icon">
+                  <i class="fas fa-shield-alt skill-title-icon"></i>
                 </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Burp Suite
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Nmap
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Enum4linux
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Sqlmap
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Hydra
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Cryptography
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Reverse Engineering
-                </div>
+                <h3 class="text-2xl font-bold text-purple-400 mt-4">
+                  Security Tools
+                </h3>
+              </div>
+              <div class="skill-pills">
+                <div class="skill-pill skill-pill-security">Metasploit</div>
+                <div class="skill-pill skill-pill-security">Burp Suite</div>
+                <div class="skill-pill skill-pill-security">Nmap</div>
+                <div class="skill-pill skill-pill-security">Enum4linux</div>
+                <div class="skill-pill skill-pill-security">Sqlmap</div>
+                <div class="skill-pill skill-pill-security">Hydra</div>
+                <div class="skill-pill skill-pill-security">Cryptography</div>
+                <div class="skill-pill skill-pill-security">Reverse Eng.</div>
               </div>
             </div>
 
             <!-- Development Tools -->
-            <div
-              class="card-hover rounded-lg p-6 animate-fade-up"
-              style="animation-delay: 0.4s" data-aos="fade-up" data-aos-delay="400">
-              <h3
-                class="text-xl font-semibold mb-6 text-cyan-400 flex items-center">
-                <i class="fas fa-tools mr-3"></i>Development & Infrastructure
-                Tools
-              </h3>
-              <div class="grid grid-cols-2 gap-3">
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Git / GitHub
+            <div class="skill-card card-hover rounded-xl p-8 animate-fade-up content-block" style="animation-delay: 0.4s" data-aos="fade-up" data-aos-delay="400">
+              <div class="skill-header">
+                <div class="skill-icon-container tools-icon">
+                <i class="fas fa-tools skill-title-icon icon-animated icon-spin text-blue-400"></i>
                 </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Docker
+                <h3 class="text-2xl font-bold text-blue-400 mt-4">
+                  Dev & Infrastructure
+                </h3>
+              </div>
+              <div class="skill-pills">
+                <div class="skill-pill skill-pill-dev">Git/GitHub</div>
+                <div class="skill-pill skill-pill-dev">Docker</div>
+                <div class="skill-pill skill-pill-dev">Jenkins</div>
+                <div class="skill-pill skill-pill-dev">VS Code</div>
+                <div class="skill-pill skill-pill-dev">Burp Extensions</div>
+                <div class="skill-pill skill-pill-dev">VirtualBox</div>
+                <div class="skill-pill skill-pill-dev">Packet Tracer</div>
+                <div class="skill-pill skill-pill-dev">AWS (Basic)</div>
+              </div>
+            </div>
+
+            <!-- Networking & Protocols -->
+            <div class="skill-card card-hover rounded-xl p-8 animate-fade-up content-block" style="animation-delay: 0.6s" data-aos="fade-up" data-aos-delay="600">
+              <div class="skill-header">
+                <div class="skill-icon-container network-icon">
+                  <i class="fas fa-network-wired skill-title-icon"></i>
                 </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Jenkins
+                <h3 class="text-2xl font-bold text-teal-400 mt-4">
+                  Networking & Protocols
+                </h3>
+              </div>
+              <div class="skill-pills">
+                <div class="skill-pill skill-pill-network">Active Directory</div>
+                <div class="skill-pill skill-pill-network">DNS/DHCP</div>
+                <div class="skill-pill skill-pill-network">Wireshark</div>
+                <div class="skill-pill skill-pill-network">Cisco CLI</div>
+                <div class="skill-pill skill-pill-network">VLANs</div>
+                <div class="skill-pill skill-pill-network">SSH/RDP</div>
+                <div class="skill-pill skill-pill-network">Subnetting</div>
+                <div class="skill-pill skill-pill-network">Routing</div>
+              </div>
+            </div>
+
+            <!-- System Admin & Infrastructure -->
+            <div class="skill-card card-hover rounded-xl p-8 animate-fade-up" style="animation-delay: 0.8s" data-aos="fade-up" data-aos-delay="800">
+              <div class="skill-header">
+                <div class="skill-icon-container sysadmin-icon">
+                  <i class="fas fa-server skill-title-icon"></i>
                 </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Vs code
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Burp Extensions
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  VirtualBox
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  Packet Tracer
-                </div>
-                <div
-                  class="bg-gray-800/50 p-3 rounded text-center hover:bg-cyan-900/50 transition transform hover:scale-105 border border-gray-700/50">
-                  AWS(basic)
-                </div>
+                <h3 class="text-2xl font-bold text-green-400 mt-4">
+                  System Admin & Infra
+                </h3>
+              </div>
+              <div class="skill-pills">
+                <div class="skill-pill skill-pill-sysadmin">Windows Server</div>
+                <div class="skill-pill skill-pill-sysadmin">Ubuntu Server</div>
+                <div class="skill-pill skill-pill-sysadmin">Kali Linux</div>
+                <div class="skill-pill skill-pill-sysadmin">VMware/Hyper-V</div>
+                <div class="skill-pill skill-pill-sysadmin">Event Viewer</div>
+                <div class="skill-pill skill-pill-sysadmin">Nagios/Zabbix</div>
+                <div class="skill-pill skill-pill-sysadmin">PuTTY/SCP</div>
+                <div class="skill-pill skill-pill-sysadmin">Group Policy</div>
               </div>
             </div>
           </div>
@@ -445,7 +566,7 @@
       <section id="experience" class="py-20">
         <div class="container mx-auto px-4">
           <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
+            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-on-scroll">
             Professional Experience
           </h2>
           <div class="max-w-4xl mx-auto">
@@ -462,32 +583,43 @@
                     class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black timeline-dot animate-pulse-glow"></div>
                   <div
                     class="ml-12 lg:ml-0 lg:w-1/2 lg:pr-8 animate-slide-left">
-                    <div class="card-hover p-6 rounded-lg">
-                      <div class="flex justify-between items-start mb-4">
-                        <div>
-                          <h3 class="text-xl font-semibold text-cyan-400">
-                            IT Support Engineer
-                          </h3>
-                          <p class="text-gray-400">
-                            Mega IT Store (MSI Brand Store) | Surat, Gujarat
-                          </p>
+                    <div class="experience-card group glass-effect">
+                      <div class="experience-card-inner">
+                        <div class="flex justify-between items-start mb-2">
+                          <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                              <i class="fas fa-cogs text-cyan-400 text-lg"></i>
+                              <h3 class="text-xl font-semibold text-cyan-400">
+                                IT Support Engineer
+                              </h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">
+                              Mega IT Store (MSI Brand Store) • Surat, Gujarat
+                            </p>
+                          </div>
+                          <span class="text-xs text-cyan-400/70 bg-cyan-400/10 px-3 py-1 rounded-full whitespace-nowrap ml-4">Dec 2025 – Present</span>
                         </div>
-                        <span class="text-sm text-gray-500">Dec 2025 – Present</span>
+                        <ul class="text-gray-300 space-y-2 text-sm mb-4">
+                          <li>
+                            • Assembled and optimized custom PC builds ranging from ₹70K to ₹3.3L, including high-end Intel i9 and Ryzen 7 configurations with RTX GPUs and liquid cooling setups.
+                          </li>
+                          <li>
+                            • Delivered precise hardware installation, diagnostics, and performance tuning to ensure peak stability and aesthetics.
+                          </li>
+                          <li>
+                            • Collaborated with customers and the sales team to design tailored gaming and workstation solutions aligned with performance and budget goals.
+                          </li>
+                          <li>
+                            • Conducted quality testing and system benchmarking for MSI components, maintaining top-tier build standards and reliability.
+                          </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="experience-skill-tag">Hardware Assembly</span>
+                          <span class="experience-skill-tag">Diagnostics</span>
+                          <span class="experience-skill-tag">PC Building</span>
+                          <span class="experience-skill-tag">Customer Service</span>
+                        </div>
                       </div>
-                      <ul class="text-gray-300 space-y-2 text-sm">
-                        <li>
-                          • Assembled and optimized custom PC builds ranging from ₹70K to ₹3.3L, including high-end Intel i9 and Ryzen 7 configurations with RTX GPUs and liquid cooling setups.
-                        </li>
-                        <li>
-                          • Delivered precise hardware installation, diagnostics, and performance tuning to ensure peak stability and aesthetics.
-                        </li>
-                        <li>
-                          • Collaborated with customers and the sales team to design tailored gaming and workstation solutions aligned with performance and budget goals.
-                        </li>
-                        <li>
-                          • Conducted quality testing and system benchmarking for MSI components, maintaining top-tier build standards and reliability.
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -498,80 +630,87 @@
                     class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black timeline-dot animate-pulse-glow"></div>
                   <div
                     class="ml-12 lg:ml-0 lg:w-1/2 lg:pl-8 animate-slide-right">
-                    <div class="card-hover p-6 rounded-lg">
-                      <div class="flex justify-between items-start mb-4">
-                        <div>
-                          <h3 class="text-xl font-semibold text-cyan-400">
-                            FrontEnd Developer
-                          </h3>
-                          <p class="text-gray-400">
-                            Depthin Solution | Surat, Gujarat
-                          </p>
+                    <div class="experience-card group glass-effect">
+                      <div class="experience-card-inner">
+                        <div class="flex justify-between items-start mb-2">
+                          <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                              <i class="fas fa-code text-blue-400 text-lg"></i>
+                              <h3 class="text-xl font-semibold text-blue-400">
+                                FrontEnd Developer
+                              </h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">
+                              Depthin Solution • Surat, Gujarat
+                            </p>
+                          </div>
+                          <span class="text-xs text-blue-400/70 bg-blue-400/10 px-3 py-1 rounded-full whitespace-nowrap ml-4">Aug 2023 – Nov 2024</span>
                         </div>
-                        <span class="text-sm text-gray-500">Aug 2023 – Nov
-                          2024</span>
+                        <ul class="text-gray-300 space-y-2 text-sm mb-4">
+                          <li>
+                            • Contributed to the development of Repurpose.io V3, a major version update of the product website.
+                          </li>
+                          <li>
+                            • Played a dual role as a developer and tester, ensuring robust functionality and high-quality UI/UX delivery.
+                          </li>
+                          <li>
+                            • Authored clear and comprehensive technical documentation covering features, usage instructions, and testing workflows.
+                          </li>
+                          <li>
+                            • Worked closely with the product team to identify bottlenecks and provide scalable front-end solutions in a dynamic Agile environment.
+                          </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="experience-skill-tag bg-blue-900/30 border-blue-500/50 text-blue-300">React.js</span>
+                          <span class="experience-skill-tag bg-blue-900/30 border-blue-500/50 text-blue-300">Tailwind CSS</span>
+                          <span class="experience-skill-tag bg-blue-900/30 border-blue-500/50 text-blue-300">JavaScript</span>
+                          <span class="experience-skill-tag bg-blue-900/30 border-blue-500/50 text-blue-300">Agile</span>
+                        </div>
                       </div>
-                      <ul class="text-gray-300 space-y-2 text-sm">
-                        <li>
-                          • Contributed to the development of Repurpose.io V3, a
-                          major version update of the product website.
-                        </li>
-                        <li>
-                          • Played a dual role as a developer and tester,
-                          ensuring robust functionality and high-quality UI/UX
-                          delivery.
-                        </li>
-                        <li>
-                          • Authored clear and comprehensive technical
-                          documentation covering features, usage instructions,
-                          and testing workflows.
-                        </li>
-                        <li>
-                          • Worked closely with the product team to identify
-                          bottlenecks and provide scalable front-end solutions
-                          in a dynamic Agile environment.
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
 
-                <!-- LTI Quality Engineer -->
+                <!-- Frontend Developer Intern -->
                 <div class="relative flex items-center timeline-item">
                   <div
-                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black timeline-dot animate-pulse-glow\"></div>
+                    class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-black timeline-dot animate-pulse-glow"></div>
                   <div
                     class="ml-12 lg:ml-0 lg:w-1/2 lg:pr-8 animate-slide-left">
-                    <div class="card-hover p-6 rounded-lg">
-                      <div class="flex justify-between items-start mb-4">
-                        <div>
-                          <h3 class="text-xl font-semibold text-cyan-400">
-                            FrontEnd Developer Intern
-                          </h3>
-                          <p class="text-gray-400">
-                            BlueSoft Infotech | Surat, Gujarat
-                          </p>
+                    <div class="experience-card group glass-effect">
+                      <div class="experience-card-inner">
+                        <div class="flex justify-between items-start mb-2">
+                          <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                              <i class="fas fa-graduation-cap text-purple-400 text-lg"></i>
+                              <h3 class="text-xl font-semibold text-purple-400">
+                                FrontEnd Developer Intern
+                              </h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">
+                              BlueSoft Infotech • Surat, Gujarat
+                            </p>
+                          </div>
+                          <span class="text-xs text-purple-400/70 bg-purple-400/10 px-3 py-1 rounded-full whitespace-nowrap ml-4">Jun 2023 – Jul 2023</span>
                         </div>
-                        <span class="text-sm text-gray-500">Jun 2023 – Jul
-                          2023</span>
+                        <ul class="text-gray-300 space-y-2 text-sm mb-4">
+                          <li>
+                            • Assisted in developing and styling responsive web pages using HTML, CSS and JS for client-facing project.
+                          </li>
+                          <li>
+                            • Collaborated with senior developers to fix UI bugs and enhance user experience across Mobile and Desktop platforms.
+                          </li>
+                          <li>
+                            • Gained hands-on experience in Git workflow, project structuring and debugging practices in modern front-end environment.
+                          </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="experience-skill-tag bg-purple-900/30 border-purple-500/50 text-purple-300">HTML/CSS</span>
+                          <span class="experience-skill-tag bg-purple-900/30 border-purple-500/50 text-purple-300">JavaScript</span>
+                          <span class="experience-skill-tag bg-purple-900/30 border-purple-500/50 text-purple-300">Git</span>
+                          <span class="experience-skill-tag bg-purple-900/30 border-purple-500/50 text-purple-300">Responsive Design</span>
+                        </div>
                       </div>
-                      <ul class="text-gray-300 space-y-2 text-sm">
-                        <li>
-                          • Assisted in developing and styling responsive web
-                          pages using HTML, CSS and JS for client-facing
-                          project.
-                        </li>
-                        <li>
-                          • Collaborated with senior developers to fix UI bugs
-                          and enhance user Experience across Mobile and Desktop
-                          Platforms.
-                        </li>
-                        <li>
-                          • Gained hands-on experience in Git workflow, project
-                          structuring and debugging practices in modern
-                          front-end environment.
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -582,183 +721,340 @@
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="py-20">
+      <section id="projects" class="py-20 relative overflow-hidden">
         <div class="container mx-auto px-4">
-          <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-8 gradient-text">
-            Projects
-          </h2>
+          <!-- Section Header with Animation -->
+          <div class="text-center mb-16 animate-fade-up">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 gradient-text animate-on-scroll">
+              Innovative Projects
+            </h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+              Crafted solutions blending creativity, security, and cutting-edge technology
+            </p>
+            <div class="h-1 w-20 mx-auto mt-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full"></div>
+          </div>
           
-          <!-- Project Filters -->
-          <div class="flex flex-wrap gap-3 justify-center mb-10">
-            <button class="project-filter-btn active px-4 py-2 rounded-full border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-semibold" data-filter="all">All</button>
-            <button class="project-filter-btn px-4 py-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500/10 transition font-semibold" data-filter="security">Security</button>
-            <button class="project-filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-400 hover:bg-blue-500/10 transition font-semibold" data-filter="web">Web Dev</button>
-            <button class="project-filter-btn px-4 py-2 rounded-full border border-green-500 text-green-400 hover:bg-green-500/10 transition font-semibold" data-filter="tools">Tools</button>
+          <!-- Project Filters with Enhanced Styling -->
+          <div class="flex flex-wrap gap-3 justify-center mb-14">
+            <button class="project-filter-btn active group relative px-6 py-3 rounded-full border border-cyan-500/50 text-cyan-400 font-semibold transition-all duration-300 overflow-hidden" data-filter="all">
+              <div class="absolute inset-0 bg-cyan-500/10 group-hover:bg-cyan-500/20 transition-all"></div>
+              <span class="relative flex items-center gap-2">
+                <i class="fas fa-th"></i> All
+              </span>
+            </button>
+            <button class="project-filter-btn group relative px-6 py-3 rounded-full border border-purple-500/50 text-purple-400 font-semibold transition-all duration-300 overflow-hidden hover:border-purple-500" data-filter="security">
+              <div class="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-all"></div>
+              <span class="relative flex items-center gap-2">
+                <i class="fas fa-shield-alt"></i> Security
+              </span>
+            </button>
+            <button class="project-filter-btn group relative px-6 py-3 rounded-full border border-blue-500/50 text-blue-400 font-semibold transition-all duration-300 overflow-hidden hover:border-blue-500" data-filter="web">
+              <div class="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-all"></div>
+              <span class="relative flex items-center gap-2">
+                <i class="fas fa-globe"></i> Web Dev
+              </span>
+            </button>
+            <button class="project-filter-btn group relative px-6 py-3 rounded-full border border-green-500/50 text-green-400 font-semibold transition-all duration-300 overflow-hidden hover:border-green-500" data-filter="tools">
+              <div class="absolute inset-0 bg-green-500/10 group-hover:bg-green-500/20 transition-all"></div>
+              <span class="relative flex items-center gap-2">
+                <i class="fas fa-tools"></i> Tools
+              </span>
+            </button>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
             <!-- CyberCheat -->
-            <div
-              class="project-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6 project-item" data-tags="security" data-aos="fade-up">
-              <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
-                <i class="fas fa-user-secret mr-2"></i>CyberCheat
-              </h3>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Red Team Cheatsheet Platform
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Curated offensive security cheatsheets and tools for red
-                teamers.
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 border border-purple-500/50">Security</span>
-                <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/50">Web Dev</span>
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://cyber-cheatsheet.onrender.com/"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
-                <span class="ml-auto text-cyan-400 text-2xl"><i
-                    class="fas fa-shield-alt"></i></span>
+            <div class="project-card group relative rounded-xl animate-fade-up project-item overflow-hidden glass-effect-strong" data-tags="security" style="animation-delay: 0s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-cyan-500/20 group-hover:border-cyan-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <!-- Icon and Title -->
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2 text-cyan-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-user-secret text-2xl"></i>
+                        <div class="absolute inset-0 bg-cyan-500/20 blur-lg group-hover/title:bg-cyan-500/40 transition-all"></div>
+                      </div>
+                      CyberCheat
+                    </h3>
+                    <p class="text-sm italic text-gray-400 ml-11">Red Team Cheatsheet</p>
+                  </div>
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center border border-cyan-500/30 group-hover:border-cyan-500/60 transition-all">
+                    <i class="fas fa-shield-alt text-cyan-400 text-lg"></i>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Curated offensive security cheatsheets and tools for red teamers.
+                </p>
+
+                <!-- Tags/Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="project-tag security">
+                    <i class="fas fa-lock-open text-xs mr-1"></i>Security
+                  </span>
+                  <span class="project-tag web">
+                    <i class="fas fa-code text-xs mr-1"></i>Web Dev
+                  </span>
+                </div>
+
+                <!-- Action Button -->
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://cyber-cheatsheet.onrender.com/" target="_blank" class="project-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-black">
+                      <i class="fas fa-external-link-alt text-sm"></i>View Live
+                    </span>
+                  </a>
+                  <div class="ml-auto text-cyan-400/60 group-hover:text-cyan-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- RedHawk -->
-            <div
-              class="project-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6 project-item" data-tags="security,tools" data-aos="zoom-in">
-              <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
-                <i class="fas fa-search mr-2"></i>RedHawk
-              </h3>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Automated Recon & Vulnerability Scanner
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                All-in-one Python toolkit for automated recon and vulnerability
-                scanning.
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 border border-purple-500/50">Security</span>
-                <span class="text-xs px-2 py-1 rounded bg-green-500/20 text-green-400 border border-green-500/50">Tools</span>
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://github.com/Vasoyasharan/RedHawk"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">GitHub</a>
-                <span class="ml-auto text-cyan-400 text-2xl"><i
-                    class="fas fa-bug"></i></span>
+            <div class="project-card group relative rounded-xl animate-fade-up project-item overflow-hidden glass-effect-strong" data-tags="security,tools" style="animation-delay: 0.1s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-transparent to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-purple-500/20 group-hover:border-purple-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2 text-purple-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-search text-2xl"></i>
+                        <div class="absolute inset-0 bg-purple-500/20 blur-lg group-hover/title:bg-purple-500/40 transition-all"></div>
+                      </div>
+                      RedHawk
+                    </h3>
+                    <p class="text-sm italic text-gray-400 ml-11">Recon & Vulnerability</p>
+                  </div>
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center border border-purple-500/30 group-hover:border-purple-500/60 transition-all">
+                    <i class="fas fa-bug text-purple-400 text-lg"></i>
+                  </div>
+                </div>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  All-in-one Python toolkit for automated recon and vulnerability scanning.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="project-tag security">
+                    <i class="fas fa-lock-open text-xs mr-1"></i>Security
+                  </span>
+                  <span class="project-tag tools">
+                    <i class="fas fa-wrench text-xs mr-1"></i>Tools
+                  </span>
+                </div>
+
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://github.com/Vasoyasharan/RedHawk" target="_blank" class="project-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-black">
+                      <i class="fab fa-github text-sm"></i>GitHub
+                    </span>
+                  </a>
+                  <div class="ml-auto text-purple-400/60 group-hover:text-purple-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- CyberLock -->
-            <div
-              class="project-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6 project-item" data-tags="security,web" data-aos="fade-right">
-              <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
-                <i class="fas fa-lock mr-2"></i>CyberLock
-              </h3>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Password Strength Analyzer
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Instantly checks password strength and gives security tips.
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 border border-purple-500/50">Security</span>
-                <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/50">Web Dev</span>
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://vasoyasharan.github.io/PasswordStrengthMeter/"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
-                <span class="ml-auto text-cyan-400 text-2xl"><i
-                    class="fas fa-key"></i></span>
+            <div class="project-card group relative rounded-xl animate-fade-up project-item overflow-hidden glass-effect-strong" data-tags="security,web" style="animation-delay: 0.2s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-transparent to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-blue-500/20 group-hover:border-blue-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2 text-blue-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-lock text-2xl"></i>
+                        <div class="absolute inset-0 bg-blue-500/20 blur-lg group-hover/title:bg-blue-500/40 transition-all"></div>
+                      </div>
+                      CyberLock
+                    </h3>
+                    <p class="text-sm italic text-gray-400 ml-11">Password Analyzer</p>
+                  </div>
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center border border-blue-500/30 group-hover:border-blue-500/60 transition-all">
+                    <i class="fas fa-key text-blue-400 text-lg"></i>
+                  </div>
+                </div>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Instantly checks password strength and gives security tips.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="project-tag security">
+                    <i class="fas fa-lock-open text-xs mr-1"></i>Security
+                  </span>
+                  <span class="project-tag web">
+                    <i class="fas fa-code text-xs mr-1"></i>Web Dev
+                  </span>
+                </div>
+
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://vasoyasharan.github.io/PasswordStrengthMeter/" target="_blank" class="project-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-black">
+                      <i class="fas fa-external-link-alt text-sm"></i>View Live
+                    </span>
+                  </a>
+                  <div class="ml-auto text-blue-400/60 group-hover:text-blue-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- Additional Projects Row -->
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+
             <!-- Mico Hospital -->
-            <div
-              class="project-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6 project-item" data-tags="web" data-aos="fade-left">
-              <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
-                <i class="fas fa-hospital-symbol mr-2"></i>Mico Hospital
-              </h3>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Healthcare Web Portal
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Book appointments, view treatments, and contact doctors online.
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/50">Web Dev</span>
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://vasoyasharan.github.io/WD-PROJECT/"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
-                <span class="ml-auto text-cyan-400 text-2xl"><i
-                    class="fas fa-user-md"></i></span>
+            <div class="project-card group relative rounded-xl animate-fade-up project-item overflow-hidden glass-effect-strong" data-tags="web" style="animation-delay: 0.3s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-teal-500/0 via-transparent to-green-500/0 group-hover:from-teal-500/10 group-hover:to-green-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-teal-500/20 group-hover:border-teal-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-teal-600 via-green-600 to-emerald-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2 text-teal-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-hospital-symbol text-2xl"></i>
+                        <div class="absolute inset-0 bg-teal-500/20 blur-lg group-hover/title:bg-teal-500/40 transition-all"></div>
+                      </div>
+                      Mico Hospital
+                    </h3>
+                    <p class="text-sm italic text-gray-400 ml-11">Healthcare Portal</p>
+                  </div>
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-500/20 to-green-500/20 flex items-center justify-center border border-teal-500/30 group-hover:border-teal-500/60 transition-all">
+                    <i class="fas fa-user-md text-teal-400 text-lg"></i>
+                  </div>
+                </div>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Book appointments, view treatments, and contact doctors online.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="project-tag web">
+                    <i class="fas fa-code text-xs mr-1"></i>Web Dev
+                  </span>
+                </div>
+
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://vasoyasharan.github.io/WD-PROJECT/" target="_blank" class="project-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-teal-500 to-green-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-black">
+                      <i class="fas fa-external-link-alt text-sm"></i>View Live
+                    </span>
+                  </a>
+                  <div class="ml-auto text-teal-400/60 group-hover:text-teal-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- Hexpert -->
-            <div
-              class="project-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6 project-item" data-tags="web" data-aos="flip-left">
-              <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
-                <i class="fas fa-palette mr-2"></i>Hexpert
-              </h3>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Color Tools & Quiz
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Explore, pick, and quiz yourself on 200+ colors and gradients.
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/50">Web Dev</span>
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://vasoyasharan.github.io/Hexpert/"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
-                <span class="ml-auto text-cyan-400 text-2xl"><i
-                    class="fas fa-brush"></i></span>
+            <div class="project-card group relative rounded-xl animate-fade-up project-item overflow-hidden glass-effect-strong" data-tags="web" style="animation-delay: 0.4s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-transparent to-red-500/0 group-hover:from-orange-500/10 group-hover:to-red-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-orange-500/20 group-hover:border-orange-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2 text-orange-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-palette text-2xl"></i>
+                        <div class="absolute inset-0 bg-orange-500/20 blur-lg group-hover/title:bg-orange-500/40 transition-all"></div>
+                      </div>
+                      Hexpert
+                    </h3>
+                    <p class="text-sm italic text-gray-400 ml-11">Color Tools & Quiz</p>
+                  </div>
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center border border-orange-500/30 group-hover:border-orange-500/60 transition-all">
+                    <i class="fas fa-brush text-orange-400 text-lg"></i>
+                  </div>
+                </div>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Explore, pick, and quiz yourself on 200+ colors and gradients.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="project-tag web">
+                    <i class="fas fa-code text-xs mr-1"></i>Web Dev
+                  </span>
+                </div>
+
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://vasoyasharan.github.io/Hexpert/" target="_blank" class="project-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-black">
+                      <i class="fas fa-external-link-alt text-sm"></i>View Live
+                    </span>
+                  </a>
+                  <div class="ml-auto text-orange-400/60 group-hover:text-orange-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- Terminal Style Portfolio -->
-            <div
-              class="project-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6 project-item" data-tags="web" data-aos="flip-right">
-              <h3
-                class="text-xl font-bold mb-2 text-cyan-400 flex items-center">
-                <i class="fas fa-terminal mr-2"></i>Terminal Style Portfolio
-              </h3>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Interactive Terminal Portfolio
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                A portfolio site with terminal-like commands and interface.
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/50">Web Dev</span>
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://vasoyasharan.github.io/Terminal-Portfolio/"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">Live</a>
-                <span class="ml-auto text-cyan-400 text-2xl"><i
-                    class="fas fa-code"></i></span>
+            <div class="project-card group relative rounded-xl animate-fade-up project-item overflow-hidden glass-effect-strong" data-tags="web" style="animation-delay: 0.5s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-lime-500/0 via-transparent to-green-500/0 group-hover:from-lime-500/10 group-hover:to-green-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-lime-500/20 group-hover:border-lime-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-lime-600 via-green-600 to-emerald-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-2 text-lime-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-terminal text-2xl"></i>
+                        <div class="absolute inset-0 bg-lime-500/20 blur-lg group-hover/title:bg-lime-500/40 transition-all"></div>
+                      </div>
+                      Terminal Portfolio
+                    </h3>
+                    <p class="text-sm italic text-gray-400 ml-11">Interactive Terminal</p>
+                  </div>
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-lime-500/20 to-green-500/20 flex items-center justify-center border border-lime-500/30 group-hover:border-lime-500/60 transition-all">
+                    <i class="fas fa-code text-lime-400 text-lg"></i>
+                  </div>
+                </div>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  A portfolio site with terminal-like commands and interface.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="project-tag web">
+                    <i class="fas fa-code text-xs mr-1"></i>Web Dev
+                  </span>
+                </div>
+
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://vasoyasharan.github.io/Terminal-Portfolio/" target="_blank" class="project-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-lime-500 to-green-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-black">
+                      <i class="fas fa-external-link-alt text-sm"></i>View Live
+                    </span>
+                  </a>
+                  <div class="ml-auto text-lime-400/60 group-hover:text-lime-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -766,153 +1062,342 @@
       </section>
 
       <!-- Certificates Section -->
-      <section id="certificates" class="py-20 section-bg">
+      <section id="certificates" class="py-20 section-bg relative overflow-hidden">
         <div class="container mx-auto px-4">
-          <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text animate-fade-up">
-            Certifications & Achievements
-          </h2>
+          <!-- Section Header with Animation -->
+          <div class="text-center mb-16 animate-fade-up">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 gradient-text animate-on-scroll">
+              Certifications & Achievements
+            </h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+              Continuous learning and professional development in cybersecurity
+            </p>
+            <div class="h-1 w-20 mx-auto mt-6 bg-gradient-to-r from-cyan-500 via-green-500 to-blue-500 rounded-full"></div>
+          </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- eJPT Certificate -->
-            <div
-              class="certificate-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6" data-aos="flip-left">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
-                  <i class="fas fa-crosshairs mr-2"></i>eJPT
-                </h3>
-                <span
-                  class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">In
-                  Progress</span>
-              </div>
-              <div class="text-sm italic text-gray-400 mb-2">
-                eLearnSecurity Junior Penetration Tester
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Practical penetration testing certification focusing on network
-                attacks, web app security, and real-world scenarios.
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <span class="text-gray-500 text-sm">Expected 2026</span>
-                <span class="ml-auto text-green-400 text-2xl">
-                  <i class="fas fa-crosshairs"></i>
-                </span>
+            <div class="certificate-card group relative rounded-xl animate-fade-up overflow-hidden glass-effect-strong" data-aos="flip-left" style="animation-delay: 0s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-green-500/0 via-transparent to-teal-500/0 group-hover:from-green-500/10 group-hover:to-teal-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-green-500/20 group-hover:border-green-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-green-600 via-teal-600 to-cyan-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-1 text-green-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-crosshairs text-2xl"></i>
+                        <div class="absolute inset-0 bg-green-500/20 blur-lg group-hover/title:bg-green-500/40 transition-all"></div>
+                      </div>
+                      eJPT
+                    </h3>
+                    <p class="text-xs text-gray-400 ml-11">eLearnSecurity</p>
+                  </div>
+                  <div class="relative">
+                    <span class="certificate-badge in-progress">
+                      <i class="fas fa-hourglass-half text-xs mr-1"></i>In Progress
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Subtitle -->
+                <p class="text-sm italic text-gray-400 mb-4 leading-relaxed">
+                  Junior Penetration Tester Certification
+                </p>
+
+                <!-- Description -->
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Practical penetration testing certification focusing on network attacks, web application security, and real-world hacking scenarios.
+                </p>
+
+                <!-- Progress Bar -->
+                <div class="mb-6">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-semibold text-gray-400">Progress</span>
+                    <span class="text-xs text-green-400 font-bold">75%</span>
+                  </div>
+                  <div class="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden">
+                    <div class="bg-gradient-to-r from-green-500 to-teal-500 h-full rounded-full transition-all duration-500" style="width: 75%;"></div>
+                  </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="flex gap-3 items-center">
+                  <span class="text-xs text-green-400 font-semibold">Expected: 2026</span>
+                  <span class="ml-auto text-green-400/60 group-hover:text-green-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- DarkWeb Operations Certificate -->
-            <div
-              class="certificate-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6" data-aos="zoom-in">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
-                  <i class="fas fa-user-secret mr-2"></i>DarkWeb Operations
-                </h3>
-                <span
-                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">Completed</span>
-              </div>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Security Blue Team
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Specialized training in dark web monitoring, threat intelligence
-                gathering, and anonymous operations.
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <span class="ml-auto text-cyan-400 text-2xl">
-                  <i class="fas fa-shield-alt"></i>
-                </span>
+            <div class="certificate-card group relative rounded-xl animate-fade-up overflow-hidden glass-effect-strong" data-aos="zoom-in" style="animation-delay: 0.1s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-transparent to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-purple-500/20 group-hover:border-purple-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-1 text-purple-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-user-secret text-2xl"></i>
+                        <div class="absolute inset-0 bg-purple-500/20 blur-lg group-hover/title:bg-purple-500/40 transition-all"></div>
+                      </div>
+                      DarkWeb Ops
+                    </h3>
+                    <p class="text-xs text-gray-400 ml-11">Security Blue Team</p>
+                  </div>
+                  <div class="relative">
+                    <span class="certificate-badge completed">
+                      <i class="fas fa-check-circle text-xs mr-1"></i>Completed
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-sm italic text-gray-400 mb-4 leading-relaxed">
+                  Advanced Threat Intelligence Training
+                </p>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Specialized training in dark web monitoring, threat intelligence gathering, OSINT techniques, and anonymous digital operations.
+                </p>
+
+                <!-- Skills Tags -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="certificate-skill-tag">OSINT</span>
+                  <span class="certificate-skill-tag">Threat Intel</span>
+                  <span class="certificate-skill-tag">Dark Web</span>
+                </div>
+
+                <div class="flex gap-3 items-center">
+                  <span class="text-xs text-purple-400 font-semibold">Dec 2025</span>
+                  <span class="ml-auto text-purple-400/60 group-hover:text-purple-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- Fortinet FCF Certificate -->
-            <div
-              class="certificate-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6" data-aos="flip-right">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
-                  <i class="fas fa-network-wired mr-2"></i>Fortinet FCF
-                </h3>
-                <span
-                  class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">Completed</span>
-              </div>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Fortinet Certified Fundamentals
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Fundamentals in Cybersecurity covering network security, threat
-                protection, and Fortinet security fabric.
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <span class="ml-auto text-cyan-400 text-2xl">
-                  <i class="fas fa-network-wired"></i>
-                </span>
+            <div class="certificate-card group relative rounded-xl animate-fade-up overflow-hidden glass-effect-strong" data-aos="flip-right" style="animation-delay: 0.2s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-transparent to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-blue-500/20 group-hover:border-blue-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-1 text-blue-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-network-wired text-2xl"></i>
+                        <div class="absolute inset-0 bg-blue-500/20 blur-lg group-hover/title:bg-blue-500/40 transition-all"></div>
+                      </div>
+                      Fortinet FCF
+                    </h3>
+                    <p class="text-xs text-gray-400 ml-11">Fortinet Training</p>
+                  </div>
+                  <div class="relative">
+                    <span class="certificate-badge completed">
+                      <i class="fas fa-check-circle text-xs mr-1"></i>Completed
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-sm italic text-gray-400 mb-4 leading-relaxed">
+                  Certified Fundamentals Examination
+                </p>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Fundamentals in Cybersecurity covering network security foundations, threat protection, and Fortinet FortiGate security architecture.
+                </p>
+
+                <!-- Skills Tags -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="certificate-skill-tag">Network Security</span>
+                  <span class="certificate-skill-tag">FortiGate</span>
+                  <span class="certificate-skill-tag">Firewalls</span>
+                </div>
+
+                <div class="flex gap-3 items-center">
+                  <span class="text-xs text-blue-400 font-semibold">Nov 2024</span>
+                  <span class="ml-auto text-blue-400/60 group-hover:text-blue-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- TryHackMe Certificate -->
-            <div
-              class="certificate-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
-                  <i class="fas fa-graduation-cap mr-2"></i>TryHackMe
-                </h3>
-                <span
-                  class="text-xs bg-blue-900 text-blue-300 px-2 py-1 rounded">Learning</span>
-              </div>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Cybersecurity Learning Platform
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Actively learning cybersecurity fundamentals, completing rooms,
-                and building practical skills in ethical hacking and penetration
-                testing.
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <a
-                  href="https://tryhackme.com/p/SpVasoya"
-                  target="_blank"
-                  class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded font-semibold transition">
-                  View Profile
-                </a>
-                <span class="ml-auto text-blue-400 text-2xl">
-                  <i class="fas fa-graduation-cap"></i>
-                </span>
+            <div class="certificate-card group relative rounded-xl animate-fade-up overflow-hidden glass-effect-strong" style="animation-delay: 0.3s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-transparent to-red-500/0 group-hover:from-orange-500/10 group-hover:to-red-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-orange-500/20 group-hover:border-orange-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-1 text-orange-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                        <div class="absolute inset-0 bg-orange-500/20 blur-lg group-hover/title:bg-orange-500/40 transition-all"></div>
+                      </div>
+                      TryHackMe
+                    </h3>
+                    <p class="text-xs text-gray-400 ml-11">CTf Platform</p>
+                  </div>
+                  <div class="relative">
+                    <span class="certificate-badge learning">
+                      <i class="fas fa-book text-xs mr-1"></i>Learning
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-sm italic text-gray-400 mb-4 leading-relaxed">
+                  Cybersecurity Learning Platform
+                </p>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Actively learning cybersecurity fundamentals, completing challenge rooms, and building practical skills in ethical hacking and penetration testing.
+                </p>
+
+                <!-- Progress Bar -->
+                <div class="mb-6">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-semibold text-gray-400">Rooms Completed</span>
+                    <span class="text-xs text-orange-400 font-bold">60 Rooms</span>
+                  </div>
+                  <div class="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden">
+                    <div class="bg-gradient-to-r from-orange-500 to-red-500 h-full rounded-full transition-all duration-500" style="width: 55%;"></div>
+                  </div>
+                </div>
+
+                <div class="flex gap-3 items-center mt-auto">
+                  <a href="https://tryhackme.com/p/SpVasoya" target="_blank" class="certificate-btn group/btn relative px-5 py-2 rounded-lg font-semibold overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-2 text-white text-xs uppercase">
+                      <i class="fas fa-external-link-alt"></i>Profile
+                    </span>
+                  </a>
+                  <span class="ml-auto text-orange-400/60 group-hover:text-orange-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- CTF Achievements -->
-            <div
-              class="certificate-card card-hover rounded-lg animate-fade-up flex flex-col bg-gray-900/70 p-6">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-cyan-400 flex items-center">
-                  <i class="fas fa-flag mr-2"></i>CTF Competitions
-                </h3>
-                <span
-                  class="text-xs bg-purple-900 text-purple-300 px-2 py-1 rounded">Active</span>
+            <div class="certificate-card group relative rounded-xl animate-fade-up overflow-hidden glass-effect-strong" style="animation-delay: 0.4s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-pink-500/0 via-transparent to-purple-500/0 group-hover:from-pink-500/10 group-hover:to-purple-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-pink-500/20 group-hover:border-pink-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-1 text-pink-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-flag text-2xl"></i>
+                        <div class="absolute inset-0 bg-pink-500/20 blur-lg group-hover/title:bg-pink-500/40 transition-all"></div>
+                      </div>
+                      CTF Master
+                    </h3>
+                    <p class="text-xs text-gray-400 ml-11">Competitions</p>
+                  </div>
+                  <div class="relative">
+                    <span class="certificate-badge active">
+                      <i class="fas fa-fire text-xs mr-1"></i>Active
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-sm italic text-gray-400 mb-4 leading-relaxed">
+                  Capture The Flag Participant
+                </p>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Actively participating in cybersecurity CTF competitions to practice and improve skills in web exploitation, forensics, reverse engineering, and cryptography.
+                </p>
+
+                <!-- Skills Tags -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="certificate-skill-tag">Web Exploit</span>
+                  <span class="certificate-skill-tag">Forensics</span>
+                  <span class="certificate-skill-tag">Crypto</span>
+                </div>
+
+                <div class="flex gap-3 items-center">
+                  <span class="text-xs text-pink-400 font-semibold">Ongoing</span>
+                  <span class="ml-auto text-pink-400/60 group-hover:text-pink-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
               </div>
-              <div class="text-sm italic text-gray-400 mb-2">
-                Capture The Flag Participant
-              </div>
-              <div class="text-gray-300 text-sm mb-4">
-                Participating in cybersecurity CTF competitions to practice and
-                improve skills in web exploitation, forensics, and cryptography.
-              </div>
-              <div class="mt-auto flex gap-3 items-center">
-                <span class="text-gray-500 text-sm">Ongoing</span>
-                <span class="ml-auto text-purple-400 text-2xl">
-                  <i class="fas fa-flag"></i>
-                </span>
+            </div>
+
+            <!-- AWS Certified Solutions Architect -->
+            <div class="certificate-card group relative rounded-xl animate-fade-up overflow-hidden glass-effect-strong" style="animation-delay: 0.5s;">
+              <div class="absolute inset-0 bg-gradient-to-br from-amber-500/0 via-transparent to-orange-500/0 group-hover:from-amber-500/10 group-hover:to-orange-500/10 transition-all duration-500"></div>
+              <div class="absolute top-0 left-0 w-full h-full border border-amber-500/20 group-hover:border-amber-500/50 rounded-xl transition-all duration-500"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 rounded-xl opacity-0 group-hover:opacity-20 blur group-hover:blur-md transition-all duration-500 -z-10"></div>
+              
+              <div class="relative p-8 h-full flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold mb-1 text-amber-300 flex items-center gap-3 group/title">
+                      <div class="relative">
+                        <i class="fas fa-cloud text-2xl"></i>
+                        <div class="absolute inset-0 bg-amber-500/20 blur-lg group-hover/title:bg-amber-500/40 transition-all"></div>
+                      </div>
+                      Cloud Security
+                    </h3>
+                    <p class="text-xs text-gray-400 ml-11">Infrastructure</p>
+                  </div>
+                  <div class="relative">
+                    <span class="certificate-badge in-progress">
+                      <i class="fas fa-hourglass-half text-xs mr-1"></i>Pursuing
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-sm italic text-gray-400 mb-4 leading-relaxed">
+                  AWS & Cloud Security Focus
+                </p>
+
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                  Preparing for AWS security certifications with focus on cloud infrastructure security, identity management, and secure cloud architecture design.
+                </p>
+
+                <!-- Skills Tags -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="certificate-skill-tag">AWS</span>
+                  <span class="certificate-skill-tag">Cloud Sec</span>
+                  <span class="certificate-skill-tag">IAM</span>
+                </div>
+
+                <div class="flex gap-3 items-center">
+                  <span class="text-xs text-amber-400 font-semibold">2026 Target</span>
+                  <span class="ml-auto text-amber-400/60 group-hover:text-amber-300 transition-colors text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- More Certificates Button -->
-          <div class="text-center mt-12 animate-fade-up">
-            <a
-              href="https://vasoyasharan.github.io/My-Achievements/"
-              target="_blank"
-              class="inline-flex items-center gap-2 border border-cyan-500 hover:bg-cyan-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition duration-300">
-              <i class="fas fa-external-link-alt"></i>
-              View All Certificates & Achievements
+          <div class="text-center mt-16 animate-fade-up">
+            <a href="https://vasoyasharan.github.io/My-Achievements/" target="_blank" class="view-all-btn group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 border border-cyan-500/50 group-hover:border-cyan-500 rounded-xl group-hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-all duration-300"></div>
+              <span class="relative flex items-center gap-2 text-cyan-400 group-hover:text-white transition-colors">
+                <i class="fas fa-trophy text-lg"></i>
+                View All Certificates & Achievements
+                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+              </span>
             </a>
           </div>
         </div>
@@ -928,7 +1413,7 @@
           <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                Terminal Simulator 
-              <div class="card-hover p-6 rounded-lg border border-cyan-500/30 bg-gray-900/50" data-aos="fade-left">
+              <div class="card-hover glass-effect p-6 rounded-lg border-accent-green" data-aos="fade-left">
                 <div class="flex items-center mb-4">
                   <div class="flex space-x-2">
                     <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -991,103 +1476,481 @@
       -->
 
       <!-- Live Threat Intelligence Section -->
-      <section id="threat-intel" class="py-20">
-        <div class="container mx-auto px-4">
-          <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
-            <i class="fas fa-exclamation-triangle mr-3"></i>Threat Intelligence Feed
-          </h2>
-          <div class="max-w-4xl mx-auto">
-            <div class="card-hover p-8 rounded-lg border border-cyan-500/30 bg-gray-900/50" data-aos="fade-up">
-              <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span class="text-cyan-400 font-mono text-sm">LIVE</span>
-                  <span class="text-gray-400 text-xs">Latest Security Updates</span>
+      <section id="threat-intel" class="py-20 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 pointer-events-none opacity-30">
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+          <!-- Section Header -->
+          <div class="text-center mb-16 animate-fade-up">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 gradient-text animate-on-scroll">
+              <i class="fas fa-radar mr-3 text-red-500"></i>Real-Time Threat Intelligence
+            </h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+              Monitor critical security threats and vulnerabilities in real-time
+            </p>
+            <div class="h-1 w-20 mx-auto mt-6 bg-gradient-to-r from-red-500 via-cyan-500 to-red-500 rounded-full"></div>
+          </div>
+
+          <!-- Threat Feed Container -->
+          <div class="max-w-5xl mx-auto">
+            <!-- Feed Header -->
+            <div class="flex items-center justify-between mb-6 p-4 rounded-lg bg-gradient-to-r from-black/50 to-black/20 border border-red-500/20">
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                  <div class="absolute inset-0 w-3 h-3 bg-red-500 rounded-full animate-ping opacity-75"></div>
                 </div>
-                <button onclick="refreshThreatIntel()" class="text-cyan-400 hover:text-cyan-300 transition">
+                <div>
+                  <span class="text-red-400 font-mono font-bold text-sm">LIVE FEED</span>
+                  <span class="text-gray-500 text-xs ml-2">Updating every 60 seconds</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <button class="threat-filter-btn active" data-filter="all">All</button>
+                <button class="threat-filter-btn" data-filter="critical">Critical</button>
+                <button class="threat-filter-btn" data-filter="high">High</button>
+                <button class="threat-filter-btn" data-filter="medium">Medium</button>
+                <button onclick="refreshThreatIntel()" class="text-cyan-400 hover:text-cyan-300 transition hover:rotate-180 duration-500">
                   <i class="fas fa-sync-alt"></i>
                 </button>
               </div>
+            </div>
 
-              <div id="threat-feed" class="space-y-4 max-h-96 overflow-y-auto">
-                <div class="flex gap-4 p-4 bg-black/30 rounded border border-red-500/20 hover:border-red-500/50 transition">
-                  <div class="flex-shrink-0">
-                    <i class="fas fa-virus text-red-500 text-xl mt-1"></i>
+            <!-- Threat Feed Items -->
+            <div id="threat-feed" class="space-y-3 max-h-96 overflow-y-auto custom-scroll">
+              <!-- Sample Critical Threat -->
+              <div class="threat-item threat-critical group" data-severity="critical">
+                <div class="flex gap-4 p-5 rounded-lg border border-red-500/30 bg-gradient-to-r from-red-500/5 to-transparent hover:border-red-500/60 hover:bg-red-500/10 transition-all duration-300 cursor-pointer">
+                  <div class="flex-shrink-0 pt-1">
+                    <div class="threat-icon critical">
+                      <i class="fas fa-exclamation-circle"></i>
+                    </div>
                   </div>
                   <div class="flex-grow">
-                    <h4 class="text-red-400 font-semibold">Loading threats...</h4>
-                    <p class="text-gray-400 text-sm mt-1">Fetching latest security intelligence...</p>
-                    <p class="text-gray-500 text-xs mt-2">Just now</p>
+                    <div class="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 class="text-red-400 font-bold text-sm">Critical: Remote Code Execution in Log4j</h4>
+                        <p class="text-gray-400 text-xs mt-1">
+                          <span class="threat-tag critical">CVE-2024-50379</span>
+                          <span class="text-gray-500 ml-2">|</span>
+                          <span class="text-gray-500 ml-2">Apache Log4j 2.x</span>
+                        </p>
+                      </div>
+                      <span class="threat-severity critical">CRITICAL</span>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                      Remote code execution vulnerability in Apache Log4j allows unauthenticated attackers to execute arbitrary code through specially crafted JNDI lookups.
+                    </p>
+                    <div class="flex items-center justify-between mt-3">
+                      <div class="flex gap-2 text-xs">
+                        <span class="threat-stat">
+                          <i class="fas fa-users text-red-400 mr-1"></i>12,400 systems affected
+                        </span>
+                        <span class="threat-stat">
+                          <i class="fas fa-clock text-orange-400 mr-1"></i>2 hours ago
+                        </span>
+                      </div>
+                      <div class="text-red-400/60 group-hover:text-red-300 transition">
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-6 pt-6 border-t border-cyan-500/20">
-                <p class="text-gray-400 text-sm flex items-center gap-2">
-                  <i class="fas fa-info-circle text-cyan-400"></i>
-                  Updates from NVD (National Vulnerability Database) & Security RSS Feeds
-                </p>
+              <!-- High Priority Threat -->
+              <div class="threat-item threat-high group" data-severity="high">
+                <div class="flex gap-4 p-5 rounded-lg border border-orange-500/30 bg-gradient-to-r from-orange-500/5 to-transparent hover:border-orange-500/60 hover:bg-orange-500/10 transition-all duration-300 cursor-pointer">
+                  <div class="flex-shrink-0 pt-1">
+                    <div class="threat-icon high">
+                      <i class="fas fa-warning"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow">
+                    <div class="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 class="text-orange-400 font-bold text-sm">High: SQL Injection Vulnerability in WordPress Plugin</h4>
+                        <p class="text-gray-400 text-xs mt-1">
+                          <span class="threat-tag high">CVE-2024-49876</span>
+                          <span class="text-gray-500 ml-2">|</span>
+                          <span class="text-gray-500 ml-2">WPS Hide Login Plugin v1.9.x</span>
+                        </p>
+                      </div>
+                      <span class="threat-severity high">HIGH</span>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                      SQL injection vulnerability in WPS Hide Login plugin allows authenticated users to perform database queries with elevated privileges.
+                    </p>
+                    <div class="flex items-center justify-between mt-3">
+                      <div class="flex gap-2 text-xs">
+                        <span class="threat-stat">
+                          <i class="fas fa-globe text-orange-400 mr-1"></i>8,920 installations
+                        </span>
+                        <span class="threat-stat">
+                          <i class="fas fa-clock text-orange-400 mr-1"></i>5 hours ago
+                        </span>
+                      </div>
+                      <div class="text-orange-400/60 group-hover:text-orange-300 transition">
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              <!-- Medium Priority Threat -->
+              <div class="threat-item threat-medium group" data-severity="medium">
+                <div class="flex gap-4 p-5 rounded-lg border border-yellow-500/30 bg-gradient-to-r from-yellow-500/5 to-transparent hover:border-yellow-500/60 hover:bg-yellow-500/10 transition-all duration-300 cursor-pointer">
+                  <div class="flex-shrink-0 pt-1">
+                    <div class="threat-icon medium">
+                      <i class="fas fa-shield-alt"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow">
+                    <div class="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 class="text-yellow-400 font-bold text-sm">Medium: Cross-Site Scripting (XSS) in Web Framework</h4>
+                        <p class="text-gray-400 text-xs mt-1">
+                          <span class="threat-tag medium">CVE-2024-48791</span>
+                          <span class="text-gray-500 ml-2">|</span>
+                          <span class="text-gray-500 ml-2">Django Framework 4.0-4.2</span>
+                        </p>
+                      </div>
+                      <span class="threat-severity medium">MEDIUM</span>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                      Stored XSS vulnerability in Django ORM query results allows attackers to inject malicious script code into user sessions.
+                    </p>
+                    <div class="flex items-center justify-between mt-3">
+                      <div class="flex gap-2 text-xs">
+                        <span class="threat-stat">
+                          <i class="fas fa-code text-yellow-400 mr-1"></i>47,300 projects affected
+                        </span>
+                        <span class="threat-stat">
+                          <i class="fas fa-clock text-yellow-400 mr-1"></i>8 hours ago
+                        </span>
+                      </div>
+                      <div class="text-yellow-400/60 group-hover:text-yellow-300 transition">
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Critical Threat #2 -->
+              <div class="threat-item threat-critical group" data-severity="critical">
+                <div class="flex gap-4 p-5 rounded-lg border border-red-500/30 bg-gradient-to-r from-red-500/5 to-transparent hover:border-red-500/60 hover:bg-red-500/10 transition-all duration-300 cursor-pointer">
+                  <div class="flex-shrink-0 pt-1">
+                    <div class="threat-icon critical">
+                      <i class="fas fa-virus"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow">
+                    <div class="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 class="text-red-400 font-bold text-sm">Critical: Active Malware Campaign - Lazarus APT</h4>
+                        <p class="text-gray-400 text-xs mt-1">
+                          <span class="threat-tag critical">APT-LAZARUS-001</span>
+                          <span class="text-gray-500 ml-2">|</span>
+                          <span class="text-gray-500 ml-2">Financial Institutions Targeted</span>
+                        </p>
+                      </div>
+                      <span class="threat-severity critical">CRITICAL</span>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                      Lazarus APT group conducting sophisticated phishing and malware campaign targeting banking institutions across APAC region.
+                    </p>
+                    <div class="flex items-center justify-between mt-3">
+                      <div class="flex gap-2 text-xs">
+                        <span class="threat-stat">
+                          <i class="fas fa-building text-red-400 mr-1"></i>340+ organizations
+                        </span>
+                        <span class="threat-stat">
+                          <i class="fas fa-clock text-red-400 mr-1"></i>1 hour ago
+                        </span>
+                      </div>
+                      <div class="text-red-400/60 group-hover:text-red-300 transition">
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Medium Priority Threat #2 -->
+              <div class="threat-item threat-medium group" data-severity="medium">
+                <div class="flex gap-4 p-5 rounded-lg border border-yellow-500/30 bg-gradient-to-r from-yellow-500/5 to-transparent hover:border-yellow-500/60 hover:bg-yellow-500/10 transition-all duration-300 cursor-pointer">
+                  <div class="flex-shrink-0 pt-1">
+                    <div class="threat-icon medium">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow">
+                    <div class="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 class="text-yellow-400 font-bold text-sm">Medium: Authentication Bypass in OpenSSH</h4>
+                        <p class="text-gray-400 text-xs mt-1">
+                          <span class="threat-tag medium">CVE-2024-47826</span>
+                          <span class="text-gray-500 ml-2">|</span>
+                          <span class="text-gray-500 ml-2">OpenSSH 9.0-9.5</span>
+                        </p>
+                      </div>
+                      <span class="threat-severity medium">MEDIUM</span>
+                    </div>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                      Logic flaw in SSH key authentication allows attackers to bypass authentication checks under specific network conditions.
+                    </p>
+                    <div class="flex items-center justify-between mt-3">
+                      <div class="flex gap-2 text-xs">
+                        <span class="threat-stat">
+                          <i class="fas fa-server text-yellow-400 mr-1"></i>2.1M servers
+                        </span>
+                        <span class="threat-stat">
+                          <i class="fas fa-clock text-yellow-400 mr-1"></i>12 hours ago
+                        </span>
+                      </div>
+                      <div class="text-yellow-400/60 group-hover:text-yellow-300 transition">
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feed Info Footer -->
+            <div class="mt-6 p-4 rounded-lg border border-cyan-500/20 bg-cyan-500/5">
+              <p class="text-gray-400 text-xs flex items-center gap-2">
+                <i class="fas fa-info-circle text-cyan-400"></i>
+                <span>Data sourced from NVD, CISA, Shodan, and Security Research Communities. Filter threats by severity level above.</span>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20">
-        <div class="container mx-auto px-4">
-          <h2
-            class="text-3xl lg:text-4xl font-bold text-center mb-12 gradient-text">
-            Get In Touch
-          </h2>
-          <div class="max-w-2xl mx-auto">
-            <form
-              class="terminal-form p-6 rounded-lg shadow-lg bg-gray-900 border border-cyan-700"
-              id="contact-form"
-              action="https://formspree.io/f/mbjnwvwr"
-              method="post"
-              style="font-family: 'Fira Mono', 'Consolas', monospace">
-              <div class="mb-4 flex items-center">
-                <span class="text-green-400 mr-2">$</span>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Your Name"
-                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2" />
+      <section id="contact" class="py-20 relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-float"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <div class="inline-block mb-4">
+              <span class="text-cyan-400 text-sm font-mono uppercase tracking-widest">
+                <span class="text-green-400">$</span> Open Channel
+              </span>
+            </div>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+              <span class="gradient-text">Let's Create Something</span>
+              <br />
+              <span class="text-gray-300">Extraordinary Together</span>
+            </h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+              Have a project in mind? Want to collaborate? Drop me a message and let's discuss how we can work together.
+            </p>
+          </div>
+
+          <!-- Main Form Container -->
+          <div class="max-w-3xl mx-auto">
+            <div class="relative">
+              <!-- Glowing Border Effect -->
+              <div class="absolute -inset-1 bg-gradient-to-r from-cyan-600 via-purple-600 to-cyan-600 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition duration-1000 pointer-events-none animate-glow-slow"></div>
+              
+              <!-- Form Card -->
+              <form
+                class="relative bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-black/95 p-8 rounded-2xl border border-cyan-700/30 backdrop-blur-xl"
+                id="contact-form"
+                action="https://formspree.io/f/mbjnwvwr"
+                method="post">
+
+                <!-- Form Grid -->
+                <div class="space-y-6">
+                  <!-- Name Field -->
+                  <div class="contact-field group">
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        placeholder=" "
+                        class="contact-input w-full px-4 py-3 bg-gray-800/50 border-2 border-cyan-700/30 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-cyan-400 focus:bg-gray-800/80 transition-all duration-300" />
+                      <label for="name" class="contact-label absolute left-4 top-3.5 text-gray-400 cursor-text transition-all duration-300 pointer-events-none">
+                        <span class="text-cyan-400 mr-2">
+                          <i class="fas fa-user"></i>
+                        </span>
+                        Full Name
+                      </label>
+                    </div>
+                    <div class="h-1 bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent rounded-full scale-x-0 group-focus-within:scale-x-100 origin-left transition-transform duration-300 mt-2"></div>
+                  </div>
+
+                  <!-- Email Field -->
+                  <div class="contact-field group">
+                    <div class="relative">
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder=" "
+                        class="contact-input w-full px-4 py-3 bg-gray-800/50 border-2 border-cyan-700/30 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-cyan-400 focus:bg-gray-800/80 transition-all duration-300" />
+                      <label for="email" class="contact-label absolute left-4 top-3.5 text-gray-400 cursor-text transition-all duration-300 pointer-events-none">
+                        <span class="text-cyan-400 mr-2">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                        Email Address
+                      </label>
+                    </div>
+                    <div class="h-1 bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent rounded-full scale-x-0 group-focus-within:scale-x-100 origin-left transition-transform duration-300 mt-2"></div>
+                  </div>
+
+                  <!-- Subject Field -->
+                  <div class="contact-field group">
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder=" "
+                        class="contact-input w-full px-4 py-3 bg-gray-800/50 border-2 border-cyan-700/30 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-cyan-400 focus:bg-gray-800/80 transition-all duration-300" />
+                      <label for="subject" class="contact-label absolute left-4 top-3.5 text-gray-400 cursor-text transition-all duration-300 pointer-events-none">
+                        <span class="text-cyan-400 mr-2">
+                          <i class="fas fa-lightbulb"></i>
+                        </span>
+                        Subject
+                      </label>
+                    </div>
+                    <div class="h-1 bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent rounded-full scale-x-0 group-focus-within:scale-x-100 origin-left transition-transform duration-300 mt-2"></div>
+                  </div>
+
+                  <!-- Message Field -->
+                  <div class="contact-field group">
+                    <div class="relative">
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        required
+                        placeholder=" "
+                        class="contact-input w-full px-4 py-3 bg-gray-800/50 border-2 border-cyan-700/30 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-cyan-400 focus:bg-gray-800/80 transition-all duration-300 resize-none"></textarea>
+                      <label for="message" class="contact-label absolute left-4 top-3.5 text-gray-400 cursor-text transition-all duration-300 pointer-events-none">
+                        <span class="text-cyan-400 mr-2">
+                          <i class="fas fa-pen-fancy"></i>
+                        </span>
+                        Your Message
+                      </label>
+                    </div>
+                    <div class="h-1 bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent rounded-full scale-x-0 group-focus-within:scale-x-100 origin-left transition-transform duration-300 mt-2"></div>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mt-8 flex gap-4">
+                  <button
+                    type="submit"
+                    id="submitBtn"
+                    class="flex-1 relative group h-12 rounded-xl font-bold text-lg transition-all duration-300 overflow-hidden">
+                    <!-- Button Background Gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500 group-hover:from-cyan-400 group-hover:to-cyan-300 transition-all duration-300"></div>
+                    
+                    <!-- Button Content -->
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
+                    <div class="relative flex items-center justify-center h-full text-black font-bold group-hover:scale-105 transition-transform duration-300">
+                      <span class="flex items-center gap-2">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                      </span>
+                    </div>
+
+                    <!-- Shine Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -skew-x-12 animate-shimmer"></div>
+                  </button>
+
+                  <!-- Reset Button -->
+                  <button
+                    type="reset"
+                    class="px-6 h-12 rounded-xl font-semibold border-2 border-cyan-700/50 text-cyan-400 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 flex items-center gap-2">
+                    <i class="fas fa-redo"></i>
+                    Clear
+                  </button>
+                </div>
+
+                <!-- Status Message -->
+                <div
+                  id="statusMessage"
+                  class="mt-6 p-4 rounded-xl border-2 border-cyan-400 bg-cyan-400/10 text-cyan-300 text-center font-semibold hidden animate-fade-in"
+                  style="display: none">
+                </div>
+
+                <!-- Success Message -->
+                <div
+                  id="successMessage"
+                  class="mt-6 p-4 rounded-xl border-2 border-green-400 bg-green-400/10 text-green-300 text-center font-semibold hidden animate-fade-in"
+                  style="display: none">
+                  <i class="fas fa-check-circle mr-2"></i>
+                  <span id="successText">Message sent successfully!</span>
+                </div>
+              </form>
+            </div>
+
+            <!-- Alternative Contact Info -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Email Card -->
+              <div class="group cursor-pointer">
+                <div class="relative h-24 rounded-xl border-2 border-cyan-700/30 bg-gray-800/50 hover:bg-gray-800/80 transition-all duration-300 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 group-hover:via-cyan-400/20 transition-all duration-300"></div>
+                  <div class="relative text-center">
+                    <div class="text-2xl text-cyan-400 mb-2">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:sharanvasoya@proton.me" class="text-sm text-gray-300 hover:text-cyan-400 transition duration-300">
+                      sharanvasoya@proton.me
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div class="mb-4 flex items-center">
-                <span class="text-green-400 mr-2">$</span>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="Your Email"
-                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2" />
+
+              <!-- Discord Card -->
+              <div class="group cursor-pointer">
+                <div class="relative h-24 rounded-xl border-2 border-purple-700/30 bg-gray-800/50 hover:bg-gray-800/80 transition-all duration-300 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-r from-purple-400/0 via-purple-400/10 to-purple-400/0 group-hover:via-purple-400/20 transition-all duration-300"></div>
+                  <div class="relative text-center">
+                    <div class="text-2xl text-purple-400 mb-2">
+                      <i class="fab fa-discord"></i>
+                    </div>
+                    <p class="text-sm text-gray-300 hover:text-purple-400 transition duration-300">
+                      Discord Available
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="mb-4 flex items-start">
-                <span class="text-green-400 mr-2 mt-2">$</span>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  required
-                  placeholder="Your Message"
-                  class="w-full bg-transparent border-b border-cyan-700 text-cyan-200 focus:outline-none focus:border-cyan-400 placeholder-cyan-600 py-2 terminal-cursor"></textarea>
+
+              <!-- Response Time Card -->
+              <div class="group cursor-pointer">
+                <div class="relative h-24 rounded-xl border-2 border-green-700/30 bg-gray-800/50 hover:bg-gray-800/80 transition-all duration-300 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/10 to-green-400/0 group-hover:via-green-400/20 transition-all duration-300"></div>
+                  <div class="relative text-center">
+                    <div class="text-2xl text-green-400 mb-2">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <p class="text-sm text-gray-300">
+                      24-Hour Response
+                    </p>
+                  </div>
+                </div>
               </div>
-              <button
-                type="submit"
-                id="submitBtn"
-                class="w-full bg-cyan-700 hover:bg-cyan-500 text-black font-bold py-2 px-4 rounded transition mt-4">
-                Send <span class="ml-1">&#9654;</span>
-              </button>
-              <div
-                id="statusMessage"
-                class="mt-4 text-center"
-                style="display: none"></div>
-            </form>
+            </div>
           </div>
         </div>
       </section>
@@ -1124,84 +1987,192 @@
       </div>
 
       <!-- Footer -->
-      <footer class="py-8 border-t border-cyan-800 bg-gradient-to-b from-gray-900/50 to-black/80 backdrop-blur-sm mt-12 relative overflow-hidden">
-        <!-- Animated background gradient -->
-        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-purple-500/5 opacity-50 pointer-events-none"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-          <!-- Main Footer Content -->
-          <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-6">
-            <div class="flex items-center space-x-4 group cursor-default">
-              <div class="relative">
-                <span class="text-cyan-400 text-3xl group-hover:text-cyan-300 transition"><i class="fas fa-code"></i></span>
-                <span class="absolute inset-0 text-cyan-400/30 text-3xl blur-md group-hover:blur-lg transition"><i class="fas fa-code"></i></span>
-              </div>
-              <div>
-                <p class="text-gray-300 text-sm md:text-base leading-relaxed">
-                  Crafted with <span class="text-pink-400 font-semibold">passion</span> &amp; 
-                  <span class="text-cyan-400 font-semibold">code</span> by
+      <footer class="relative mt-20 overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <div class="absolute -bottom-10 -left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div class="absolute -top-10 -right-20 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl animate-float"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent opacity-30"></div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="relative z-10">
+          <!-- Top Glowing Border -->
+          <div class="border-t border-cyan-700/30 bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-cyan-500/0 h-px"></div>
+
+          <div class="container mx-auto px-4 py-16">
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+              <!-- Brand Section -->
+              <div class="space-y-4">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="relative w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <span class="relative text-white font-bold text-lg">SV</span>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg gradient-text">SpVasoya</h3>
+                    <p class="text-xs text-gray-500">Security &amp; Code</p>
+                  </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                  Building secure systems and exploring vulnerabilities. Ethical hacker & cybersecurity enthusiast.
                 </p>
-                <p class="text-cyan-400 font-bold text-lg">Sharan Vasoya</p>
+                <div class="flex gap-2 pt-2">
+                  <div class="w-1 h-6 bg-gradient-to-b from-cyan-400 to-purple-600 rounded-full"></div>
+                  <div class="w-1 h-6 bg-gradient-to-b from-purple-600 to-cyan-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <!-- Quick Links -->
+              <div class="space-y-4">
+                <h4 class="font-semibold text-white uppercase text-sm tracking-widest flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  Quick Links
+                </h4>
+                <ul class="space-y-3">
+                  <li><a href="#home" class="text-gray-400 hover:text-cyan-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-cyan-400/0 group-hover:bg-cyan-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>Home</span>
+                  </a></li>
+                  <li><a href="#about" class="text-gray-400 hover:text-cyan-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-cyan-400/0 group-hover:bg-cyan-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>About Me</span>
+                  </a></li>
+                  <li><a href="#projects" class="text-gray-400 hover:text-cyan-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-cyan-400/0 group-hover:bg-cyan-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>Projects</span>
+                  </a></li>
+                  <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-cyan-400/0 group-hover:bg-cyan-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>Contact</span>
+                  </a></li>
+                </ul>
+              </div>
+
+              <!-- Resources -->
+              <div class="space-y-4">
+                <h4 class="font-semibold text-white uppercase text-sm tracking-widest flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                  Resources
+                </h4>
+                <ul class="space-y-3">
+                  <li><a href="https://tryhackme.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-purple-400/0 group-hover:bg-purple-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>TryHackMe</span>
+                  </a></li>
+                  <li><a href="https://hackthebox.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-purple-400/0 group-hover:bg-purple-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>HackTheBox</span>
+                  </a></li>
+                  <li><a href="https://github.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-purple-400/0 group-hover:bg-purple-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>GitHub</span>
+                  </a></li>
+                  <li><a href="https://cybrary.it" target="_blank" class="text-gray-400 hover:text-purple-400 transition text-sm flex items-center gap-2 group">
+                    <span class="w-1 h-1 bg-purple-400/0 group-hover:bg-purple-400 rounded-full transition-all duration-300 flex-shrink-0"></span>
+                    <span>Cybrary</span>
+                  </a></li>
+                </ul>
+              </div>
+
+              <!-- Stats -->
+              <div class="space-y-4">
+                <h4 class="font-semibold text-white uppercase text-sm tracking-widest flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                  Highlights
+                </h4>
+                <div class="space-y-3">
+                  <div class="bg-gray-900/50 p-3 rounded-lg border border-cyan-700/20 hover:border-cyan-500/50 transition group cursor-default">
+                    <p class="text-gray-500 text-xs uppercase tracking-wider">Red Team Ops</p>
+                    <p class="text-cyan-400 font-bold text-lg">50+ Labs</p>
+                  </div>
+                  <div class="bg-gray-900/50 p-3 rounded-lg border border-purple-700/20 hover:border-purple-500/50 transition group cursor-default">
+                    <p class="text-gray-500 text-xs uppercase tracking-wider">CTF Status</p>
+                    <p class="text-purple-400 font-bold text-lg">Active</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Social Links with Animation -->
-            <div class="flex space-x-4">
-              <a href="https://github.com/Vasoyasharan" target="_blank" class="social-link-footer text-gray-400 hover:text-cyan-400 transition text-2xl group relative" title="GitHub">
-                <i class="fab fa-github"></i>
-                <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-cyan-400 text-black text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">GitHub</span>
-              </a>
-              <a href="https://www.linkedin.com/in/sharan-root/" target="_blank" class="social-link-footer text-gray-400 hover:text-blue-400 transition text-2xl group relative" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-                <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-blue-400 text-black text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">LinkedIn</span>
-              </a>
-              <a href="mailto:sharanvasoya@proton.me" class="social-link-footer text-gray-400 hover:text-red-400 transition text-2xl group relative" title="Email">
-                <i class="fas fa-envelope"></i>
-                <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-red-400 text-black text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">Email</span>
-              </a>
-              <a href="https://tryhackme.com/p/SpVasoya" target="_blank" class="social-link-footer text-gray-400 hover:text-green-400 transition text-2xl group relative" title="TryHackMe">
-                <i class="fas fa-user-secret"></i>
-                <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-green-400 text-black text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">TryHackMe</span>
-              </a>
-            </div>
-          </div>
+            <!-- Divider -->
+            <div class="relative h-px my-8 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
 
-          <!-- Animated Divider -->
-          <div class="relative h-px my-4">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
-          </div>
+            <!-- Social & Extra Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <!-- Social Links -->
+              <div class="space-y-4">
+                <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider">Connect With Me</p>
+                <div class="flex gap-3 flex-wrap">
+                  <a href="https://github.com/Vasoyasharan" target="_blank" class="footer-social-btn" title="GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/sharan-root/" target="_blank" class="footer-social-btn" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a href="mailto:sharanvasoya@proton.me" class="footer-social-btn" title="Email">
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                  <a href="https://tryhackme.com/p/SpVasoya" target="_blank" class="footer-social-btn" title="TryHackMe">
+                    <i class="fas fa-user-secret"></i>
+                  </a>
+                </div>
+              </div>
 
-          <!-- Footer Bottom - Creative -->
-          <div class="text-center space-y-2">
-            <!-- Tagline -->
-            <div class="space-y-2">
-              <p class="text-gray-400 text-sm font-light italic">
-                <span class="text-cyan-400 font-mono">$</span>
-                <span class="text-cyan-400">explore</span>
-                <span class="text-gray-500">|</span>
-                <span class="text-gray-400">vulnerabilities &amp; secure systems</span>
-              </p>
-              <p class="text-xs text-gray-500 space-x-2">
-                <span class="inline-block">
-                  © 2025 <span class="text-cyan-400 font-semibold">SpVasoya</span>
-                </span>
-                <span class="text-gray-600">•</span>
-                <span class="inline-block">
-                  Built with <i class="fas fa-heart text-pink-400"></i> &amp; <i class="fas fa-code text-cyan-400"></i>
-                </span>
-                <span class="text-gray-600">•</span>
-                <span class="inline-block">
-                  Stay curious <i class="fas fa-search text-cyan-400"></i>
-                </span>
-              </p>
+              <!-- CTA -->
+              <div class="space-y-4 flex flex-col justify-end">
+                <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider">Let's Collaborate</p>
+                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all duration-300 w-fit group">
+                  <span>Get In Touch</span>
+                  <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+              </div>
             </div>
 
-            <!-- Security Message -->
-            <p class="text-xs text-gray-600 font-mono tracking-wider">
-              <span class="text-green-400">→</span> hack to learn, not to harm <span class="text-green-400">←</span>
-            </p>
+            <!-- Bottom Footer -->
+            <div class="border-t border-cyan-700/20 pt-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 items-center">
+                <!-- Left: Copyright -->
+                <div class="text-center md:text-left">
+                  <p class="text-gray-500 text-xs">
+                    © 2025 <span class="font-semibold text-cyan-400">Sharan Vasoya</span>. All rights reserved.
+                  </p>
+                </div>
+
+                <!-- Center: Tagline -->
+                <div class="text-center">
+                  <p class="text-gray-400 text-xs font-mono tracking-wider">
+                    <span class="text-green-400">$</span>
+                    <span class="text-cyan-400">Learn</span>
+                    <span class="text-gray-500">•</span>
+                    <span class="text-cyan-400">Explore</span>
+                    <span class="text-gray-500">•</span>
+                    <span class="text-cyan-400">Secure</span>
+                  </p>
+                </div>
+
+                <!-- Right: Legal Links -->
+                <div class="text-center md:text-right space-x-3">
+                  <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition">Privacy</a>
+                  <span class="text-gray-600">•</span>
+                  <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition">Terms</a>
+                </div>
+              </div>
+
+              <!-- Security Message -->
+              <div class="mt-4 p-3 rounded-lg bg-gradient-to-r from-green-900/20 to-transparent border border-green-700/20 text-center">
+                <p class="text-green-400 text-xs font-mono">
+                  <i class="fas fa-shield-alt mr-2"></i>
+                  hack <span class="text-green-300">to learn</span>, not <span class="text-red-400">to harm</span>
+                  <i class="fas fa-shield-alt ml-2"></i>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Bottom Glowing Border -->
+        <div class="border-b border-cyan-700/30 bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-cyan-500/0 h-px"></div>
       </footer>
 
       <!-- End of Content -->
