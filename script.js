@@ -1,29 +1,25 @@
-/* ===== MOBILE DETECTION AND WARNING ===== */
+/* ===== MOBILE DETECTION DISABLED - WAS BLOCKING ALL CLICKS ===== */
+/*
 (function() {
   function detectMobileDevice() {
-    // Check for touch capability and small screen width
     const isTouchDevice = () => {
       return (('ontouchstart' in window) ||
               (navigator.maxTouchPoints > 0) ||
               (navigator.msMaxTouchPoints > 0));
     };
 
-    // Check viewport width
     const isSmallViewport = () => {
       return window.innerWidth < 1024 || window.innerHeight < 600;
     };
 
-    // User agent detection
     const isUserAgentMobile = () => {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     };
 
-    // If it's a touch device with small viewport, show warning
     if (isTouchDevice() && isSmallViewport()) {
       return true;
     }
 
-    // If user agent indicates mobile (but allow tablets with large width)
     if (isUserAgentMobile() && window.innerWidth < 1024) {
       return true;
     }
@@ -31,7 +27,6 @@
     return false;
   }
 
-  // Check on load
   function checkAndShowMobileWarning() {
     if (detectMobileDevice()) {
       const mobileWarning = document.getElementById('mobile-warning');
@@ -39,32 +34,28 @@
         mobileWarning.classList.remove('hidden');
         mobileWarning.classList.add('show');
         
-        // Disable main content
-        const mainContent = document.querySelector('.content-layer');
+        const  mainContent = document.querySelector('.content-layer');
         if (mainContent) {
           mainContent.style.display = 'none';
         }
 
-        // Add specific styling to body
         document.body.style.overflow = 'hidden';
       }
     }
   }
 
-  // Check on load and resize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', checkAndShowMobileWarning);
   } else {
     checkAndShowMobileWarning();
   }
 
-  // Also check on window resize
   window.addEventListener('resize', () => {
-    // Add small delay to avoid excessive checking
     clearTimeout(window.mobileCheckTimeout);
     window.mobileCheckTimeout = setTimeout(checkAndShowMobileWarning, 250);
   });
 })();
+*/
 
 /* ===== Particle.js Configuration ===== */
 particlesJS("particles-js", {
@@ -782,7 +773,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Initialize typing animation
 typeWriter();
 
-//  Cursor animation JS
+//  Cursor animation JS - DISABLED: causing mouse click issues  
+/*
 (function () {
   // Config
   const TRAIL_COUNT = 3; // number of trail dots
@@ -921,7 +913,8 @@ typeWriter();
       else document.body.style.cursor = "auto";
     }
   });
-})();
+});
+*/
 
 // pop-up animation js
 
@@ -1375,19 +1368,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* ===== HIGH IMPACT ENHANCEMENTS ===== */
 
 /* ===== 1. SCROLL PROGRESS BAR ===== */
-(function() {
-  const progressBar = document.getElementById('scroll-progress-bar');
-  
-  if (progressBar) {
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      
-      progressBar.style.width = scrollPercent + '%';
-    });
-  }
-})();
+/* CONSOLIDATED - Handled in main scroll listener below (see line ~530) */
 
 /* ===== 2. SCROLL TO TOP BUTTON ===== */
 (function() {

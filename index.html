@@ -18,7 +18,7 @@
   <body
     class="bg-black text-white min-h-screen scroll-smooth bg-pattern grid-pattern">
     <!-- Scroll Progress Bar -->
-    <div id="scroll-progress-bar"></div>
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 z-[1000]" style="width: 0%; transition: width 0.1s ease-out;"></div>
 
     <!-- Scroll to Top Button -->
     <button id="scroll-to-top" title="Back to top">
@@ -26,7 +26,7 @@
     </button>
 
     <!-- Mobile Warning Screen -->
-    <div id="mobile-warning" class="fixed inset-0 bg-black z-[9999] hidden flex items-center justify-center overflow-hidden">
+    <div id="mobile-warning" class="fixed inset-0 bg-black z-[5000] hidden flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 pointer-events-none">
         <!-- Animated Background Elements -->
         <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -127,8 +127,7 @@
       </div>
     </div>
 
-    <!-- Scroll Progress Bar -->
-    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 z-[999]" style="width: 0%; transition: width 0.3s ease;"></div>
+    <!-- Scroll Progress Bar REMOVED - Consolidated into body element -->
 
     <!-- Particle.js Background -->
     <div id="particles-js"></div>
@@ -159,7 +158,7 @@
 
     <div class="content-layer">
       <!-- Navigation -->
-      <nav class="fixed top-0 w-full z-50">
+      <nav class="fixed top-0 w-full z-[100]">
         <!-- Glowing Top Border -->
         <div class="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent absolute top-0 w-full"></div>
         
@@ -1956,7 +1955,7 @@
       </section>
 
       <!-- Cyber Popup -->
-      <div id="cyber-popup" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+      <div id="cyber-popup" class="fixed inset-0 flex items-center justify-center z-[500] hidden">
         <div
           class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"></div>
         <div class="relative bg-black/90 p-8 rounded-sm shadow-[0_0_20px_rgba(6,182,212,0.3)] border border-cyan-500/30 transform transition-all duration-300 max-w-md w-full mx-4 overflow-hidden">
