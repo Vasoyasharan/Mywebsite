@@ -179,7 +179,6 @@ body:is(a,button,.btn):hover ~ .cursor-ring {
   transition:color var(--trans);
   padding-bottom:2px;
 }
-.nav-link::before { content:attr(data-key)'. '; opacity:0.5; }
 .nav-link::after {
   content:'';
   position:absolute; bottom:-2px; left:0; right:100%;
